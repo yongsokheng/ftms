@@ -22,7 +22,7 @@ gem "mysql2", "~> 0.3.20"
 gem "delayed_job_active_record"
 gem "sidekiq"
 gem "whenever", require: false
-
+gem "rails_admin"
 group :development, :test do
   gem "fabrication"
   gem "rspec-rails", "~> 3.0"
