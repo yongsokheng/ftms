@@ -25,6 +25,7 @@ module RailsAdmin
 
         register_instance_option :controller do
           proc do
+            @subjects = Subject.all
             if request.post?
               course_params = params.require(:course).permit :name, :description
               if object.update_attributes course_params

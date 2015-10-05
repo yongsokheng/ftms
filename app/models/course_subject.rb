@@ -29,7 +29,7 @@ class CourseSubject < ActiveRecord::Base
 
   def create_course_subject_tasks
     subject.task_masters.each do |task_master|
-      Task.create course_subject_id: id, 
+      Task.create course_subject_id: id,
         task_master_id: task_master.id
     end
   end

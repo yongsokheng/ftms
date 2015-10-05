@@ -61,5 +61,5 @@
 
 <% unless @object.finish? %>
   <%= link_to t("admin.actions.add_subjects_to_course.btn"),
-    add_subjects_to_course_path(id: @object.id), class: "btn btn-primary pull-right" %>
+    "#{edit_course_path(id: @object.id)}#subject", class: "btn btn-primary pull-right" %>
 <% end %>

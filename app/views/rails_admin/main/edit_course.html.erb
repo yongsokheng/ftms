@@ -1,6 +1,6 @@
 <div class="row tab-in-courses">
   <div class="tabbable tabs-left col-md-2">
-    <ul class="nav nav-tabs">
+    <ul class="nav nav-tabs" id="tabs">
       <li role="presentation" class="active">
         <a href="#basic_info" aria-controls="basic_info" role="tab" data-toggle="tab">
           <%= t "admin.tabs.edit_basic_info" %>
@@ -50,7 +50,7 @@
     </div>
 
     <div id="subject" class="tab-pane fade">
-
+      <%= render "rails_admin/main/add_subjects_to_course" %>
     </div>
   </div>
 </div>

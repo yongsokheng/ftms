@@ -5,7 +5,7 @@ module RailsAdmin
         RailsAdmin::Config::Actions.register(self)
 
         register_instance_option :visible? do
-          authorized? && bindings[:object].class == Course
+          false
         end
 
         register_instance_option :member do
@@ -34,17 +34,25 @@ module RailsAdmin
 
         register_instance_option :controller do
           proc do
-            @course = object
-            @subjects = Subject.all
             if request.post?
-              course_params = params.require(:course).permit subject_ids: []
-              if object.update_attributes course_params
-                flash[:success] = t "admin.actions.updated"
-                redirect_to show_course_path(Course, object)
-              else
-                render "add_trainee_to_course"
-                flash[:danger] = t "admin.actions.not_updated"
+              course_subjects_ids = object.subjects.pluck :id
+              subject_params_ids = params[:course][:subject_ids].map(&:to_i)
+                .reject{|id| id == 0}
+
+              subject_removed_ids = course_subjects_ids - subject_params_ids
+              subject_add_ids = subject_params_ids - course_subjects_ids
+
+              subject_add_ids.each do |id|
+                object.course_subjects.create subject_id: id
               end
+
+              subject_removed_ids.each do |id|
+                course_subject = CourseSubject.find_by subject_id: id, course_id: object.id
+                course_subject.destroy
+              end
+
+              flash[:success] = t "admin.actions.updated"
+              redirect_to "#{show_course_path(Course, object)}#subject"
             end
           end
         end

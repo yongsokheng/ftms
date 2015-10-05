@@ -1,5 +1,20 @@
+var tab_nav = function () {
+  $("#tabs a").click(function (e) {
+    e.preventDefault();
+    window.location.hash = $(this).attr("href");
+    $(this).tab("show");
+  });
+
+  if (window.location.hash)
+    $("#tabs a[href=" + window.location.hash + "]").tab("show");
+  else if ($("#tabs").length > 0) {
+    $("#tabs a[href='#project']").tab("show");
+  }
+}
+
 $(document).on("ready", function() {
-  $(".alert").delay(3000).slideUp()
+  $(".alert").delay(3000).slideUp();
+  tab_nav();
 });
 
 $(document).on("click", ".checkbox-options", function () {
@@ -23,3 +38,4 @@ $(document).on("click", ".checkbox-options", function () {
     };
   }
 });
+

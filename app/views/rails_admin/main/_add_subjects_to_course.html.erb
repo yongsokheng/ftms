@@ -10,7 +10,7 @@
     <%= form_for @object, url: add_subjects_to_course_path, method: :post do |f| %>
       <%= hidden_field_tag "course[subject_ids][]", nil %>
       <% @subjects.each do |subject| %>
-        <tr class="<%= "hidden" if @object.subjects.include?(subject) %>" >
+        <tr>
           <td class="string_type">
             <%= subject.name %>
           </td>
@@ -33,7 +33,7 @@
       <% end %>
       <tr>
         <td colspan="3">
-          <%= f.submit t("admin.actions.add_subjects_to_course.btn"), 
+          <%= f.submit t("admin.actions.add_subjects_to_course.btn_save"),
             class: "btn btn-primary pull-right" %>
         </td>
       </tr>
