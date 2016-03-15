@@ -1,0 +1,82 @@
+<% if @course.nil? %>
+  <div class="title">
+    <h2><%= t "subjects.coming_soon" %></h2>
+  </div>
+<% else %>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2 title">
+          <h1><%= @course.name %></h1>
+          <p><%= @course.description %></p>
+        </div>
+        <div class="col-md-2">
+          <% if @course.init? %>
+            <div class="status course-status init"><%= t "courses.status.new" %></div>
+          <% elsif @course.progress? %>
+            <div class="status course-status inprogress"><%= @course.status %></div>
+          <% else @course.finish? %>
+            <div class="status course-status finish"><%= @course.status %></div>
+          <% end %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="list-subject">
+          <% @user_subjects.each do |user_subject| %>
+            <div class="col-md-2 task">
+              <% if user_subject.init? %>
+                <div class="status init">
+                  <strong><%= user_subject.course_subject.subject.name %></strong>
+                </div>
+              <% else %>
+                <% if user_subject.progress? %>
+                  <div class="status inprogress">
+                <% elsif user_subject.finish? %>
+                  <div class="status finish">
+                <% end %>
+                <strong>
+                  <%= link_to user_subject.course_subject.subject.name, course_user_subject_path(@course, user_subject),
+                    {title: user_subject.status} %>
+                </strong>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="information col-md-6">
+          <strong><%= t "subjects.start_date" %></strong>
+          <%= @course.start_date.strftime Settings.date_course_format unless @course.start_date.nil? %><br>
+          <strong><%= t "subjects.end_date" %></strong>
+          <%= @course.end_date.strftime Settings.date_course_format unless @course.end_date.nil? %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 rightbar">
+      <ul class="nav nav-tabs">
+        <li class="active">
+          <a data-toggle="tab" href="#show_member"><%= t "member" %></a>
+        </li>
+        <li>
+          <a data-toggle="tab" href="#show_activity"><%= t "activity.activities" %></a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div id="show_member" class="tab-pane fade in active list_special">
+          <% @course.users.each do |user| %>
+            <li class="list-group-item" id="infor_member">
+              <%= image_tag "profile.png" %>
+              <%= link_to user.name, user_path(user) %>
+            </li>
+          <% end %>
+        </div>
+        <div id="show_activity" class="tab-pane fade list_special">
+          <%#= render "shared/activities", activities: @activities %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

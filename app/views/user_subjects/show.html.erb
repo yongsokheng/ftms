@@ -23,7 +23,7 @@
         <% @user_subject.user_tasks.each_with_index do |user_task, index| %>
           <h4><%= index + 1 %>.&nbsp;<%= user_task.task.name %></h4>
           <p><%= user_task.task.description %></p>
-          <% if @user_subject.progress? %>
+          <% if current_user?(user_task.user) && @user_subject.progress? %>
             <p><b><%= link_to t("tasks.update"), edit_user_task_path(user_task,
               user_task_status: user_task.status)%></b></p>
           <% end %>
