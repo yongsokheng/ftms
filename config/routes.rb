@@ -22,7 +22,6 @@ Rails.application.routes.draw do
     end
     resources :course_subjects do
       resources :user_subjects, only: :update
-      resources :group_subjects
     end
     resources :users do
       resource :evaluations

@@ -103,12 +103,6 @@ ActiveRecord::Schema.define(version: 20160405092217) do
 
   add_index "evaluations", ["user_id"], name: "index_evaluations_on_user_id", using: :btree
 
-  create_table "group_subjects", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
   create_table "notes", force: :cascade do |t|
     t.string   "name",          limit: 255
     t.integer  "evaluation_id", limit: 4
@@ -245,14 +239,12 @@ ActiveRecord::Schema.define(version: 20160405092217) do
     t.integer  "during_time",            limit: 4, default: 0
     t.integer  "total_time_task_closed", limit: 4, default: 0
     t.integer  "progress",               limit: 4, default: 0
-    t.integer  "group_subject_id",       limit: 4
     t.datetime "created_at",                                   null: false
     t.datetime "updated_at",                                   null: false
   end
 
   add_index "user_subjects", ["course_id"], name: "index_user_subjects_on_course_id", using: :btree
   add_index "user_subjects", ["course_subject_id"], name: "index_user_subjects_on_course_subject_id", using: :btree
-  add_index "user_subjects", ["group_subject_id"], name: "index_user_subjects_on_group_subject_id", using: :btree
   add_index "user_subjects", ["user_course_id"], name: "index_user_subjects_on_user_course_id", using: :btree
   add_index "user_subjects", ["user_id"], name: "index_user_subjects_on_user_id", using: :btree
 
@@ -312,7 +304,6 @@ ActiveRecord::Schema.define(version: 20160405092217) do
   add_foreign_key "tasks", "course_subjects", on_delete: :cascade
   add_foreign_key "user_subjects", "course_subjects", on_delete: :cascade
   add_foreign_key "user_subjects", "courses"
-  add_foreign_key "user_subjects", "group_subjects"
   add_foreign_key "user_subjects", "user_courses"
   add_foreign_key "user_subjects", "users"
   add_foreign_key "user_tasks", "tasks", on_delete: :cascade

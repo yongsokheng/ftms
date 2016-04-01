@@ -2,6 +2,4 @@
   <td class="name"><%= link_to course_subject.subject.name,
     admin_course_subject_path(@course, course_subject.subject) %></td>
   <td class="during-time"><%= "#{course_subject.subject.during_time} #{t "subjects.fields.days"}" %></td>
-  <td class="action"><%= link_to t("subjects.crete_group"),
-    new_admin_course_subject_group_subject_path(course_subject.id) %></td>
 </tr>

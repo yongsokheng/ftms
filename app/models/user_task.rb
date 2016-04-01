@@ -27,14 +27,6 @@ class UserTask < ActiveRecord::Base
     task.task_master_id.nil?
   end
 
-  def has_group_subject?
-    self.user_subject.group_subject.present?
-  end
-
-  def group_subject
-      self.user_subject.group_subject.users
-  end
-
   def subject_in_progress?
     self.user_subject.progress?
   end

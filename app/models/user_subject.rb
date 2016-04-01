@@ -10,7 +10,6 @@ class UserSubject < ActiveRecord::Base
   belongs_to :course
   belongs_to :user_course
   belongs_to :course_subject
-  belongs_to :group_subject
   has_many :user_tasks, dependent: :destroy
 
   accepts_nested_attributes_for :user_tasks
@@ -19,7 +18,6 @@ class UserSubject < ActiveRecord::Base
 
   scope :load_user_subject, ->(user_id, course_id){where "user_id = ? AND course_id = ?", user_id, course_id}
   scope :load_users, ->status {where status: status}
-  scope :not_in_group, ->{where group_subject_id: nil}
   enum status: [:init, :progress, :finish]
 
   delegate :name, to: :user, prefix: true, allow_nil: true

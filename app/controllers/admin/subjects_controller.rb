@@ -11,7 +11,6 @@ class Admin::SubjectsController < ApplicationController
     @course = Course.find params[:course_id]
     @course_subject = CourseSubject.find_by course_id: @course.id, subject_id: @subject.id
     @user_subjects = @course_subject.user_subjects
-    @group_subjects = @course_subject.user_subjects.group_by(&:group_subject)
   end
 
   def create

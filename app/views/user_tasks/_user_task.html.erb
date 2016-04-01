@@ -24,10 +24,8 @@
   <%= form_for user_task.task, url: course_task_path(@course.id,user_task.
     task.id), html: {method: :put} do |f| %>
     <td class="assign_user">
-      <% if user_task.nil_master? && user_task.has_group_subject? && user_task.subject_in_progress? %>
-        <%= f.collection_select :assigned_trainee_id, user_task.
-          group_subject, :id, :name, {prompt: "", selected: user_task.user_id
-          }, onchange: "this.form.submit()", class: "select-assign form-control" %>
+      <% if user_task.nil_master? && user_task.subject_in_progress? %>
+        <%= f.select :assigned_trainee_id, @user_subjects.collect{|u| [u.user.name, u.user_id]}, {prompt: ""}, onchange: "this.form.submit()", class: "select-assign form-control" %>
       <% else %>
         <%= user_task.user_name %>
       <% end %>
