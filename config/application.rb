@@ -42,5 +42,6 @@ module Ftms
     config.i18n.available_locales = [:en, :ja]
     config.action_view.embed_authenticity_token_in_remote_forms = true
     config.middleware.use I18n::JS::Middleware
+    config.autoload_paths += %W(#{config.root}/app/services)
   end
 end

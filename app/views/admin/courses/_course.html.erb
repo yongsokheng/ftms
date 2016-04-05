@@ -6,6 +6,8 @@
   <td class="action">
     <%= link_to t("button.edit"), edit_admin_course_path(course) %> &nbsp;
     <%= link_to t("button.delete"), admin_course_path(course),
-      method: :delete, data: {confirm: t("messages.delete.confirm")} %>
+      method: :delete, data: {confirm: t("messages.delete.confirm")} %> &nbsp;
+    <%= link_to "Clone", admin_course_clone_courses_path(course), method: :post,
+      data: {confirm: t("courses.confirms.confirm_clone")} %>
   </td>
 </tr>

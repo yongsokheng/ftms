@@ -9,7 +9,7 @@ class Course < ActiveRecord::Base
   validate :check_end_date, on: [:create, :update]
 
   validates :start_date, presence: true
-  validates :end_date, presence: true 
+  validates :end_date, presence: true
 
   has_many :course_subjects, dependent: :destroy
   has_many :user_courses, dependent: :destroy

@@ -11,6 +11,8 @@ class Task < ActiveRecord::Base
     where assigned_trainee_id: nil, task_master_id: nil
   end
 
+  scope :find_admin_tasks, ->{where admin_task: 1}
+
   after_save :change_user_task
 
   private

@@ -198,6 +198,7 @@ ActiveRecord::Schema.define(version: 20160405092217) do
     t.text     "description",         limit: 65535
     t.text     "content",             limit: 65535
     t.integer  "task_master_id",      limit: 4
+    t.boolean  "admin_task"
     t.integer  "assigned_trainee_id", limit: 4
     t.integer  "course_subject_id",   limit: 4
     t.datetime "created_at",                        null: false

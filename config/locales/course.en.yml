@@ -48,3 +48,7 @@ en:
     users:
       name: "Name"
       email: "Email"
+    confirms:
+      confirm_clone: "Are you sure to clone this course?"
+      clone_success: "Clone success"
+      not_clone: "Clone not success"

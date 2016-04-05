@@ -46,3 +46,7 @@ ja:
     users:
       name: "名"
       email: "Eメール"
+    confirms:
+      confirm_clone: "あなたはこのコースをクローンしますか？"
+      clone_success: "クローン成功"
+      not_clone: "ない成功のクローンを作成"
