@@ -1,26 +1,5 @@
-<tr class="note row">
-  <td class="td-image" title="<%= t "user_tasks.statuses.#{user_task.status}" %>">
-    <%= image_tag "#{user_task.status}.png", size: Settings.image_size_40 %>
-  </td>
-  <td title="<%= user_task.task_description %>">
-    <div class="task-name"><%= user_task.task_name %>&nbsp;</div>
-    <div class="task-description"><%= user_task.task_description %></div>
-    <div>
-      <% if current_user?(user_task.user) && user_task.subject_in_progress? &&
-        !user_task.finished? %>
-        <span class="action" hidden>
-          <%= link_to "#", data: {toggle: "modal", target: "#user-task-#{user_task.id}"},
-            title: t("subjects.task.update") do %>
-            <i class="fa fa-pencil" aria-hidden="true"></i>
-          <% end %> |
-          <%= link_to user_task.task, method: :delete,
-            data:{confirm: t("messages.delete.confirm")} do %>
-            <i class="fa fa-trash" aria-hidden="true"></i>
-          <% end %>
-        </span>
-      <% end %>
-    </div>
-  </td>
+<tr class="note row" id="user-task-row-<%= user_task.id %>">
+  <%= render "user_task_row", user_task: user_task %>
 </tr>
 
 <%= render "edit_task_modal", user_task: user_task %>

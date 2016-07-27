@@ -5,8 +5,6 @@ class CreateUserTasks < ActiveRecord::Migration
       t.references :user_subject, index: true, foreign_key: {on_delete: :cascade}
       t.references :user, index: true, foreign_key: true
       t.integer :progress, default: 0
-      t.float :estimated_time
-      t.integer :redmine_task_id
       t.integer :status, default: 0
 
       t.timestamps null: false

@@ -20,7 +20,6 @@ class TasksController < ApplicationController
   def update
     @old_status = user_task.status
     if @task.update_attributes task_params
-      track_activity
       flash[:success] = flash_message "updated"
       redirect_to :back
     else
@@ -56,14 +55,6 @@ class TasksController < ApplicationController
 
   def load_user_course
     @user_course = current_user.user_courses.find_by course_id: @course_subject.course_id
-  end
-
-  def track_activity
-    new_status = user_task.status
-    unless @old_status == new_status
-      user_task.create_activity key: "user_task.change_status", owner: current_user,
-        parameters: {old_status: @old_status, new_status: new_status}
-    end
   end
 
   def user_task

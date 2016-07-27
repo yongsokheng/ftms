@@ -14,15 +14,6 @@
   <%= f.fields_for :user_tasks, user_task do |builder| %>
     <%= builder.hidden_field :user_id, value: current_user.id %>
     <%= builder.hidden_field :user_subject_id, value: @user_subject.id %>
-    <div class="form-group">
-      <%= builder.text_field :estimated_time, placeholder: t("tasks.form.estimated_time"), class: "form-control", required: true %>
-    </div>
-
-    <div class="form-group">
-      <%= builder.select :status, options_from_collection_for_select(
-          i18n_enum(:user_task, :status), :key, :value), {},
-          class: "form-control" %>
-    </div>
   <% end %>
 
   <div class="form-group">

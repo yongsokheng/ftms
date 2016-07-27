@@ -168,6 +168,7 @@ en:
     update: "Update"
     clone: "Clone"
     search: "Seach"
+    finish: "Finish"
   roles:
     allocate: "Allocate"
     roles: "Roles"
