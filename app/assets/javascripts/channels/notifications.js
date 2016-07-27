@@ -16,5 +16,6 @@ App.notifications = App.cable.subscriptions.create("NotificationsChannel", {
     number_notification = number_notification + 1;
     notification.html(number_notification);
     $("#slimScrollDiv .menu").prepend(data.content);
+    show_notify(data.notify_content);
   }
 });

@@ -27,6 +27,7 @@
 //= require highcharts
 //= require highcharts/highcharts-more
 //= require jquery.slimscroll
+//= require notify
 //= require admin/role_permission
 //= require admin/evaluation
 //= require admin/note

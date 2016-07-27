@@ -130,6 +130,8 @@ en:
   layouts:
     courses: "Courses"
     subjects: "Subjects"
+    course: "Course:"
+    subject: "Subject:"
     course_masters: "Course Masters"
     roles: "Roles"
     evaluation_templates: Evaluation Templates
@@ -159,6 +161,7 @@ en:
     notifications:
       view_all: "View all"
       notification: "New notifications"
+      warning: "Desktop notifications not available in your browser!"
   button:
     save: "Save"
     edit: "Edit"
