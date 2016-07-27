@@ -5,9 +5,9 @@ class UserTasksController < ApplicationController
     @old_status = @user_task.status
     if @user_task.update_attributes status: UserTask.statuses[:finished]
       track_activity
-      flash[:success] = flash_message "updated"
+      flash.now[:success] = flash_message "updated"
     else
-      flash[:error] = flash_message "not_updated"
+      flash.now[:error] = flash_message "not_updated"
     end
     respond_to do |format|
       format.js

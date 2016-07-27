@@ -1,7 +1,7 @@
-<td class="td-image" title="<%= t "user_tasks.statuses.#{user_task.status}" %>">
+<div class="col-md-1 td-image" title="<%= t "user_tasks.statuses.#{user_task.status}" %>">
   <%= image_tag "#{user_task.status}.png", size: Settings.image_size_40 %>
-</td>
-<td>
+</div>
+<div class="col-md-11">
   <div class="task-name">
     <%= user_task.task_name %>
   </div>
@@ -25,4 +25,4 @@
       </span>
     <% end %>
   </div>
-</td>
+</div>

@@ -48,8 +48,8 @@
 //= require admin/assign_user
 //= require jquery.quicksearch
 
-$(document).on("turbolinks:load", function() {
-  $(".alert").delay(3000).slideUp();
+$(document).on("turbolinks:load ajaxComplete", function() {
+  $(".alert").delay(3000).fadeOut();
   $("#error_explanation").delay(3000).slideUp();
 });
 

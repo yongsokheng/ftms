@@ -1,22 +1,26 @@
 module NotificationHelper
   def notification_content notification
-    trackable = trackable_object notification.trackable
-    data = "#{trackable.class.name} : #{trackable.name}"
+    trackable = notification.trackable
+
+    if trackable.class.name == "Course"
+      data = "Course: #{trackable.name}"
+    elsif trackable.class.name == "UserSubject"
+      data = "Subject : #{trackable.course_subject.subject_name}"
+    end
+
     t "notifications.keys.#{notification.key}", data: data
   end
 
   def notification_image notification
     trackable = notification.trackable
-    image_object = trackable_object trackable
-    set_image image_object, Settings.image_size_40
-  end
 
-  def trackable_object trackable
     if trackable.class.name == "Course"
-      trackable
+      image_object = trackable
     elsif trackable.class.name == "UserSubject"
-      trackable.course_subject.subject
+      image_object = trackable.course_subject
     end
+
+    set_image image_object, Settings.image_size_40
   end
 
   def not_seen_notification

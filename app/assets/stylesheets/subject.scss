@@ -1,10 +1,5 @@
 #subject-show {
   .subject-overview {
-    .subject-title {
-      font-size: 300%;
-      color: #575a5b;
-      font-weight: 700;
-    }
     .description {
       font-size: 120%;
       margin-top: 10px;
@@ -69,8 +64,14 @@
 
   .user-task-list {
     .td-image {
-      width: 20px;
+      width: 50px;
       height: 85px;
     }
   }
+}
+
+.header-title {
+  font-size: 200%;
+  color: #575a5b;
+  font-weight: 700;
 }

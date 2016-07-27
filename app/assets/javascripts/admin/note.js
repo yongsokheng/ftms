@@ -4,7 +4,7 @@ $(document).on("turbolinks:load", function() {
   });
 });
 
-$(document).on("turbolinks:load", function(){
+$(document).on("turbolinks:load ajaxComplete", function(){
   $('.note').hover(function() {
     $(this).find('.action').show();
   },function() {
