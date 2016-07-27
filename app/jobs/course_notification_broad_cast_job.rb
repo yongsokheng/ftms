@@ -8,6 +8,10 @@ class CourseNotificationBroadCastJob < ApplicationJob
       notification.user_notifications.create user_id: user.id
     end
 
-    BroadCastService.new(notification, "channel_course_#{course.id}").broadcast
+    notify_content = "#{I18n.t "layouts.course"}
+      #{I18n.t "notifications.keys.#{notification.key}", data: notification.trackable.name}"
+
+    BroadCastService.new(notification, "channel_course_#{course.id}",
+      notify_content).broadcast
   end
 end
