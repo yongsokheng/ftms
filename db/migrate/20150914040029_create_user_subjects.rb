@@ -9,7 +9,6 @@ class CreateUserSubjects < ActiveRecord::Migration
       t.date :start_date
       t.date :end_date
       t.integer :during_time, default: 0
-      t.integer :total_time_task_closed, default: 0
       t.integer :progress, default: 0
 
       t.timestamps null: false

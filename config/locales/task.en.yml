@@ -2,12 +2,9 @@ en:
   tasks:
     spent_time: "Spent time: "
     hours: "hour(s)"
-    estimated_time: "Estimated time: "
     update: "Update"
-    redmine_task_id: "Remine task id: "
     progress: "Progress: "
     status: "Status: "
-    assign_for: "Assign for:"
     edit: "edit task"
     update: "Update"
     fields:
@@ -17,7 +14,6 @@ en:
     form:
       input_task_name: "Enter task name..."
       input_task_description: "Enter task description..."
-      estimated_time: "Enter estimated time ..."
   user_tasks:
     statuses:
       in_progress: "In Progress"

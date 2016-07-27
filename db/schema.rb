@@ -246,18 +246,17 @@ ActiveRecord::Schema.define(version: 20160720062609) do
   end
 
   create_table "user_subjects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "status",                 default: 0
+    t.integer  "status",            default: 0
     t.integer  "user_id"
     t.integer  "course_id"
     t.integer  "user_course_id"
     t.integer  "course_subject_id"
     t.date     "start_date"
     t.date     "end_date"
-    t.integer  "during_time",            default: 0
-    t.integer  "total_time_task_closed", default: 0
-    t.integer  "progress",               default: 0
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.integer  "during_time",       default: 0
+    t.integer  "progress",          default: 0
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.index ["course_id"], name: "index_user_subjects_on_course_id", using: :btree
     t.index ["course_subject_id"], name: "index_user_subjects_on_course_subject_id", using: :btree
     t.index ["user_course_id"], name: "index_user_subjects_on_user_course_id", using: :btree
@@ -268,12 +267,10 @@ ActiveRecord::Schema.define(version: 20160720062609) do
     t.integer  "task_id"
     t.integer  "user_subject_id"
     t.integer  "user_id"
-    t.integer  "progress",                   default: 0
-    t.float    "estimated_time",  limit: 24
-    t.integer  "redmine_task_id"
-    t.integer  "status",                     default: 0
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.integer  "progress",        default: 0
+    t.integer  "status",          default: 0
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.index ["task_id"], name: "index_user_tasks_on_task_id", using: :btree
     t.index ["user_id"], name: "index_user_tasks_on_user_id", using: :btree
     t.index ["user_subject_id"], name: "index_user_tasks_on_user_subject_id", using: :btree

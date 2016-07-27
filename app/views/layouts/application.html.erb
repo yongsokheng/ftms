@@ -36,7 +36,9 @@
     <body>
       <%= render "layouts/user_header" if current_user.present? %>
       <div class="container body_wrapper">
-        <%= render "layouts/flash" %>
+        <div class="flash">
+          <%= render "layouts/flash" %>
+        </div>
         <%= yield %>
       </div>
       <%= render "layouts/footer" if current_user.present? %>
