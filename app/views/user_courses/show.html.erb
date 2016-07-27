@@ -13,7 +13,12 @@
       </ul>
     </div>
 
-    <h2><%= @course.name %></h2>
+    <span class="header-title"><%= @course.name %></span>
+
+    <span class="label-status <%= set_status @course.status %>">
+      <%= t "courses.labels.status.#{@course.status}" %>
+    </span>
+
     <div class="description"><%= @course.description %></div>
 
     <h3><%= t "courses.list_subject" %></h3>

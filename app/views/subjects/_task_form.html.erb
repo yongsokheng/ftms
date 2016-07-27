@@ -1,6 +1,6 @@
 <%= form_for task do |f| %>
   <%= render "shared/error_messages", object: @course_subject %>
-   <%  if task.new_record? || user_task.nil_master? %>
+  <% if task.new_record? || user_task.nil_master? %>
     <div class="form-group">
       <%= f.text_field :name, class: "form-control", required: true,
         placeholder: t("tasks.form.input_task_name") %>

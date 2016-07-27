@@ -16,7 +16,13 @@
       </div>
 
       <div class="subject-overview">
-        <div class="subject-title"><%= @user_subject.name %></div>
+        <span class="header-title">
+          <%= @user_subject.name %>
+        </span>
+        <span class="label-status <%= set_status @user_subject.status %>">
+          <%= t "courses.labels.status.#{@user_subject.status}" %>
+        </span>
+
         <div class="description"><%= @user_subject.description %></div>
         <div class="subject-content box-divider">
           <div class="label-title"><%= t "subjects.content" %></div>
@@ -33,9 +39,9 @@
               class: "btn-action pull-right" if current_user.is_trainee? && @user_subject.progress? %>
           </div>
 
-          <table class="table note-list user-task-list">
+          <div class="note-list user-task-list">
             <%= render partial: "user_task", collection: @user_tasks %>
-          </table>
+          </div>
         </div>
       </div>
     </div>

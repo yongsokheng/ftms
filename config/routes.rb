@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   mount ActionCable.server => "/cable"
 
   filter :locale
-  root "static_pages#home"
+  root "courses#index"
 
   devise_for :users, path: "auth", path_names: {sign_in: "login", sign_out: "logout"}
 

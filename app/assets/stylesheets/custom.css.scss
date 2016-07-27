@@ -333,3 +333,15 @@ select {
     }
   }
 }
+
+.flash {
+  position: fixed;
+  z-index: 10000;
+  right: 0px;
+  top: 0px;
+
+  .close {
+    font-weight: normal;
+    text-decoration: none;
+  }
+}
