@@ -1,0 +1,16 @@
+<tr>
+  <td class="assign-checkbox">
+    <%= f.fields_for :user_courses, @course.user_courses.build do |user_course_builder| %>
+      <% if course_users.include? user %>
+        <%= user_course_builder.check_box :_destroy, {checked: true}, false, true %>
+        <%= user_course_builder.hidden_field :user_id, value: user.id %>
+        <%= user_course_builder.hidden_field :id, value:
+          @course.user_courses.find_by(user_id: user.id).id %>
+      <% else %>
+        <%= user_course_builder.check_box :user_id, {checked: false}, user.id, nil %>
+      <% end %>
+    <% end %>
+  </td>
+  <td><%= user.name %></td>
+  <td><%= user.email %></td>
+</tr>

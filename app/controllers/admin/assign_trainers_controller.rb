@@ -4,6 +4,10 @@ class Admin::AssignTrainersController < ApplicationController
 
   def edit
     @trainers = Role.find_by(name: "trainer").users
+
+    add_breadcrumb_path "courses"
+    add_breadcrumb @course.name, admin_course_path(@course)
+    add_breadcrumb t "courses.assign_trainers"
   end
 
   def update

@@ -84,7 +84,8 @@ class UserSubject < ApplicationRecord
   end
 
   def percent_progress
-    (user_tasks.finished.size.to_f / user_tasks.size) * 100
+    user_task_size = user_tasks.size
+    (user_tasks.finished.size.to_f / user_task_size) * 100 if user_task_size > 0
   end
 
   private

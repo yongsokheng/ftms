@@ -233,6 +233,7 @@ en:
       edit: "Edit"
   datatables:
     search_name: "Search name"
+    search_name_email: "Search name or email"
     show_menu: "Show _MENU_"
   notifications:
     notification: "Notifications"

@@ -1,19 +1,16 @@
 <div class="row">
-  <div id="assign-user" class="col-md-12">
-    <% users.each do |user| %>
-      <%= f.fields_for :user_courses, @course.user_courses.build do |user_course_builder| %>
-        <% if course_users.include? user %>
-          <%= user_course_builder.check_box :_destroy, {checked: true}, false, true %>
-          <%= user_course_builder.hidden_field :user_id, value: user.id %>
-          <%= user_course_builder.hidden_field :id, value:
-            @course.user_courses.find_by(user_id: user.id).id %>
-        <% else %>
-          <%= user_course_builder.check_box :user_id, {checked: false}, user.id, nil %>
-        <% end %>
-        <%= user.name %></td>
-        <br>
-      <% end %>
-    <% end %>
+  <div class="col-md-12">
+    <table id="tbl-assign-user" class="table table-hover">
+      <thead>
+        <th class="assign-checkbox"></th>
+        <th><%= t "courses.users.name" %></th>
+        <th><%= t "courses.users.email" %></th>
+      </thead>
+      <tbody>
+        <%= render partial: "shared/assign_user_row", collection: users,
+          as: :user, locals: {f: f, course_users: course_users} %>
+      </tbody>
+    </table>
   </div>
 </div>
 <br>

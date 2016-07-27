@@ -45,6 +45,7 @@
 //= require evaluation_template
 //= require rank
 //= require university
+//= require admin/assign_user
 //= require jquery.quicksearch
 
 $(document).on("turbolinks:load", function() {
