@@ -11,7 +11,7 @@
             <div class="timeline-item">
               <div class="timeline-header">
                 <%= link_to user_subject.subject.name,
-                  [:admin, @inprogress_course.course, user_subject.subject] %>
+                  [@inprogress_course, user_subject.subject] %>
               </div>
             </div>
           <% else %>

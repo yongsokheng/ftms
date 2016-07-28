@@ -14,6 +14,7 @@ en:
     supervisor: "Must has at least one supervisor"
     leader: "Must has one leader"
     wrong_end_date: "Must be greater than start date"
+    not_authorize: "You are not authorized to access this page."
   staticpages:
     framgia: "Framgia Trainning Management System"
     about: "About"
