@@ -1,3 +1,4 @@
 $(".flash").html("<%= j render 'layouts/flash' %>");
 $("#user-task-row-<%= @user_task.id %>")
   .html("<%= j render 'subjects/user_task_row', user_task: @user_task %>");
+$(".task-infor").html("<%= j render 'subjects/task_statistic' %>")

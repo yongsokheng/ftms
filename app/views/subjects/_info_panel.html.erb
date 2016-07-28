@@ -15,13 +15,7 @@
     <%= set_image @user_subject, Settings.image_size_200 %>
   </div><br>
   <div class="task-infor">
-    <% @task_statuses.each do |key, value| %>
-      <div class="status">
-        <i class="fa fa-circle circle-<%= key %> " aria-hidden="true"></i>&nbsp;
-        <%= t "subjects.tasks.#{key}_tasks" %>
-        <%= instance_variable_get "@number_of_task_#{key}" %>/<%= @number_of_task %>
-      </div>
-    <% end %>
+    <%= render "task_statistic" %>
   </div>
 </div>
 
