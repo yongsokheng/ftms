@@ -1,11 +1,18 @@
-function show_notify(notify_content) {
-  if(!("Notification" in window) ) {
-    alert(I18n.t("layouts.notifications.warning"));
+$(document).on("turbolinks:load", function() {
+  check_notify_support();
+});
+
+function check_notify_support() {
+  if(!("Notification" in window)) {
     return;
   }
 
   if(Notification.permission !== "granted")
     Notification.requestPermission();
+}
+
+function show_notify(notify_content) {
+  check_notify_support();
 
   if(Notification.permission === "granted") {
     var option = {

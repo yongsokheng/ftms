@@ -7,15 +7,6 @@
       </a>
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
-          <li>
-            <div class="flag-language">
-              <% Settings.languages.each do |_, val| %>
-                <%= link_to params.merge(locale: val) do %>
-                  <%= image_tag val, size: Settings.flag_size %>
-                <% end %>
-              <% end %>
-            </div>
-          </li>
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <%= avatar_user_tag current_user, "user-image", Settings.image_size_50 %>
