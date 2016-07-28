@@ -1,7 +1,7 @@
 module ApplicationHelper
   def full_title page_title = ""
     base_title = t "staticpages.framgia"
-    "#{page_title} | #{base_title}"
+    page_title.present? ? "#{page_title} | #{base_title}" : base_title
   end
 
   def flash_class level
