@@ -1,15 +1,13 @@
 <%= form_for task do |f| %>
-  <%= render "shared/error_messages", object: @course_subject %>
-  <% if task.new_record? || user_task.nil_master? %>
-    <div class="form-group">
-      <%= f.text_field :name, class: "form-control", required: true,
-        placeholder: t("tasks.form.input_task_name") %>
-    </div>
-    <div class="form-group">
-      <%= f.text_area :description, class: "form-control modal-text-area",
-        required: true, placeholder: t("tasks.form.input_task_description") %>
-    </div>
-  <% end %>
+  <%= f.hidden_field :course_subject_id, value: @course_subject.id %>
+  <div class="form-group">
+    <%= f.text_field :name, class: "form-control", required: true,
+      placeholder: t("tasks.form.input_task_name") %>
+  </div>
+  <div class="form-group">
+    <%= f.text_area :description, class: "form-control modal-text-area",
+      placeholder: t("tasks.form.input_task_description") %>
+  </div>
 
   <%= f.fields_for :user_tasks, user_task do |builder| %>
     <%= builder.hidden_field :user_id, value: current_user.id %>

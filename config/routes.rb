@@ -58,7 +58,7 @@ Rails.application.routes.draw do
     resources :subjects, only: [:show]
   end
 
-  resources :tasks
+  resources :tasks, except: [:new, :edit]
   resources :user_tasks, only: :update
   resources :notifications, only: :index
   patch "update_notifications" => "notifications#update"
