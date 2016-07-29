@@ -1,5 +1,6 @@
 class Admin::CourseSubjectsController < ApplicationController
   load_and_authorize_resource
+  load_and_authorize_resource :course
   before_action :load_course, except: :new
 
   def index

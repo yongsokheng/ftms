@@ -338,7 +338,8 @@ select {
   position: fixed;
   z-index: 10000;
   right: 0px;
-  top: 0px;
+  top: 60px;
+  opacity: 0.6;
 
   .close {
     font-weight: normal;

@@ -46,22 +46,6 @@
               </li>
             </ul>
           </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <%= image_tag I18n.locale, size: Settings.flag_size %>
-              <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu language-select">
-              <% Settings.languages.each do |_, val| %>
-                <li>
-                  <%= link_to params.merge(locale: val) do %>
-                    <%= image_tag val, size: Settings.flag_size, class: "img-language" %>
-                    <%= t "language-name.#{val}" %>
-                  <% end %>
-                </li>
-              <% end %>
-            </ul>
-          </li>
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <%= avatar_user_tag current_user, "user-image", Settings.image_size_50 %>

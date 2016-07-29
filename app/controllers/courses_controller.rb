@@ -12,6 +12,7 @@ class CoursesController < ApplicationController
 
   private
   def load_course
+    redirect_to admin_courses_path unless current_user.is_trainee?
     @user_courses = current_user.user_courses.course_not_init
   end
 end
