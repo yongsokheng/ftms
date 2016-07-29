@@ -28,7 +28,7 @@
             <span><%= t "subjects.description" %>:</span>
           </div>
           <div class="col-md-9">
-            <%= f.text_area :description, class: "form-control", required: true,
+            <%= f.text_area :description, class: "form-control",
               placeholder: I18n.t("subjects.form.input_subject_description") %>
           </div>
         </div>
@@ -38,7 +38,7 @@
             <span><%= t "subjects.content" %></span>
           </div>
           <div class="col-md-9">
-            <%= f.text_area :content, class: "ckeditor-field form-control", required: true %>
+            <%= f.text_area :content, class: "ckeditor-field form-control" %>
           </div>
         </div>
         <br>

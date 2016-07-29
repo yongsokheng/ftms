@@ -8,7 +8,7 @@ en:
       confirm_start: "Are you sure to start this course?"
       confirm_finish: "Are you sure to finish this course?"
       confirm_reopen: "Are you sure to reopen this course?"
-    not_clone: "Clone not success"
+      not_clone: "Clone not success"
     buttons:
       admin:
         new: "New"

@@ -7,6 +7,7 @@ class Subject < ApplicationRecord
   has_many :notifications, as: :trackable, dependent: :destroy
 
   validates :name, presence: true, uniqueness: true
+  validates :during_time, presence: true, numericality: {greater_than: 0}
 
   scope :subject_not_start_course, ->course{where "id NOT IN (SELECT subject_id
     FROM course_subjects WHERE course_id = ? AND status <> 0)", course.id}
