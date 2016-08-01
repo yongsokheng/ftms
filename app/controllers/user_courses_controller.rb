@@ -4,7 +4,7 @@ class UserCoursesController < ApplicationController
   def show
     @course = @user_course.course
     @users = @course.users
-    @user_subjects = @user_course.user_subjects
+    @user_subjects = @user_course.user_subjects.order_by_course_subject
     @trainers = @users.trainers
     @trainees = @users.trainees
     @members = @users.show_members

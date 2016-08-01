@@ -438,7 +438,7 @@ namespace :db do
       Note: ["read", "create", "update", "destroy"],
       Notification: ["read", "create"],
       Subject: ["read"],
-      User: ["read", "update"],
+      User: ["read"],
       UserCourse: ["read"],
       UserSubject: ["update"]
     }
@@ -447,7 +447,7 @@ namespace :db do
       Course: ["read"],
       Subject: ["read"],
       Task: ["read", "create", "update", "destroy"],
-      User: ["read", "update"],
+      User: ["read"],
       UserCourse: ["read"],
       UserTask: ["read", "create", "update", "destroy"]
     }
