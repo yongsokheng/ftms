@@ -8,6 +8,7 @@ class UserSubject < ApplicationRecord
   belongs_to :user_course
   belongs_to :course_subject
   has_many :user_tasks, dependent: :destroy
+  has_many :notifications, as: :trackable, dependent: :destroy
 
   accepts_nested_attributes_for :user_tasks
 
@@ -17,6 +18,7 @@ class UserSubject < ApplicationRecord
   scope :load_users, ->status {where status: status}
   scope :not_finish, -> user_subjects {where.not(id: user_subjects)}
   scope :sort_by_course_subject, ->{joins(:course_subject).order("course_subjects.order asc")}
+  scope :order_by_course_subject , ->{joins(:course_subject).order "course_subjects.row_order"}
 
   enum status: [:init, :progress, :finish]
 

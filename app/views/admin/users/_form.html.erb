@@ -8,10 +8,11 @@
 
         <%= f.label :email %>
         <%= f.text_field :email, class: "form-control" %>
-
-        <%= f.label :role_id %>
-        <%= f.select :role_id, options_for_select(@roles.collect{|role| [role.name,
-          role.id]}, f.object.role_id), {}, class: "form-control" %><br>
+        <% if current_user.is_admin? %>
+          <%= f.label :role_id %>
+          <%= f.select :role_id, options_for_select(@roles.collect{|role| [role.name,
+            role.id]}, f.object.role_id), {}, class: "form-control" %>
+        <% end %><br>
       </div>
     </div>
 

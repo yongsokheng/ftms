@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @inprogress_course = @user_courses.course_progress.last
     @finished_courses = @user_courses.course_finished
 
-    @user_subjects = @inprogress_course.user_subjects if @inprogress_course
+    @user_subjects = @inprogress_course.user_subjects.order_by_course_subject if @inprogress_course
 
     add_breadcrumb @user.name
 

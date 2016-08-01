@@ -18,6 +18,8 @@ class Ability
           end
         end
       end
+
+      can [:read, :update], User, id: user.id
     end
   end
 end

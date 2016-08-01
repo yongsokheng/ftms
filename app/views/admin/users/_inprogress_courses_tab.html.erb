@@ -3,7 +3,7 @@
     <%= render "users/course", user_course: @inprogress_course %>
     <br>
     <ul class="timeline timeline-inverse">
-      <% @inprogress_course.user_subjects.each do |user_subject| %>
+      <% @user_subjects.each do |user_subject| %>
         <li>
           <i class="fa progress-bar-<%= user_subject.status %>"
             title="<%= t "user_subjects.statuses.#{user_subject.status}" %>"></i>

@@ -57,7 +57,7 @@ class Admin::UsersController < ApplicationController
     @inprogress_course = @user_courses.course_progress.last
 
     if @inprogress_course
-      @user_subjects = @inprogress_course.user_subjects
+      @user_subjects = @inprogress_course.user_subjects.order_by_course_subject
     end
 
     @note = Note.new
