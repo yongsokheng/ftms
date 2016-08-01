@@ -5,8 +5,8 @@
         <span><%= t "tasks.fields.name" %>:</span>
       </div>
       <div class="col-md-10">
-        <%= f.text_field :name, class: "form-control", required: true,
-          placeholder: I18n.t("tasks.form.input_task_name") %>
+        <%= f.text_field :name, class: "form-control",
+          placeholder: t("tasks.form.input_task_name") %>
       </div>
     </div>
     <br>
@@ -16,17 +16,7 @@
       </div>
       <div class="col-md-10">
         <%= f.text_area :description, class: "form-control",
-          placeholder: I18n.t("tasks.form.input_task_description") %>
-      </div>
-    </div>
-    <br>
-    <div class="row">
-      <div class="col-md-2 text-right"></div>
-      <div class="col-md-10">
-        <%= f.fields_for :documents do |builder| %>
-          <%= render "document_fields", f: builder %>
-        <% end %>
-        <strong><%= link_to_add_fields t("subjects.document"), f, :documents %></strong>
+          placeholder: t("tasks.form.input_task_description") %>
       </div>
     </div>
   </div>

@@ -28,7 +28,7 @@ class Admin::SubjectsController < ApplicationController
 
   def new
     @subject.documents.build
-    @subject.task_masters.build.documents.build
+    @subject.task_masters.build
 
     add_breadcrumb_path "subjects"
     add_breadcrumb_new "subjects"
