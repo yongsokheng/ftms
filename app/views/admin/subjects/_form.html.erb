@@ -71,6 +71,9 @@
     </div>
     <div class="row">
       <div class="col-md-12">
+        <%= f.fields_for :task_masters do |builder| %>
+          <%= render "task_master_fields", f: builder %>
+        <% end %>
         <span id="add-task-masters">
           <%= link_to_add_fields t("subjects.dynamic_form.add"), f, :task_masters %>
         </span>

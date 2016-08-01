@@ -83,7 +83,7 @@ en:
     subject_complete: "Subject Complete"
     assigned: "Assigned: "
     document: "Add Document"
-    document_name: "Document name"
+    document_name: "Name"
     document_remove: "Remove"
     modal:
       member_details: "Member details"

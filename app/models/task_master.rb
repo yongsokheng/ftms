@@ -5,11 +5,6 @@ class TaskMaster < ApplicationRecord
 
   after_create :create_course_tasks
 
-  has_many :documents, as: :documentable
-
-  accepts_nested_attributes_for :documents, allow_destroy: true,
-    reject_if: proc {|attributes| attributes["content"].blank?}
-
   private
   def create_course_tasks
     subject.course_subjects.each do |course_subject|
