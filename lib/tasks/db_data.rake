@@ -128,19 +128,6 @@ namespace :db do
       Fabricate :evaluation_template, name: name
     end
 
-    puts "Creating Permissions"
-    ["Course", "CourseSubject", "Subject", "UserSubject"].each do |name|
-      Fabricate :permission, model_class: name, action: "manage", role_id: 2
-    end
-    ["Course", "CourseSubject", "UserCourse", "Subject", "UserSubject", "Task",
-      "UserTask", "User"].each do |name|
-      Fabricate :permission, model_class: name, action: "read", role_id: 3
-    end
-    Fabricate :permission, model_class: "Task", action: "create"
-    ["UserTask", "User", "Task"].each do |name|
-      Fabricate :permission, model_class: name, action: "update", role_id: 3
-    end
-
     puts "Create Rank"
     5.times do
       Fabricate :rank
@@ -441,5 +428,40 @@ namespace :db do
       {name: "Git book ", content: "Pro_git", documentable_id: 2,
         documentable_type: "Course"}
     ])
+
+    puts "Creating Permissions"
+
+    trainer_permissions = {
+      Course: ["read"],
+      CourseSubject: ["read"],
+      Evaluation: ["read", "create", "update", "destroy"],
+      Note: ["read", "create", "update", "destroy"],
+      Notification: ["read", "create"],
+      Subject: ["read"],
+      User: ["read", "update"],
+      UserCourse: ["read"],
+      UserSubject: ["update"]
+    }
+
+    trainee_permissions = {
+      Course: ["read"],
+      Subject: ["read"],
+      Task: ["read", "create", "update", "destroy"],
+      User: ["read", "update"],
+      UserCourse: ["read"],
+      UserTask: ["read", "create", "update", "destroy"]
+    }
+
+    trainer_permissions.each do |permission|
+      permission[1].each do |action|
+        Fabricate :permission, model_class: permission[0], action: action, role_id: 2
+      end
+    end
+
+    trainee_permissions.each do |permission|
+      permission[1].each do |action|
+        Fabricate :permission, model_class: permission[0], action: action, role_id: 3
+      end
+    end
   end
 end

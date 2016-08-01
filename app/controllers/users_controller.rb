@@ -11,6 +11,9 @@ class UsersController < ApplicationController
 
     add_breadcrumb @user.name
 
+    @note = Note.new
+    @notes = Note.load_notes @user, current_user
+
     render "admin/users/show"
   end
 

@@ -21,7 +21,7 @@ class Admin::RolesController < ApplicationController
       redirect_to admin_roles_path
     else
       flash[:failed] = flash_message "not_created"
-      redirect_to :new
+      render :new
     end
   end
 
