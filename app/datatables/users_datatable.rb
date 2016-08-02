@@ -43,7 +43,7 @@ class UsersDatatable
       users = User.select_all
     else
       courses = @current_user.user_courses.pluck :course_id
-      users = @trainees.find_by_course courses
+      users = @trainees.find_course courses
     end
     users = users.order("#{sort_column} #{sort_direction}")
       .per_page_kaminari(page).per per_page
