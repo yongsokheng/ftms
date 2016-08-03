@@ -42,10 +42,9 @@ class User < ApplicationRecord
   delegate :id, :name, to: :role, prefix: true, allow_nil: true
 
   scope :available_of_course, ->course_id{where QUERY, course_id: course_id}
-  scope :find_by_role, -> role{where role: role}
   scope :trainers, ->{joins(:role).where("roles.name = 'trainer'")}
   scope :trainees, ->{joins(:role).where("roles.name = 'trainee'")}
-  scope :find_by_course, ->course{joins(:user_courses)
+  scope :find_course, ->course{joins(:user_courses)
     .where("user_courses.course_id in (?)", course).uniq}
   scope :show_members, ->{order(:role_id, :name).limit Settings.number_member_show}
   scope :select_all, ->{joins :role}
