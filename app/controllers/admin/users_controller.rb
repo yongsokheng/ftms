@@ -72,7 +72,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def load_data
-    datas = [Role, University, ProgrammingLanguage, Status, UserType]
+    datas = [Role, University, ProgrammingLanguage, Status, UserType, Location]
     datas.each do |data|
       instance_variable_set "@#{data.table_name}", data.all
     end

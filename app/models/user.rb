@@ -35,7 +35,8 @@ class User < ApplicationRecord
   ]
 
   ATTRIBUTES_PARAMS = [:name, :email, :password,
-    :password_confirmation, :avatar, :role_id, profile_attributes: ATTRIBUTES_PROFILE_PARAMS]
+    :password_confirmation, :avatar, :role_id, :location_id,
+    profile_attributes: ATTRIBUTES_PROFILE_PARAMS]
 
   devise :database_authenticatable, :rememberable, :trackable, :validatable
 
