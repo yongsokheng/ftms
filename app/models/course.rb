@@ -19,6 +19,7 @@ class Course < ApplicationRecord
   has_many :subjects, through: :course_subjects
   has_many :documents, as: :documentable
   has_many :notifications, as: :trackable, dependent: :destroy
+  has_one :chat_room, as: :receiver, dependent: :destroy
 
   belongs_to :programming_language
 
