@@ -23,6 +23,10 @@ class User < ApplicationRecord
   has_many :notes, dependent: :destroy
   has_many :notifications
   has_many :user_notifications, dependent: :destroy
+  has_many :senders, class_name: ChatRoom.name, foreign_key: :sender_id,
+    dependent: :destroy
+  has_many :receivers, class_name: ChatRoom.name, as: :receiver, dependent: :destroy
+  has_many :messages, dependent: :destroy
 
   validates :name, presence: true, uniqueness: true
   validates_confirmation_of :password
