@@ -4,6 +4,7 @@ class Profile < ApplicationRecord
   belongs_to :university
   belongs_to :programming_language
   belongs_to :status
+  belongs_to :location
 
 
   delegate :name, :email, to: :user, prefix: true, allow_nil: true

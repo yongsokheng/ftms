@@ -5,7 +5,6 @@ class CreateUsers < ActiveRecord::Migration
       t.string :avatar
       t.integer :role_id
       t.references :role, index: true, foreign_key: true
-      t.integer :location_id, index: true, foreign_key: true
       t.timestamps null: false
     end
   end

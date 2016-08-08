@@ -16,6 +16,8 @@ class CreateProfiles < ActiveRecord::Migration
       t.integer :user_progress_id
       t.integer :status_id
       t.timestamps null: false
+
+      t.references :location, index: true, foreign_key: true
     end
   end
 end

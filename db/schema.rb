@@ -119,10 +119,13 @@ ActiveRecord::Schema.define(version: 20160805012928) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_locations_on_user_id", using: :btree
   end
 
   create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "content"
+    t.boolean  "read"
     t.integer  "chat_room_id"
     t.integer  "user_id"
     t.datetime "created_at",   null: false
@@ -178,6 +181,8 @@ ActiveRecord::Schema.define(version: 20160805012928) do
     t.integer  "status_id"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.integer  "location_id"
+    t.index ["location_id"], name: "index_profiles_on_location_id", using: :btree
     t.index ["user_id"], name: "index_profiles_on_user_id", using: :btree
   end
 
@@ -304,7 +309,6 @@ ActiveRecord::Schema.define(version: 20160805012928) do
     t.string   "name"
     t.string   "avatar"
     t.integer  "role_id"
-    t.integer  "location_id"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "email",                  default: "", null: false
@@ -318,7 +322,6 @@ ActiveRecord::Schema.define(version: 20160805012928) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
-    t.index ["location_id"], name: "index_users_on_location_id", using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
     t.index ["role_id"], name: "index_users_on_role_id", using: :btree
   end
@@ -328,12 +331,14 @@ ActiveRecord::Schema.define(version: 20160805012928) do
   add_foreign_key "evaluation_details", "evaluation_templates"
   add_foreign_key "evaluation_details", "evaluations"
   add_foreign_key "evaluations", "users"
+  add_foreign_key "locations", "users"
   add_foreign_key "messages", "chat_rooms"
   add_foreign_key "messages", "users"
   add_foreign_key "notes", "evaluations"
   add_foreign_key "notes", "users"
   add_foreign_key "notifications", "users"
   add_foreign_key "permissions", "roles"
+  add_foreign_key "profiles", "locations"
   add_foreign_key "profiles", "users"
   add_foreign_key "task_masters", "subjects"
   add_foreign_key "tasks", "course_subjects", on_delete: :cascade
