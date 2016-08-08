@@ -58,6 +58,7 @@ Rails.application.routes.draw do
     resources :subjects, only: [:show]
   end
 
+  resources :chats, only: :index
   resources :tasks, except: [:new, :edit]
   resources :user_tasks, only: :update
   resources :notifications, only: :index

@@ -1,0 +1,120 @@
+#body-chat {
+  height: 100%;
+  .wrapper {
+    height: 100%;
+    background-color: #fff;
+  }
+
+  .content-wrapper {
+    background-color: #fff !important;
+
+    @media (max-width: 767px) {
+      margin-left: 230px;
+      padding-top: 50px;
+    }
+  }
+
+  .main-header {
+    .logo-chat {
+      font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+      color: #fff;
+      background-color: #367fa9;
+      border-bottom: 0 solid transparent;
+      display: block;
+      float: left;
+      height: 50px;
+      font-size: 20px;
+      line-height: 50px;
+      text-align: center;
+      width: 230px;
+      padding: 0 15px;
+      font-weight: 300;
+      overflow: hidden;
+    }
+    .navbar-chat {
+      background-color: #3c8dbc;
+      margin-bottom: 0;
+      margin-left: 230px;
+      border: none;
+      min-height: 50px;
+      border-radius: 0;
+      position: relative;
+
+      .nav>li>a {
+        color: #fff;
+      }
+      .nav>li>a:hover, .nav>li>a:focus, .nav>li>a:visited {
+        background-color: #367fa9;
+      }
+    }
+  }
+
+  .main-sidebar-chat {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-top: 50px;
+    min-height: 100%;
+    width: 230px;
+    z-index: 810;
+
+    background-color: #EAEBE9;
+    border-right: 1px solid #ccc;
+    height: 100%;
+    ul {
+      li {
+        padding: 10px;
+        border-top: 1px solid #E3E4E1;
+        .badge {
+          background-color: #328ba7;
+        }
+      }
+
+      :hover{
+        background-color: #E3E4E1;
+      }
+    }
+  }
+
+  .chat-list {
+    float: left;
+    margin-right: 10px;
+  }
+
+  .content {
+    padding: 0px;
+  }
+  #chat-content {
+    .media {
+      padding: 0px 10px;
+      .media-body {
+        margin-top: 6px;
+      }
+
+      .chat-content {
+        word-break: break-all;
+      }
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0px;
+
+      li {
+        padding: 10px;
+        border-top: 1px solid #DDEBD7;
+      }
+
+      :hover{
+        background-color: #DDEBD7;
+      }
+    }
+  }
+
+  #chat-box {
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    left: 230px
+  }
+}
