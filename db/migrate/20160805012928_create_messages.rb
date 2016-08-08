@@ -2,8 +2,9 @@ class CreateMessages < ActiveRecord::Migration[5.0]
   def change
     create_table :messages do |t|
       t.string :content
-      t.boolean :read
-      t.references :chat_room, foreign_key: true
+      t.boolean :seen
+      t.string :chat_room_id
+      t.string :chat_room_type
       t.references :user, foreign_key: true
 
       t.timestamps
