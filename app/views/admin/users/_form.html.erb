@@ -14,12 +14,6 @@
           <%= f.select :role_id, options_for_select(@roles.collect{|role| [role.name,
             role.id]}, f.object.role_id), {}, class: "form-control" %>
         <% end %><br>
-
-        <%= f.label :location_id %>
-        <%= f.select :location_id, options_for_select(
-          @locations.collect{|location| [location.name,
-          location.id]}, f.object.location_id), {include_blank: true},
-          class: "form-control" %><br>
       </div>
     </div>
     <hr />

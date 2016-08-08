@@ -9,8 +9,8 @@ class User < ApplicationRecord
 
   belongs_to :trainer, class_name: User.name, foreign_key: :trainer_id
   belongs_to :role
-  belongs_to :location
 
+  has_one :location
   has_many :user_courses, dependent: :destroy
   has_many :user_subjects, dependent: :destroy
   has_many :user_tasks, dependent: :destroy
@@ -35,11 +35,11 @@ class User < ApplicationRecord
     :id, :start_training_date, :leave_date, :finish_training_date,
     :ready_for_project, :contract_date, :naitei_company, :trainer_id,
     :user_type_id, :university_id, :programming_language_id, :user_progress_id,
-    :status_id
+    :status_id, :location_id
   ]
 
   ATTRIBUTES_PARAMS = [:name, :email, :password,
-    :password_confirmation, :avatar, :role_id, :location_id,
+    :password_confirmation, :avatar, :role_id,
     profile_attributes: ATTRIBUTES_PROFILE_PARAMS]
 
   devise :database_authenticatable, :rememberable, :trackable, :validatable

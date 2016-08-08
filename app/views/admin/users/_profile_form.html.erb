@@ -42,6 +42,14 @@
             <%= select_profile_field "trainer", @trainers, ff %>
           </div>
         </div>
+        <div class="row form-group">
+          <div class="col-md-4">
+            <%= ff.label :location_id %>
+          </div>
+          <div class="col-md-8">
+            <%= select_profile_field "location", @locations, ff %>
+          </div>
+        </div>
       </div>
 
       <div class="col-md-6">
