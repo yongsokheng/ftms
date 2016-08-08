@@ -5,8 +5,16 @@ $(document).on("turbolinks:load", function() {
   });
 
   $("#chat-body").slimScroll({
-    height: "86%",
+    height: "75%",
     size: "6px"
+  });
+
+  $("#send-button").click(function() {
+    var id = $(".active").data("id");
+    var type = $(".active").data("type");
+    var content = $("#chat-textarea").val();
+    var message = {chat_room_id: id, chat_room_type: type, content: content}
+    $.post("/messages", {message: message});
   });
 });
 
