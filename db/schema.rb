@@ -28,14 +28,6 @@ ActiveRecord::Schema.define(version: 20160805012928) do
     t.index ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type", using: :btree
   end
 
-  create_table "chat_rooms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "sender_id"
-    t.integer  "receiver_id"
-    t.string   "receiver_type"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-  end
-
   create_table "ckeditor_assets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "data_file_name",               null: false
     t.string   "data_content_type"
@@ -49,6 +41,13 @@ ActiveRecord::Schema.define(version: 20160805012928) do
     t.datetime "updated_at"
     t.index ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
     t.index ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
+  end
+
+  create_table "conversations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "sender_id"
+    t.integer  "receiver_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "course_subjects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -125,12 +124,12 @@ ActiveRecord::Schema.define(version: 20160805012928) do
 
   create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "content"
-    t.boolean  "read"
-    t.integer  "chat_room_id"
+    t.boolean  "seen"
+    t.string   "chat_room_id"
+    t.string   "chat_room_type"
     t.integer  "user_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.index ["chat_room_id"], name: "index_messages_on_chat_room_id", using: :btree
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
   end
 
@@ -332,7 +331,6 @@ ActiveRecord::Schema.define(version: 20160805012928) do
   add_foreign_key "evaluation_details", "evaluations"
   add_foreign_key "evaluations", "users"
   add_foreign_key "locations", "users"
-  add_foreign_key "messages", "chat_rooms"
   add_foreign_key "messages", "users"
   add_foreign_key "notes", "evaluations"
   add_foreign_key "notes", "users"
