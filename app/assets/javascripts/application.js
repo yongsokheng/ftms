@@ -51,6 +51,7 @@
 //= require chat
 //= require bindWithDelay
 //= require pagination
+//= require admin/location
 
 $(document).on("turbolinks:load ajaxComplete", function() {
   $(".alert").delay(3000).fadeOut();

@@ -43,6 +43,7 @@ Rails.application.routes.draw do
     resources :user_types, except: :show
     resources :profiles
     resources :notes, except: :index
+    resources :locations
   end
 
   resources :courses, only: [:show, :index] do
