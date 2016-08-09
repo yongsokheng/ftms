@@ -49,6 +49,8 @@
 //= require admin/assign_user
 //= require jquery.quicksearch
 //= require chat
+//= require bindWithDelay
+//= require pagination
 
 $(document).on("turbolinks:load ajaxComplete", function() {
   $(".alert").delay(3000).fadeOut();
