@@ -71,6 +71,16 @@ module ApplicationHelper
       class: class_name
   end
 
+  def image_object chat_room
+    if chat_room.class.name == "User"
+      avatar_user_tag chat_room, "img-circle",
+        Settings.image_size_40
+    elsif chat_room.class.name == "Course"
+      image_course_tag chat_room, "img-circle",
+        Settings.image_size_40
+    end
+  end
+
   def task_status status
     case status
     when "init"

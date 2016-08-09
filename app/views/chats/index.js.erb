@@ -1,0 +1,9 @@
+$("#users").append(
+  "<%= j render partial: 'shared/chat_room', collection: @users, as: :chat_room %>"
+  );
+$(".loading").hide();
+<% if @users.next_page %>
+  $(".pagination").replaceWith("<%= j paginate @users %>");
+<% else %>
+  $("#chat-sidebar").off("scroll");
+<% end %>
