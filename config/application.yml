@@ -60,6 +60,9 @@ defaults: &defaults
       - finished_courses
       - activities
   per_page: 10
+  chats:
+    chat_room_per_page: 20
+    message_per_page: 20
 development:
   <<: *defaults
   neat_setting: 800

@@ -1,15 +1,18 @@
 <li>
   <div class="media">
     <div class="media-left pull-left">
-      <%= link_to avatar_user_tag(current_user, "img-circle", Settings.image_size_30), "#" %>
+      <%= link_to avatar_user_tag(message.user, "img-circle", Settings.image_size_30),
+        message.user %>
     </div>
     <div class="media-body">
       <div class="media-heading">
-        <span><strong><%= link_to "name", "#" %></strong></span>
-        <span class="pull-right"><small><%= l Date.today, format: :default %></small></span>
+        <span><strong><%= link_to message.user_name, message.user %></strong></span>
+        <span class="pull-right">
+          <small><%= l message.created_at, format: :default %></small>
+        </span>
       </div>
       <div class="chat-content">
-        Chat Content
+        <%= message.content %>
       </div>
     </div>
   </div>
