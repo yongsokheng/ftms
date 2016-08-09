@@ -3,5 +3,5 @@ class Location < ApplicationRecord
 
   has_many :profiles
 
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: {case_sensitive: false}
 end

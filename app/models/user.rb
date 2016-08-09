@@ -54,6 +54,7 @@ class User < ApplicationRecord
     .where("user_courses.course_id in (?)", course).uniq}
   scope :show_members, ->{order(:role_id, :name).limit Settings.number_member_show}
   scope :select_all, ->{joins :role}
+  scope :not_trainees, ->{joins(:role).where("roles.name != 'trainee'")}
 
   delegate :total_point, :current_rank, to: :evaluation, prefix: true, allow_nil: true
 

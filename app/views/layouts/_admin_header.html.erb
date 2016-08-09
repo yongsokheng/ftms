@@ -67,6 +67,13 @@
             <% end %>
           </li>
         <% end %>
+        <% if can? :read, Location %>
+          <li>
+            <%= link_to admin_locations_path do %>
+              <i class="fa fa-map-marker"></i><span><%= t "layouts.locations" %></span>
+            <% end %>
+          </li>
+        <% end %>
         <% if can?(:read, Evaluation) || can?(:read, EvaluationTemplate) ||
           can?(:read, Rank) %>
           <li id="evaluations-header" class="treeview">

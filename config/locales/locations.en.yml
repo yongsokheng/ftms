@@ -1,0 +1,11 @@
+en:
+  locations:
+    buttons:
+      admin:
+        new: "New"
+    create_location: "Create location"
+    edit_location: "Edit location"
+    form:
+      input_location_name: "Enter location name..."
+    name: "Name"
+    manager: "Manager"
