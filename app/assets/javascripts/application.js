@@ -48,6 +48,7 @@
 //= require university
 //= require admin/assign_user
 //= require jquery.quicksearch
+//= require chat
 
 $(document).on("turbolinks:load ajaxComplete", function() {
   $(".alert").delay(3000).fadeOut();

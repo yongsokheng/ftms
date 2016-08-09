@@ -42,6 +42,7 @@
  *= require footer
  *= require subject
  *= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
+ *= require chat_layout
  */
 
 @import "bootstrap-sprockets";
