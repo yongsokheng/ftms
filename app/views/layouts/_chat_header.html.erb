@@ -34,18 +34,13 @@
 
   <aside class="main-sidebar-chat">
     <section class="sidebar" id="chat-sidebar">
+      <div class="center row" id="search-chat-room">
+        <%= text_field_tag :q, nil,
+          class: "form-control search-chat-room",
+          placeholder: t("chats.search") %>
+      </div>
       <ul class="sidebar-menu">
-        <%= render partial: "shared/chat_room", collection: @courses, as: :chat_room %>
-        <div id="users">
-          <%= render partial: "shared/chat_room", collection: @users, as: :chat_room %>
-        </div>
-        <div id="infinite-scrolling">
-          <div class="loading" hidden>
-            <i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i>
-            <span class="sr-only"><%= t "chats.loading" %></span>
-          </div>
-          <div hidden><%= paginate @users %></div>
-        </div>
+        <%= render "shared/chat_rooms" %>
       </ul>
     </section>
   </aside>

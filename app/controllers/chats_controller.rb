@@ -1,7 +1,8 @@
 class ChatsController < ApplicationController
   def index
-    @courses = current_user.courses
-    @users = User.per_page_kaminari(params[:page]).per Settings.chats.chat_room_per_page
+    @users = User.ransack(name_cont: params[:q]).result
+      .per_page_kaminari(params[:page]).per Settings.chats.chat_room_per_page
+    @courses = current_user.courses.ransack(name_cont: params[:q]).result
 
     respond_to do |format|
       format.html
