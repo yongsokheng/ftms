@@ -35,9 +35,7 @@
   <aside class="main-sidebar-chat">
     <section class="sidebar" id="chat-sidebar">
       <ul class="sidebar-menu">
-        <div id="courses">
-          <%= render partial: "shared/chat_room", collection: @courses, as: :chat_room %>
-        </div>
+        <%= render partial: "shared/chat_room", collection: @courses, as: :chat_room %>
         <div id="users">
           <%= render partial: "shared/chat_room", collection: @users, as: :chat_room %>
         </div>
