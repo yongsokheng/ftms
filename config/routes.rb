@@ -61,7 +61,7 @@ Rails.application.routes.draw do
   end
 
   resources :chats, only: :index
-  resources :messages, only: :new
+  resources :messages, only: [:new, :destroy]
   resources :tasks, except: [:new, :edit]
   resources :user_tasks, only: :update
   resources :notifications, only: :index

@@ -1,4 +1,4 @@
-<li>
+<li id="message-<%= message.id %>">
   <div class="media">
     <div class="media-left pull-left">
       <%= link_to avatar_user_tag(message.user, "img-circle", Settings.image_size_30),
@@ -14,6 +14,17 @@
       <div class="chat-content">
         <%= message.content %>
       </div>
+      <% if message.owner? current_user.id %>
+        <span class="message-option pull-right">
+          <small>
+            <%= link_to message, method: :delete,
+              data: {confirm: t("messages.delete.confirm")}, remote: true do %>
+              <i class="glyphicon glyphicon-trash"></i>&nbsp;
+              <%= t "button.delete" %>
+            <% end %>
+          </small>
+        </span>
+      <% end %>
     </div>
   </div>
 </li>

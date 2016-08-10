@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   before_action :load_chat_room, only: :new
-
+  before_action :message_of_correct_user, only: :destroy
   def new
     @messages = @chat_room.messages.load_messages
   end
@@ -9,7 +9,27 @@ class MessagesController < ApplicationController
     @message = current_user.messages.create message_params
   end
 
+  def destroy
+    if @message.destroy
+      respond_to do |format|
+        format.js
+      end
+    end
+  end
+
   private
+  def message_params
+    params.require(:message).permit :chat_room_id, :content, :chat_room_type
+  end
+
+  def message_of_correct_user
+    @message = Message.find_by_id params[:id]
+    unless @message.owner? current_user.id
+      flash[:failed] = flash_message "not_deleted"
+      redirect_to chats_path
+    end
+  end
+
   def load_chat_room
     chat_room_id = params[:id]
     chat_room_type = params[:type]
@@ -20,9 +40,5 @@ class MessagesController < ApplicationController
     else
       @chat_room = Course.find chat_room_id
     end
-  end
-
-  def message_params
-    params.require(:message).permit :chat_room_id, :content, :chat_room_type
   end
 end
