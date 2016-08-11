@@ -1,9 +1,12 @@
+$("#course-rooms").html("").append(
+  "<%= j render partial: 'shared/chat_room', collection: @courses, as: :chat_room %>");
 $("#users").append(
-  "<%= j render partial: 'shared/chat_room', collection: @users, as: :chat_room %>"
-  );
-$(".loading").hide();
+  "<%= j render partial: 'shared/chat_room', collection: @users, as: :chat_room %>");
+
+$(".sidebar-menu .loading").hide();
+
 <% if @users.next_page %>
-  $(".pagination").replaceWith("<%= j paginate @users %>");
+  $(".sidebar-menu .pagination").replaceWith("<%= j paginate @users %>");
 <% else %>
-  $("#chat-sidebar").off("scroll");
+  $("#chat-sidebar").unbind("slimscroll");
 <% end %>

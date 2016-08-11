@@ -5,26 +5,33 @@ $(document).on("turbolinks:load", function() {
   });
 
   $("#chat-body").slimScroll({
-    height: "75%",
+    height: "80%",
     size: "6px"
   });
 
   $("#send-button").click(function() {
-    var room = $("#chat-sidebar .active-room");
+    var active_room = $("#chat-sidebar .active-room");
+    var active_room_id = active_room.data("id");
+    var active_room_type = active_room.data("type");
+
+    var room_id = $(".chat-form").data("chat-room-id");
+    var room_type = $(".chat-form").data("chat-room-type");
     var content = $("#chat-textarea");
-    var message = {chat_room_id: room.data("id"), chat_room_type: room.data("type"),
-      content: content.val()}
-    $.post("/messages", {message: message});
+    var message = {chat_room_id: room_id, chat_room_type: room_type,
+      content: content.val()};
+
+    $.post("/messages", {message: message, active_room_id: active_room_id,
+      active_room_type: active_room_type});
+
     content.val("");
   });
 
-  $(".search-chat-room").on("keyup", function() {
-    if (this.value.trim() !== "") {
-      $("#users").html("");
-      bind_for_loading_more_chat_room();
-      $.getScript("/chats?q=" + this.value);
-    }
-  });
+  $(".search-chat-room").bindWithDelay("keyup", function() {
+    $("#course-rooms").html("");
+    $("#users").html("");
+    bind_for_loading_more_chat_room();
+    $.getScript("/chats?q=" + this.value);
+  }, 100);
 });
 
 $(document).on("turbolinks:load ajaxComplete", function() {
@@ -34,6 +41,9 @@ $(document).on("turbolinks:load ajaxComplete", function() {
 
     $(".chat-room").removeClass("active-room");
     $(this).addClass("active-room");
+
+    $(".messages-list").html("");
+    $(".message-paginate").html("");
 
     $.get("/messages/new", {id: chat_room_id, type: chat_room_type});
   });

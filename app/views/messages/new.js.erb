@@ -1,5 +1,19 @@
-var messages = $(".messages-list");
-messages.html("<%= j render @messages %>");
-if (messages.length > 0) {
-  $("#chat-body").animate({scrollTop: messages.height()}, 10);
-};
+var message_list = $(".messages-list");
+var scroll_height_before = $("#chat-body")[0].scrollHeight;
+
+message_list.prepend("<%= j render @messages.reverse %>");
+
+var scroll_height_after = $("#chat-body")[0].scrollHeight;
+
+<% if @messages.first_page? %>
+  $("#chat-body").slimScroll({scrollTo: scroll_height_after});
+<% else %>
+  var scroll_to_height = scroll_height_after - scroll_height_before - 400;
+  $("#chat-body").slimScroll({scrollTo: scroll_to_height + "px"});
+<% end %>
+
+$(".message-paginate").html("<%= j paginate @messages %>");
+$("#chat-content .loading").hide();
+
+$(".chat-form").data("chat-room-id", "<%= @chat_room.id %>");
+$(".chat-form").data("chat-room-type", "<%= @chat_room.class.name %>");
