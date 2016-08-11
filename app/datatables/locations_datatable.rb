@@ -22,7 +22,7 @@ class LocationsDatatable
       manager = location.manager
       [
         index + 1,
-        link_to(location.name, "#"),
+        link_to(location.name, @view.admin_location_path(location)),
         if location.manager.present?
           link_to(@view.avatar_user_tag(manager, "profile-user",
             Settings.image_size_20), @view.admin_user_path(manager),

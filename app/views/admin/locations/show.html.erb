@@ -1,0 +1,14 @@
+<div id="users-structure">
+  <div class="manager-info">
+    <div class="manager">
+      <%= link_to avatar_user_tag(@manager, "img-circle",
+          Settings.image_size_30), @manager, class: "manager-image" %>
+      <%= link_to @manager.name ,@manager %>
+    </div>
+  </div>
+  <div id="tbl-user-structure">
+    <div class="structure-content">
+    <%= render partial: "trainer", collection: @trainers, as: :trainer %>
+  </div>
+  </div>
+</div>

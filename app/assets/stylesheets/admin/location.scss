@@ -1,0 +1,57 @@
+#users-structure {
+  min-width: 800px;
+  border: 1px solid #ccc;
+
+  #tbl-user-structure {
+    width: 100%;
+    display: inline-flex;
+    overflow: auto;
+    background-color: white;
+  }
+
+  .structure-content {
+    display: inline-flex;
+    margin: auto;
+  }
+
+  .manager {
+    width: 250px;
+  }
+
+  table {
+    width: 250px;
+    margin-bottom: 0px;
+
+    .trainee-image {
+      border-right: none;
+      width: 20px;
+    }
+
+    th {
+      border: none;
+      background-color: #F6F8F8;
+    }
+  }
+
+  .manager-info {
+    height: 45px;
+    background-color: #ccc;
+    font-size: 16px;
+    font-weight: bold;
+    padding-top: 8px;
+
+    .manager {
+      width: 250px;
+      padding-left: 9px;
+      margin: auto;
+    }
+
+    .manager-image {
+      margin-right: 13px;
+    }
+  }
+
+  th, td {
+    vertical-align: middle;
+  }
+}
