@@ -1,4 +1,14 @@
-<div id="chat-content">
-  <ul class="chat-content-list">
+<div id="chat-content" class="content">
+  <ul class="messages-list">
   </ul>
+  <div class="chat-form">
+    <div id="chat-form-header" class="chat-content-toolbar">
+      <div id="send-button" class="btn btn-primary btn-send">
+        <%= t "message.button.send" %>
+      </div>
+    </div>
+    <div id="chat-area" class="chat-area">
+      <textarea id="chat-textarea" rows="4"></textarea>
+    </div>
+  </div>
 </div>

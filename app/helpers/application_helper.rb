@@ -143,4 +143,9 @@ module ApplicationHelper
   def percentage_format number
     number_to_percentage number, precision: 1, strip_insignificant_zeros: true
   end
+
+  def chat_type room
+    chat_room = room.class.name
+    chat_room == User.name ? Conversation.name : chat_room
+  end
 end

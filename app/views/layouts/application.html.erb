@@ -24,9 +24,6 @@
             <%= yield %>
           </div>
         </div>
-        <div id="chat-box">
-          <textarea class="form-control" rows="4"></textarea>
-        </div>
       </div>
     </body>
   <% elsif current_user.present? && current_user.decorate.allow_access_admin %>
