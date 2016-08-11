@@ -16,16 +16,24 @@ $(document).on("turbolinks:load", function() {
     var message = {chat_room_id: id, chat_room_type: type, content: content}
     $.post("/messages", {message: message});
   });
+
+  $(".search-chat-room").on("keyup", function() {
+    if (this.value.trim() !== "") {
+      $("#users").html("");
+      bind_for_loading_more_chat_room();
+      $.getScript("/chats?q=" + this.value);
+    }
+  });
 });
 
-$(document).on('turbolinks:load ajaxComplete', function() {
-  $('.chat-room').unbind('click').on('click', function() {
-    var chat_room_id = $(this).data('id');
-    var chat_room_type = $(this).data('type');
+$(document).on("turbolinks:load ajaxComplete", function() {
+  $(".chat-room").unbind("click").on("click", function() {
+    var chat_room_id = $(this).data("id");
+    var chat_room_type = $(this).data("type");
 
-    $('.chat-room').removeClass('active');
-    $(this).addClass('active');
+    $(".chat-room").removeClass("active");
+    $(this).addClass("active");
 
-    $.get('/messages/new', {id: chat_room_id, type: chat_room_type});
+    $.get("/messages/new", {id: chat_room_id, type: chat_room_type});
   });
 });
