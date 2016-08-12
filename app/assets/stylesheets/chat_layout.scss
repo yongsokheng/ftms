@@ -102,6 +102,9 @@
   .content {
     padding: 0px;
   }
+  .edit-message {
+    background-color: #DDEBD7;
+  }
   #chat-content {
     .media {
       padding: 0px 10px;
@@ -134,6 +137,16 @@
       :hover .message-option {
         display: block;
       }
+    }
+  }
+
+  .message-content {
+    position: relative;
+    .message-option {
+      position: absolute;
+      right: 30px;
+      background-color: transparent;
+      bottom: 5px;
     }
   }
 

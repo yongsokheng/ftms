@@ -1,4 +1,4 @@
-<li id="message-<%= message.id %>">
+<li class="message-content" id="message-<%= message.id %>">
   <div class="media">
     <div class="media-left pull-left">
       <%= link_to avatar_user_tag(message.user, "img-circle", Settings.image_size_30),
@@ -8,7 +8,7 @@
       <div class="media-heading">
         <span><strong><%= link_to message.user_name, message.user %></strong></span>
         <span class="pull-right">
-          <small><%= l message.created_at, format: :default %></small>
+          <small><%= l message.created_at, format: :default %></small><br>
         </span>
       </div>
       <div class="chat-content">
@@ -16,6 +16,12 @@
       </div>
       <% if message.owner? current_user.id %>
         <span class="message-option pull-right">
+          <small class="button-edit" data-id="<%= message.id %>">
+            <%= link_to "javascript:void(0)", class: "btn-edit" do %>
+              <i class="glyphicon glyphicon-edit"></i>&nbsp;
+              <%= t "button.edit" %>
+            <% end %>
+          </small>
           <small>
             <%= link_to message, method: :delete,
               data: {confirm: t("messages.delete.confirm")}, remote: true do %>

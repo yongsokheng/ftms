@@ -54,14 +54,13 @@ Rails.application.routes.draw do
   resources :users, only: [:edit, :update, :show] do
     resource :profiles
   end
-  resources :messages, only: [:new, :create]
 
   resources :user_courses, only: [:show] do
     resources :subjects, only: [:show]
   end
 
   resources :chats, only: :index
-  resources :messages, only: [:new, :destroy]
+  resources :messages, except: [:index, :show, :edit]
   resources :tasks, except: [:new, :edit]
   resources :user_tasks, only: :update
   resources :notifications, only: :index

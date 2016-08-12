@@ -2,6 +2,8 @@ class Message < ApplicationRecord
   belongs_to :chat_room, polymorphic: true
   belongs_to :user
 
+  validates :content, presence: true
+
   scope :load_messages, -> {includes(:user).limit Settings.chats.message_per_page}
   scope :unseen, ->{where seen: false}
 

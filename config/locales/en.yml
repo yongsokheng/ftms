@@ -173,6 +173,8 @@ en:
     clone: "Clone"
     search: "Seach"
     finish: "Finish"
+    send: "Send"
+    cancel: "Cancel"
   roles:
     allocate: "Allocate"
     roles: "Roles"

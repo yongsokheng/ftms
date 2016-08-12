@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
+  before_action :message_of_correct_user, only: [:destroy, :update]
   before_action :load_chat_room, only: :new
-  before_action :message_of_correct_user, only: :destroy
+
   def new
     @messages = @chat_room.messages.load_messages
   end
@@ -15,6 +16,10 @@ class MessagesController < ApplicationController
         format.js
       end
     end
+  end
+
+  def update
+    @message.update_attributes message_params
   end
 
   private

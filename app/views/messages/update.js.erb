@@ -1,0 +1,4 @@
+<% unless @message.errors.any? %>
+  $("#message-<%= @message.id %>").replaceWith("<%= j render @message %>");
+<% end %>
+reset_text();
