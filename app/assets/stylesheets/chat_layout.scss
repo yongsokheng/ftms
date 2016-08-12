@@ -68,6 +68,7 @@
       }
 
       li {
+        min-height: 60px;
         cursor: pointer;
         padding: 10px;
         border-top: 1px solid #E3E4E1;
@@ -81,7 +82,7 @@
       }
     }
     .center {
-      text-align: center; 
+      text-align: center;
     }
     .search-chat-room {
       padding-left: 25px;

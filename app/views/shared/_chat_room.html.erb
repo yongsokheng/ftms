@@ -3,6 +3,6 @@
   <span class="chat-list"><%= image_object chat_room %></span>
   <span>
     <div><%= chat_room.name %></div>
-    <div class="badge">4</div>
+    <div class="badge"><%= chat_room.messages.unseen_number %></div>
   </span>
 </li>
