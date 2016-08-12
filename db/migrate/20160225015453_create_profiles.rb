@@ -8,7 +8,6 @@ class CreateProfiles < ActiveRecord::Migration
       t.boolean :ready_for_project
       t.date :contract_date
       t.string :naitei_company
-      t.integer :trainer_id
       t.date :graduation
       t.integer :user_type_id
       t.integer :university_id

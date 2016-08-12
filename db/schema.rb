@@ -171,7 +171,6 @@ ActiveRecord::Schema.define(version: 20160805012928) do
     t.boolean  "ready_for_project"
     t.date     "contract_date"
     t.string   "naitei_company"
-    t.integer  "trainer_id"
     t.date     "graduation"
     t.integer  "user_type_id"
     t.integer  "university_id"
@@ -307,6 +306,7 @@ ActiveRecord::Schema.define(version: 20160805012928) do
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.string   "avatar"
+    t.integer  "trainer_id"
     t.integer  "role_id"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false

@@ -19,7 +19,7 @@ class User < ApplicationRecord
   has_many :tasks, through: :user_tasks
   has_one :profile, dependent: :destroy
   has_one :evaluation
-  has_many :trainees, class_name: User.name
+  has_many :trainees, class_name: User.name, foreign_key: :trainer_id
   has_many :notes, dependent: :destroy
   has_many :notifications
   has_many :user_notifications, dependent: :destroy
@@ -34,13 +34,13 @@ class User < ApplicationRecord
 
   ATTRIBUTES_PROFILE_PARAMS = [
     :id, :start_training_date, :leave_date, :finish_training_date,
-    :ready_for_project, :contract_date, :naitei_company, :trainer_id,
+    :ready_for_project, :contract_date, :naitei_company,
     :user_type_id, :university_id, :programming_language_id, :user_progress_id,
     :status_id, :location_id
   ]
 
   ATTRIBUTES_PARAMS = [:name, :email, :password,
-    :password_confirmation, :avatar, :role_id,
+    :password_confirmation, :avatar, :role_id, :trainer_id,
     profile_attributes: ATTRIBUTES_PROFILE_PARAMS]
 
   devise :database_authenticatable, :rememberable, :trackable, :validatable
@@ -55,10 +55,13 @@ class User < ApplicationRecord
   scope :show_members, ->{order(:role_id, :name).limit Settings.number_member_show}
   scope :select_all, ->{joins :role}
   scope :not_trainees, ->{joins(:role).where("roles.name != 'trainee'")}
+  scope :by_location, ->location_id{
+    joins(:profile).where("profiles.location_id = ?", location_id)
+  }
 
   delegate :total_point, :current_rank, to: :evaluation, prefix: true, allow_nil: true
 
-  after_create :create_user_profile, if: :is_trainee?
+  after_create :create_user_profile
   before_validation :set_password
 
   accepts_nested_attributes_for :profile

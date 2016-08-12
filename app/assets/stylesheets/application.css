@@ -38,6 +38,7 @@
  *= require bootstrap-datepicker3
  *= require admin/AdminLTE.min
  *= require admin/all-skins.min
+ *= require admin/location
  *= require user_courses
  *= require footer
  *= require subject

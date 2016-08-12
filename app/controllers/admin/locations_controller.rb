@@ -11,6 +11,14 @@ class Admin::LocationsController < ApplicationController
     end
   end
 
+  def show
+    @manager = @location.manager
+    @trainers = User.trainers.by_location @location.id
+
+    add_breadcrumb_path "locations"
+    add_breadcrumb @location.name
+  end
+
   def new
     add_breadcrumb_path "locations"
     add_breadcrumb_new "locations"

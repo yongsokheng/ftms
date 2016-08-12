@@ -463,5 +463,9 @@ namespace :db do
         Fabricate :permission, model_class: permission[0], action: action, role_id: 3
       end
     end
+
+    puts "create Location"
+    Location.create! name: "Keangnam", user_id: 1
+    Location.create! name: "Laboratory", user_id: 2
   end
 end
