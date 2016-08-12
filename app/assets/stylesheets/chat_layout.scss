@@ -120,10 +120,18 @@
       li {
         padding: 10px;
         border-top: 1px solid #DDEBD7;
+
+        .message-option {
+          display: none;
+        }
       }
 
       :hover{
         background-color: #DDEBD7;
+      }
+
+      :hover .message-option {
+        display: block;
       }
     }
   }
