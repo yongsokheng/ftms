@@ -14,23 +14,21 @@
       <div class="chat-content">
         <%= message.content %>
       </div>
-      <% if message.owner? current_user.id %>
-        <span class="message-option pull-right">
-          <small class="button-edit" data-id="<%= message.id %>">
-            <%= link_to "javascript:void(0)", class: "btn-edit" do %>
-              <i class="glyphicon glyphicon-edit"></i>&nbsp;
-              <%= t "button.edit" %>
-            <% end %>
-          </small>
-          <small>
-            <%= link_to message, method: :delete,
-              data: {confirm: t("messages.delete.confirm")}, remote: true do %>
-              <i class="glyphicon glyphicon-trash"></i>&nbsp;
-              <%= t "button.delete" %>
-            <% end %>
-          </small>
-        </span>
-      <% end %>
+      <span class="message-option pull-right">
+        <small class="button-edit" data-id="<%= message.id %>">
+          <%= link_to "javascript:void(0)", class: "btn-edit" do %>
+            <i class="glyphicon glyphicon-edit"></i>&nbsp;
+            <%= t "button.edit" %>
+          <% end %>
+        </small>
+        <small>
+          <%= link_to message, method: :delete,
+            data: {confirm: t("messages.delete.confirm")}, remote: true do %>
+            <i class="glyphicon glyphicon-trash"></i>&nbsp;
+            <%= t "button.delete" %>
+          <% end %>
+        </small>
+      </span>
     </div>
   </div>
 </li>
