@@ -1,1 +1,5 @@
-$(".messages-list").html("<%= j render @messages %>");
+var messages = $(".messages-list");
+messages.html("<%= j render @messages %>");
+if (messages.length > 0) {
+  $("#chat-body").animate({scrollTop: messages.height()}, 10);
+};

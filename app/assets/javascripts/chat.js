@@ -10,11 +10,12 @@ $(document).on("turbolinks:load", function() {
   });
 
   $("#send-button").click(function() {
-    var id = $(".active").data("id");
-    var type = $(".active").data("type");
-    var content = $("#chat-textarea").val();
-    var message = {chat_room_id: id, chat_room_type: type, content: content}
+    var room = $("#chat-sidebar .active-room");
+    var content = $("#chat-textarea");
+    var message = {chat_room_id: room.data("id"), chat_room_type: room.data("type"),
+      content: content.val()}
     $.post("/messages", {message: message});
+    content.val("");
   });
 
   $(".search-chat-room").on("keyup", function() {
@@ -31,8 +32,8 @@ $(document).on("turbolinks:load ajaxComplete", function() {
     var chat_room_id = $(this).data("id");
     var chat_room_type = $(this).data("type");
 
-    $(".chat-room").removeClass("active");
-    $(this).addClass("active");
+    $(".chat-room").removeClass("active-room");
+    $(this).addClass("active-room");
 
     $.get("/messages/new", {id: chat_room_id, type: chat_room_type});
   });

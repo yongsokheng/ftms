@@ -1,1 +1,3 @@
-$(".messages-list").append("<%= j render @message %>");
+<% if @message.chat_room_type == Conversation.name %>
+  $(".messages-list").append("<%= j render @message %>");
+<% end %>
