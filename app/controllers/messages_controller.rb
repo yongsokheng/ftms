@@ -4,10 +4,15 @@ class MessagesController < ApplicationController
 
   def new
     @messages = @chat_room.messages.load_messages
+      .per_page_kaminari(params[:page]).per Settings.chats.message_per_page
   end
 
   def create
+    @active_room_id = params[:active_room_id]
+    @active_room_type = params[:active_room_type]
+
     @message = current_user.messages.create message_params
+    @message.broadcast_message @active_room_id
   end
 
   def destroy

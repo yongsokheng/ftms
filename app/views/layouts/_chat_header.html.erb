@@ -36,7 +36,7 @@
     <section class="sidebar" id="chat-sidebar">
       <div class="center row" id="search-chat-room">
         <%= text_field_tag :q, nil,
-          class: "form-control search-chat-room",
+          class: "form-control search-chat-room", autocomplete: "off",
           placeholder: t("chats.search") %>
       </div>
       <ul class="sidebar-menu">

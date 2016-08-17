@@ -1,7 +1,7 @@
 class NotificationsChannel < ApplicationCable::Channel
   def subscribed
     current_user.courses.each do |course|
-      stream_from "channel_course_#{course.id}"
+      stream_from "channel_course_notification_#{course.id}"
     end
 
     current_user.user_subjects.each do |user_subject|

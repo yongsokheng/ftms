@@ -1,3 +1,7 @@
-<% if @message.chat_room_type == Conversation.name %>
+<% if @active_room_type == Conversation.name &&
+  @active_room_id.to_i != current_user.id %>
   $(".messages-list").append("<%= j render @message %>");
 <% end %>
+
+$("#chat-textarea").val("");
+$("#chat-body").slimScroll({scrollTo: $("#chat-body")[0].scrollHeight});
