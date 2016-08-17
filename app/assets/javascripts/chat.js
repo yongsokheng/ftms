@@ -28,9 +28,7 @@ $(document).on("turbolinks:load", function() {
   }
 
   $("#send-button").click(function() {
-    var active_room = $("#chat-sidebar .active-room");
-    var active_room_id = active_room.data("id");
-    var active_room_type = active_room.data("type");
+    var active_room_id = $("#chat-sidebar .active-room").data("id");
 
     var room_id = $(".chat-form").data("chat-room-id");
     var room_type = $(".chat-form").data("chat-room-type");
@@ -38,8 +36,7 @@ $(document).on("turbolinks:load", function() {
     var message = {chat_room_id: room_id, chat_room_type: room_type,
       content: content.val()};
 
-    $.post("/messages", {message: message, active_room_id: active_room_id,
-      active_room_type: active_room_type});
+    $.post("/messages", {message: message, active_room_id: active_room_id});
 
     content.val("");
   });
@@ -79,9 +76,10 @@ $(document).on("turbolinks:load ajaxComplete", function() {
   $("#chat-content #button-save").unbind("click").on("click", function() {
     var content = $("#chat-textarea").val();
     var message_id = $("#button-save").data("message-id");
+    var active_room_id = $("#chat-sidebar .active-room").data("id");
     $.ajax({
       type: "PUT",
-      data: {message: {content: content}},
+      data: {message: {content: content}, active_room_id: active_room_id},
       url: "/messages/" + message_id
     });
     reset_text();
