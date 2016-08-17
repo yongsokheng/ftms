@@ -1,33 +1,34 @@
-<div id="chat-content" class="content">
-  <div id="infinite-scrolling">
-    <div hidden class="loading">
-      <i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i>
-      <span class="sr-only"><%= t "chats.loading" %></span>
-    </div>
-    <div hidden class="message-paginate"></div>
-  </div>
-
-  <ul class="messages-list">
-  </ul>
-
-  <div class="chat-form">
-    <div id="chat-form-header" class="chat-content-toolbar">
-      <div id="send-button" class="btn btn-primary btn-send">
-        <%= t "button.send" %>
+<div id="chat-body">
+  <div id="chat-content">
+    <div id="infinite-scrolling">
+      <div hidden class="loading">
+        <i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i>
+        <span class="sr-only"><%= t "chats.loading" %></span>
       </div>
-      <div id="cancel-button" hidden>
-        <div class="btn btn-default btn-send">
-          <%= t "button.cancel" %>
+      <div hidden class="message-paginate"></div>
+    </div>
+
+    <ul class="messages-list"></ul>
+
+    <div class="chat-form">
+      <div id="chat-form-header" class="chat-content-toolbar">
+        <div id="send-button" class="btn btn-primary btn-send">
+          <%= t "button.send" %>
+        </div>
+        <div id="cancel-button" hidden>
+          <div class="btn btn-default btn-send">
+            <%= t "button.cancel" %>
+          </div>
+        </div>
+        <div id="button-save" hidden>
+          <div class="btn btn-primary btn-send">
+            <%= t "button.save" %>
+          </div>
         </div>
       </div>
-      <div id="button-save" hidden>
-        <div class="btn btn-primary btn-send">
-          <%= t "button.save" %>
-        </div>
+      <div id="chat-area" class="chat-area">
+        <textarea id="chat-textarea" rows="4"></textarea>
       </div>
-    </div>
-    <div id="chat-area" class="chat-area">
-      <textarea id="chat-textarea" rows="4"></textarea>
     </div>
   </div>
 </div>

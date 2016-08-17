@@ -1,13 +1,31 @@
 $(document).on("turbolinks:load", function() {
-  $("#chat-sidebar").slimScroll({
-    height: "100%",
-    size: "6px"
-  });
+  if($("#message-content").length > 0) {
+    reset_scroll();
 
-  $("#chat-body").slimScroll({
-    height: "80%",
-    size: "6px"
-  });
+    $(window ).resize(function() {
+      reset_scroll();
+    });
+  }
+
+  function reset_scroll() {
+    var window_height = window.innerHeight;
+    var header_height = $(".main-header").height();
+    var chat_area_height = $("#chat-area").height();
+    var search_room_height = $("#search-chat-room input").height();
+    var chat_body_scroll_height = window_height - header_height - chat_area_height;
+
+    $("#message-content").height(chat_body_scroll_height);
+
+    $("#chat-sidebar").slimScroll({
+      height: "100%",
+      size: "6px"
+    });
+
+    $("#chat-body").slimScroll({
+      height: "100%",
+      size: "6px"
+    });
+  }
 
   $("#send-button").click(function() {
     var active_room = $("#chat-sidebar .active-room");
