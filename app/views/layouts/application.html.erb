@@ -19,8 +19,8 @@
     <body id="body-chat" class="skin-blue sidebar-mini wysihtml5-supported fixed" >
       <div class="wrapper">
         <%= render "layouts/chat_header" if current_user.present? %>
-        <div class="content-wrapper" id="chat-body">
-          <div class="content">
+        <div class="content-wrapper">
+          <div id="message-content">
             <%= yield %>
           </div>
         </div>
