@@ -50,6 +50,7 @@ $(document).on("turbolinks:load", function() {
 });
 
 $(document).on("turbolinks:load ajaxComplete", function() {
+
   $(".chat-room").unbind("click").on("click", function() {
     var chat_room_id = $(this).data("id");
     var chat_room_type = $(this).data("type");
@@ -100,4 +101,8 @@ $(document).on("turbolinks:load ajaxComplete", function() {
     $("#send-button").hide();
     $("#cancel-button, #button-save").show();
   }
+});
+
+$(document).on("turbolinks:load", function() {
+  $(".chat-room:first").click();
 });
