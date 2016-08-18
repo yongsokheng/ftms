@@ -1,6 +1,9 @@
 class MessagesController < ApplicationController
   before_action :message_of_correct_user, only: [:destroy, :update]
   before_action :load_chat_room, only: :new
+  before_action :find_active_room, except: :new
+  after_action :broadcast_message, only: [:create, :update]
+  after_action :broadcast_destroy_message, only: :destroy
 
   def new
     @messages = @chat_room.messages.load_messages
@@ -8,11 +11,7 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @active_room_id = params[:active_room_id]
-    @active_room_type = params[:active_room_type]
-
     @message = current_user.messages.create message_params
-    @message.broadcast_message @active_room_id
   end
 
   def destroy
@@ -50,5 +49,13 @@ class MessagesController < ApplicationController
     else
       @chat_room = Course.find chat_room_id
     end
+  end
+
+  def find_active_room
+    @active_room_id = params[:active_room_id]
+  end
+
+  def broadcast_message
+    @message.broadcast_message @active_room_id
   end
 end

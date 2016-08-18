@@ -1,8 +1,9 @@
 class MessageBroadcastJob < ApplicationJob
   queue_as :default
 
-  def perform channel, message
-    ActionCable.server.broadcast channel, message: render_message(message)
+  def perform channel, message = ""
+    message = render_message(message) if message.present?
+    ActionCable.server.broadcast channel, message: message
   end
 
   private
