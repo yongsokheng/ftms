@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160805012928) do
+ActiveRecord::Schema.define(version: 20160818064627) do
 
   create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "trackable_type"
@@ -124,12 +124,11 @@ ActiveRecord::Schema.define(version: 20160805012928) do
 
   create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "content"
-    t.boolean  "seen",           default: false
     t.integer  "chat_room_id"
     t.string   "chat_room_type"
     t.integer  "user_id"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
   end
 
@@ -196,6 +195,15 @@ ActiveRecord::Schema.define(version: 20160805012928) do
     t.float    "rank_value",  limit: 24
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+  end
+
+  create_table "read_marks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "readable_type", null: false
+    t.integer  "readable_id"
+    t.string   "reader_type",   null: false
+    t.integer  "reader_id"
+    t.datetime "timestamp"
+    t.index ["reader_id", "reader_type", "readable_type", "readable_id"], name: "read_marks_reader_readable_index", using: :btree
   end
 
   create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

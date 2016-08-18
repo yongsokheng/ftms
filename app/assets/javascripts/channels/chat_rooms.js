@@ -15,6 +15,10 @@ App.global_chat = App.cable.subscriptions.create({
     if (message.length == 0) {
       if (room.hasClass("active-room")) {
         message_list.append(data["message"]);
+        $.ajax({
+          type: "PUT",
+          url: "/read_marks/" + data["message_id"]
+        });
       } else {
         $(".sidebar-menu").prepend(room);
         var new_message = room.find(".badge");

@@ -32,6 +32,8 @@ class User < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates_confirmation_of :password
 
+  acts_as_reader
+
   ATTRIBUTES_PROFILE_PARAMS = [
     :id, :start_training_date, :leave_date, :finish_training_date,
     :ready_for_project, :contract_date, :naitei_company,

@@ -5,12 +5,16 @@ class MessagesController < ApplicationController
   after_action :broadcast_message, except: :new
 
   def new
-    @messages = @chat_room.messages.load_messages
+    unread_messages = @chat_room.messages.unread_by current_user
+    unread_messages.mark_as_read! :all, for: current_user
+
+    @messages = @chat_room.messages.read_by(current_user).order(created_at: :desc)
       .per_page_kaminari(params[:page]).per Settings.chats.message_per_page
   end
 
   def create
     @message = current_user.messages.create message_params
+    @message.mark_as_read! for: current_user
   end
 
   def destroy
