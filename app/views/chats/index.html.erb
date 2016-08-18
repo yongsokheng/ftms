@@ -10,10 +10,14 @@
 
     <ul class="messages-list"></ul>
 
-    <div class="chat-form">
+    <div class="chat-form" id="chat-formarea">
       <div id="chat-form-header" class="chat-content-toolbar">
-        <div id="send-button" class="btn btn-primary btn-send">
-          <%= t "button.send" %>
+        <div class="chat-content-toolbar-right">
+          <input type="checkbox" name="autosend" value="on" id="chat-enter-send">
+          <label class="entersend" for="chat-enter-send"><%= t "chats.enter_send" %></label>
+          <div id="send-button" class="btn btn-primary btn-send">
+            <%= t "button.send" %>
+          </div>
         </div>
         <div id="cancel-button" hidden>
           <div class="btn btn-default btn-send">

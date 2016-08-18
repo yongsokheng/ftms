@@ -10,9 +10,9 @@ $(document).on("turbolinks:load", function() {
   function reset_scroll() {
     var window_height = window.innerHeight;
     var header_height = $(".main-header").height();
-    var chat_area_height = $("#chat-area").height();
+    var chat_area_height = $("#chat-formarea").height();
     var search_room_height = $("#search-chat-room input").height();
-    var chat_body_scroll_height = window_height - header_height - chat_area_height;
+    var chat_body_scroll_height = window_height - header_height - chat_area_height - 15;
 
     $("#message-content").height(chat_body_scroll_height);
 
@@ -27,9 +27,8 @@ $(document).on("turbolinks:load", function() {
     });
   }
 
-  $("#send-button").click(function() {
+  function chat_submit() {
     var active_room_id = $("#chat-sidebar .active-room").data("id");
-
     var room_id = $(".chat-form").data("chat-room-id");
     var room_type = $(".chat-form").data("chat-room-type");
     var content = $("#chat-textarea");
@@ -39,6 +38,14 @@ $(document).on("turbolinks:load", function() {
     $.post("/messages", {message: message, active_room_id: active_room_id});
 
     content.val("");
+  }
+
+  $("#send-button").click(chat_submit);
+
+  $("#chat-textarea").unbind("keypress").on("keypress", function(e) {
+    if(e.which == 13 && $("#chat-enter-send").is(":checked")) {
+      chat_submit();
+    }
   });
 
   $(".search-chat-room").bindWithDelay("keyup", function() {
@@ -88,6 +95,14 @@ $(document).on("turbolinks:load ajaxComplete", function() {
 
   $("#chat-content #cancel-button").unbind("click").on("click", function() {
     reset_text();
+  });
+
+  var button_delete = $(".btn-delete");
+  button_delete.unbind("click").on("click", function(e) {
+    e.preventDefault();
+    var active_room_id = $("#chat-sidebar .active-room").data("id");
+    button_delete.attr("href", button_delete.attr("href") + "?active_room_id=" + active_room_id);
+    button_delete.submit();
   });
 
   function reset_text() {

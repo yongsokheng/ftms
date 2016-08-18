@@ -2,8 +2,7 @@ class MessagesController < ApplicationController
   before_action :message_of_correct_user, only: [:destroy, :update]
   before_action :load_chat_room, only: :new
   before_action :find_active_room, except: :new
-  after_action :broadcast_message, only: [:create, :update]
-  after_action :broadcast_destroy_message, only: :destroy
+  after_action :broadcast_message, except: :new
 
   def new
     @messages = @chat_room.messages.load_messages
@@ -56,6 +55,8 @@ class MessagesController < ApplicationController
   end
 
   def broadcast_message
-    @message.broadcast_message @active_room_id, current_user
+    channel = "channel_#{@message.chat_room_type.downcase}_#{@active_room_id}"
+    message = @message unless action_name == "destroy"
+    MessageBroadcastJob.perform_later channel, current_user, @message.id, message
   end
 end

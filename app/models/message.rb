@@ -19,9 +19,4 @@ class Message < ApplicationRecord
       count > 0 ? count : nil
     end
   end
-
-  def broadcast_message active_room_id, current_user
-    channel = "channel_#{chat_room_type.downcase}_#{active_room_id}"
-    MessageBroadcastJob.perform_later channel, self, current_user
-  end
 end

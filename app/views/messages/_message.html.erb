@@ -23,7 +23,7 @@
             <% end %>
           </small>
           <small>
-            <%= link_to message, method: :delete,
+            <%= link_to message, method: :delete, class: "btn-delete",
               data: {confirm: t("messages.delete.confirm")}, remote: true do %>
               <i class="glyphicon glyphicon-trash"></i>&nbsp;
               <%= t "button.delete" %>
