@@ -148,4 +148,8 @@ module ApplicationHelper
     chat_room = room.class.name
     chat_room == User.name ? Conversation.name : chat_room
   end
+
+  def allow_render_message message, active_room
+    message.chat_room_type == Conversation.name && active_room.to_i != current_user.id
+  end
 end

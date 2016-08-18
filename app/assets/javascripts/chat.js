@@ -57,6 +57,8 @@ $(document).on("turbolinks:load", function() {
 });
 
 $(document).on("turbolinks:load ajaxComplete", function() {
+  hide_action();
+  edit_message();
 
   $(".chat-room").unbind("click").on("click", function() {
     var chat_room_id = $(this).data("id");
@@ -69,16 +71,6 @@ $(document).on("turbolinks:load ajaxComplete", function() {
     $(".message-paginate").html("");
 
     $.get("/messages/new", {id: chat_room_id, type: chat_room_type});
-  });
-
-  $("#chat-content .button-edit").unbind("click").on("click", function() {
-    var id = $(this).data("id");
-    var content = $.trim($("#message-" + id + " .chat-content").text());
-    $(".message-content").removeClass("edit-message");
-    $("#message-" + id).addClass("edit-message");
-    $("#button-save").data("message-id", id)
-    $("#chat-textarea").val(content);
-    reset_button();
   });
 
   $("#chat-content #button-save").unbind("click").on("click", function() {
@@ -111,13 +103,30 @@ $(document).on("turbolinks:load ajaxComplete", function() {
     $("#send-button").show();
     $("#cancel-button, #button-save").hide();
   }
-
-  function reset_button() {
-    $("#send-button").hide();
-    $("#cancel-button, #button-save").show();
-  }
 });
 
 $(document).on("turbolinks:load", function() {
   $(".chat-room:first").click();
 });
+
+function hide_action() {
+  $("#button-save").hide();
+  $("#cancel-button").hide();
+}
+
+function reset_button() {
+  $("#send-button").hide();
+  $("#cancel-button, #button-save").show();
+}
+
+function edit_message() {
+  $("#chat-content .button-edit").unbind("click").on("click", function() {
+    var id = $(this).data("id");
+    var content = $.trim($("#message-" + id + " .chat-content").text());
+    $(".message-content").removeClass("edit-message");
+    $("#message-" + id).addClass("edit-message");
+    $("#button-save").data("message-id", id);
+    $("#chat-textarea").val(content);
+    reset_button();
+  });
+}
