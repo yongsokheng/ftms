@@ -9,7 +9,7 @@ class Message < ApplicationRecord
 
   delegate :name, to: :user, prefix: true, allow_nil: true
 
-  def owner? user_id
+  def is_owner? user_id
     self.user_id == user_id
   end
 
@@ -20,8 +20,8 @@ class Message < ApplicationRecord
     end
   end
 
-  def broadcast_message active_room_id
+  def broadcast_message active_room_id, current_user
     channel = "channel_#{chat_room_type.downcase}_#{active_room_id}"
-    MessageBroadcastJob.perform_later channel, self
+    MessageBroadcastJob.perform_later channel, self, current_user
   end
 end

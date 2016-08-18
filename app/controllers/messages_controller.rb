@@ -33,7 +33,7 @@ class MessagesController < ApplicationController
 
   def message_of_correct_user
     @message = Message.find_by_id params[:id]
-    unless @message.owner? current_user.id
+    unless @message.is_owner? current_user.id
       flash[:failed] = flash_message "not_deleted"
       redirect_to chats_path
     end
@@ -56,6 +56,6 @@ class MessagesController < ApplicationController
   end
 
   def broadcast_message
-    @message.broadcast_message @active_room_id
+    @message.broadcast_message @active_room_id, current_user
   end
 end
