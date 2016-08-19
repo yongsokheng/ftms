@@ -32,6 +32,16 @@
         </div>
       </div>
 
+      <div>
+        <% unless @user_subject.init? %>
+          <div id="user-subjects-charts"
+            data-user-name="<%= @user_tasks_chart_data.keys %>"
+            data-total-number-tasks="<%= @user_tasks_chart_data.values %>">
+          </div>
+        <% end %>
+      </div>
+      <br>
+
       <div class="render-task">
         <div class="user-task">
           <div class="overview">
