@@ -2,3 +2,4 @@ en:
   chats:
     loading: "Loading..."
     search: "Search..."
+    enter_send: "Press Enter to send"

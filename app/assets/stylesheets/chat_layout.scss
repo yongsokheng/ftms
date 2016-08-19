@@ -150,22 +150,40 @@
     }
   }
 
+  #chat-formarea {
+    margin: 8px;
+    border: 1px solid #b3b3b3;
+  }
+
   .chat-content-toolbar {
     position: relative;
     line-height: 33px;
+    height: 36px;
     border-bottom: 1px solid #b3b3b3;
   }
 
   .btn-send {
-    float: right;
-    margin-right: 10px;
+    height: 28px;
+    padding: 0 12px;
+    line-height: 26px;
   }
 
   #chat-textarea {
     width: 100%;
     clear: both;
+    border: none;
+    resize: none;
   }
 
+  .chat-content-toolbar-right {
+    float: right;
+    margin-right: 10px;
+  }
+
+  .entersend {
+    font-weight: initial;
+    margin-right: 10px;
+  }
   .chat-form {
     position: fixed;
     bottom: 0px;
