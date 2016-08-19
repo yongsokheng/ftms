@@ -32,6 +32,8 @@ class SubjectsController < ApplicationController
 
     @task = Task.new
     @task.user_tasks.build
+
+    load_chart_data
   end
 
   private
@@ -46,5 +48,15 @@ class SubjectsController < ApplicationController
 
   def check_status_subject
     redirect_to :back unless @user_subject.progress?
+  end
+
+  def load_chart_data
+    unless @user_subject.init?
+      @user_tasks_chart_data = {}
+
+      @user_subjects.each do |user_subject|
+        @user_tasks_chart_data[user_subject.user.name] = user_subject.user_tasks.finished.size
+      end
+    end
   end
 end
