@@ -1,0 +1,213 @@
+<% provide :title, t("staticpages.home") %>
+<div class="home">
+  <div class="home-index">
+    <div class="container">
+      <div class="text-content">
+        <div class="content">
+          <div class="content-title">
+            <%= t "staticpages.content.title" %>
+          </div>
+          <div class="content-lead-in">
+            <i><%= t "staticpages.content.lead_in" %></i>
+          </div>
+          <a class="page-scroll btn btn-xl btn-box">
+            <%= t "staticpages.content.box1" %>
+          </a>
+          <a class="btn btn-xl btn-box">
+            <%= t "staticpages.content.box2" %>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="portfolio">
+    <div class="container text-center">
+      <div class="title">
+        <%= t "staticpages.portfolio.title" %>
+      </div>
+      <div class="portfolio-content">
+        <i><%= t "staticpages.portfolio.content" %></i>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <span class="fa-stack fa-4x">
+            <%= image_tag "icon-ruby-on-rail.png" %>
+          </span>
+          <h4 class="service-heading">
+            <%= t "staticpages.portfolio.box_name_1" %>
+          </h4>
+          <p class="text-muted">
+            <strong><%= t "staticpages.portfolio.text_1" %></strong>
+          </p>
+          <a class="btn btn-danger">
+            <%= t "staticpages.portfolio.btn" %>
+          </a>
+        </div>
+        <div class="col-md-4">
+          <span class="fa-stack fa-4x">
+            <%= image_tag "php.png", class: "image-php" %>
+          </span>
+          <h4 class="service-heading">
+            <%= t "staticpages.portfolio.box_name_2" %>
+          </h4>
+          <p class="text-muted">
+            <strong><%= t "staticpages.portfolio.text_2" %></strong>
+          </p>
+          <a class="btn btn-danger">
+            <%= t "staticpages.portfolio.btn" %>
+          </a>
+        </div>
+        <div class="col-md-4">
+          <span class="fa-stack fa-4x">
+            <%= image_tag "icon-android.png" %>
+          </span>
+          <h4 class="service-heading">
+            <%= t "staticpages.portfolio.box_name_3" %>
+          </h4>
+          <p class="text-muted">
+            <strong><%= t "staticpages.portfolio.text_3" %></strong>
+          </p>
+          <a class="btn btn-danger">
+            <%= t "staticpages.portfolio.btn" %>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="dark-bg-white-text">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading">
+            <span class="our-color">
+              <%= t "staticpages.div3.name" %>
+            </span>
+          </h2>
+          <div class="row">
+            <div class="col-sm-6">
+              <p style="font-size: 1.8em">
+                <%= t "staticpages.div3.content1" %>
+              </p>
+              <p>
+                <%= link_to t("staticpages.div3.link1"), "#" %>
+              </p>
+            </div>
+            <div class="col-sm-6">
+              <p style="font-size: 1.8em">
+                <%= t "staticpages.div3.content2" %>
+              </p>
+              <p>
+                <%= link_to t("staticpages.div3.link2"), "#" %>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="principles">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="title section-heading">
+            <%= t "staticpages.principles.title" %>
+          </h2>
+          <h3 class="section-subheading text-muted">
+            <%= t "staticpages.principles.content" %>
+          </h3>
+        </div>
+      </div>
+      <div class="row text-center">
+        <div class="col-md-4">
+          <span class="fa-stack fa-4x">
+            <%= image_tag "read-tutorials.png" %>
+          </span>
+          <h4 class="service-heading">
+            <%= t "staticpages.principles.header1" %>
+          </h4>
+          <p class="text-muted">
+            <%= t "staticpages.principles.content1" %>
+          </p>
+        </div>
+        <div class="col-md-4">
+          <span class="fa-stack fa-4x">
+            <%= image_tag "project1.png" %>
+          </span>
+          <h4 class="service-heading">
+            <%= t "staticpages.principles.header2" %>
+          </h4>
+          <p class="text-muted">
+            <%= t "staticpages.principles.content2" %>
+          </p>
+        </div>
+        <div class="col-md-4">
+          <span class="fa-stack fa-4x">
+            <%= image_tag "project2.png" %>
+          </span>
+          <h4 class="service-heading">
+            <%= t "staticpages.principles.header3" %>
+          </h4>
+          <p class="text-muted">
+            <%= t "staticpages.principles.content3" %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="counters">
+    <div class="container">
+      <div class="row">
+        <div class="text-center">
+          <h2 class="title">
+            <%= t "staticpages.counters.title" %>
+          </h2>
+          <h3 class="content">
+            <%= t "staticpages.counters.content" %>
+          </h3>
+        </div>
+        <div class="col-md-4 col-sm-4">
+          <div class="counters-v2">
+            <i class="counters-v2-icon fa fa-book"></i>
+            <figure class="counter color-base counters-v2-no">
+              <%= @courses_size %>
+            </figure>
+            <h4 class="counters-v2-title">
+              <%= t "layouts.courses" %>
+            </h4>
+            <span class="counters-v2-subtitle">
+              <%= t "staticpages.counters.completed" %>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-4">
+          <div class="counters-v2">
+            <i class="counters-v2-icon fa fa-mortar-board"></i>
+            <figure class="counter color-base counters-v2-no">
+              <%= @trainees_size %>
+            </figure>
+            <h4 class="counters-v2-title">
+              <%= t "courses.trainees" %>
+            </h4>
+            <span class="counters-v2-subtitle">
+              <%= t "staticpages.counters.learning" %>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-4">
+          <div class="counters-v2">
+            <i class="counters-v2-icon fa fa-users"></i>
+            <figure class="counter color-base counters-v2-no">
+              <%= @trainers_size %>
+            </figure>
+            <h4 class="counters-v2-title">
+              <%= t "courses.trainers" %>
+            </h4>
+            <span class="counters-v2-subtitle">
+              <%= t "staticpages.counters.manage" %>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

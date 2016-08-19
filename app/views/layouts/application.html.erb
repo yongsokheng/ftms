@@ -2,7 +2,7 @@
 <html>
   <head>
     <title><%= full_title yield :title %></title>
-    <%= favicon_link_tag %>
+    <%= favicon_link_tag "logo.png" %>
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track": true %>
     <%= javascript_include_tag "application", "data-turbolinks-track": true %>
     <%= javascript_include_tag Ckeditor.cdn_url %>
@@ -47,7 +47,7 @@
   <% else %>
     <body id="body-user">
       <%= render "layouts/user_header" if current_user.present? %>
-      <div class="container body_wrapper">
+      <div class="body_wrapper <%= class_body controller_name %>">
         <div class="flash">
           <%= render "layouts/flash" %>
         </div>

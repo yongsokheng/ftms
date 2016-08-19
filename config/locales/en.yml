@@ -32,6 +32,43 @@ en:
     courses: "Courses"
     users: "Users"
     user_inprogress: "Users in progress"
+    home: "Home"
+    content:
+      title: "learn more. faster."
+      lead_in: "FREE classes for experienced engineers"
+      box1: "Basic"
+      box2: "Advance"
+    portfolio:
+      title: "upcoming core courses"
+      content: "Demanding, 8-week course that meets twice a week from 7-9 PM and ends with a final group project."
+      text_1: "Learn how to build web apps using Rails 5."
+      text_2: "Learn how to build web apps using Lavarel."
+      text_3: "Learn how to build apps Android."
+      btn: "Subscribe to Mailing List"
+      box_name_1: "Ruby"
+      box_name_2: "Php"
+      box_name_3: "Android"
+    div3:
+      name: "New program"
+      content1: "Looking for a great software engineering job?"
+      content2: "Get funding and mentorship for your team?"
+      link1: "CoderSchool SELECT"
+      link2: "CoderSchool PUSH"
+    principles:
+      title: "Our Training Principles"
+      content: "We want to work with the most dedicated startup engineers and designers.We want to help you become the best you can be, alongside talented peers."
+      header1: "Real Tutorials"
+      content1: "We'll learn how apps like Facebook, Instagram, and Twitter are built."
+      header2: "Project 1"
+      content2: "You'll be learning and working with the best."
+      header3: "Project 2"
+      content3: "You'll build real apps you'll be proud to show to customers and employers."
+    counters:
+      title: "Developing Developers"
+      content: "Master new skills in programming, design and product building."
+      learning: "Learning"
+      completed: "Completed"
+      manage: "Manage"
   messages:
     delete:
       confirm: "Are you sure?"
@@ -67,6 +104,7 @@ en:
     status: "Status:"
     introduction: "Introduction"
     tasks: "Tasks"
+    start_date: "Start date: %{start_date}"
   signins:
     banner: "Login"
   member: "Member"

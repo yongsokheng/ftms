@@ -3,11 +3,10 @@ Rails.application.routes.draw do
   mount ActionCable.server => "/cable"
 
   filter :locale
-  root "courses#index"
-
   devise_for :users, path: "auth", path_names: {sign_in: "login", sign_out: "logout"}
 
   namespace :admin do
+    root "courses#index"
     resources :course_masters
     resources :courses do
       resources :subjects, only: :show
@@ -45,6 +44,8 @@ Rails.application.routes.draw do
     resources :notes, except: :index
     resources :locations
   end
+
+  root "static_pages#home"
 
   resources :courses, only: [:show, :index] do
     resources :subjects, only: [:show]
