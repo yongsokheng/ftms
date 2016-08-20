@@ -22,7 +22,7 @@
         <span class="header-title">
           <%= @user_subject.name %>
         </span>
-        <span class="label-status <%= set_status @user_subject.status %>">
+        <span class="label-status <%= set_background_color_status @user_subject.status %>">
           <%= t "courses.labels.status.#{@user_subject.status}" %>
         </span>
         <%= link_to t("subjects.task.finish"), user_subject_path(@user_subject),

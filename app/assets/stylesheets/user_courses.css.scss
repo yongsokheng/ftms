@@ -30,18 +30,6 @@
     margin-top: 46px;
   }
 
-  .node-init {
-    background: #DC9F48;
-  }
-
-  .node-progress {
-    background-color: #009852;
-  }
-
-  .node-finish {
-    background-color: #ccc;
-  }
-
   .subject-image {
     padding-left: 5px;
     padding-right: 0px;
@@ -66,16 +54,4 @@
 
 .subject-list {
   padding-top: 30px;
-}
-
-.circle-init {
-  color: #DC9F48;
-}
-
-.circle-progress, .circle-in_progress {
-  color: #009852;
-}
-
-.circle-finish, .circle-finished {
-  color: #ccc;
 }

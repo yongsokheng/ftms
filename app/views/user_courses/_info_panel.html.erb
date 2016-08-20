@@ -15,7 +15,8 @@
   <div class="course-infor">
     <% @user_subject_statuses.each do |key, value| %>
       <div class="status">
-        <i class="fa fa-circle circle-<%= key %>" aria-hidden="true"></i> &nbsp;
+        <i class="fa fa-circle <%= set_color_status key %>"
+          aria-hidden="true"></i> &nbsp;
         <%= t "subjects.#{key}_subjects" %>
         <%= instance_variable_get "@number_of_user_subject_#{key}" %>/
         <%= @number_of_user_subjects %>

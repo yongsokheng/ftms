@@ -1,0 +1,40 @@
+$init_color: GREEN;
+$progress_color: BLUE;
+$finish_color: #ccc;
+
+.init-color {
+  color: $init_color;
+}
+
+.init-background-color {
+  background-color: $init_color !important;
+}
+
+.init-border-color {
+  border: 1px solid $init_color;
+}
+
+.progress-color, .in_progress-color {
+  color: $progress_color;
+}
+
+.progress-background-color, .in_progress-background-color {
+  background-color: $progress_color !important;
+}
+
+.progress-border-color {
+  border: 1px solid $progress_color;
+}
+
+
+.finish-color, .finished-color {
+  color: $finish_color;
+}
+
+.finish-background-color, .finished-background-color {
+  background-color: $finish_color !important;
+}
+
+.finish-border-color {
+  border: 1px solid $finish_color;
+}
