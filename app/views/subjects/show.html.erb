@@ -12,7 +12,8 @@
             <% end %>
           </li>
           <li><%= link_to t("layouts.all_courses"), courses_path %></li>
-          <li><%= link_to @user_subject.course_name, user_course_path(@user_subject.user_course) %></li>
+          <li><%= link_to @user_subject.course_name,
+            user_course_path(@user_subject.user_course) %></li>
           <li class="active"><%= @user_subject.name %></li>
         </ul>
       </div>
@@ -46,9 +47,14 @@
         <div class="user-task">
           <div class="overview">
             <%= t "subjects.task_overview" %>
-            <%= link_to t("subjects.task.new_task"), "#",
-              data: {toggle: "modal", target: "#TaskModal"},
-              class: "btn-action pull-right" if current_user.is_trainee? && @user_subject.progress? %>
+            <% if current_user.is_trainee? && @user_subject.progress? %>
+              <%= link_to "#",
+                data: {toggle: "modal", target: "#TaskModal"},
+                class: "pull-right btn-new-task" do %>
+                <span class="glyphicon glyphicon-plus"></span>
+                <%= t "subjects.task.new_task" %>
+              <% end %>
+            <% end %>
           </div>
 
           <div class="note-list user-task-list">

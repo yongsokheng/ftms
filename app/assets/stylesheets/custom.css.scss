@@ -14,11 +14,187 @@ html {
   padding: 0;
 }
 
+#body-user {
+  padding-top: 60px;
+  min-height: 100%;
+}
+
+.body_home {
+  background-color: #fff;
+}
+
+.body-wrapper-content {
+  padding-top: 30px;
+}
 .body_wrapper {
-  padding-bottom: 350px;
+  .text-content {
+    padding-top: 150px;
+    padding-bottom: 150px;
+    text-align: center;
+
+    .content {
+      padding: 40px;
+      background-color: rgba(0,0,0,0.6);
+      margin: 20px;
+
+      .content-title, .content-lead-in {
+        font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 50px;
+        line-height: 50px;
+        margin-bottom: 40px;
+        text-align: center;
+        color: #fff;
+      }
+
+      .content-lead-in {
+        text-transform: none;
+        font-size: 40px;
+      }
+
+      .btn-xl {
+        border-color: #e13640;
+        background-color: #e13640;
+        margin: 10px;
+        color: #fff;
+        font-size: 30px;
+      }
+
+      .btn-xl:hover, .btn-xl:focus, .btn-xl:active, .btn-xl.active {
+        border-color: #eb797f;
+        background-color: #eb797f;
+      }
+
+      .btn-box {
+        width: 200px;
+      }
+    }
+
+  }
+
+  .image-php {
+    width: 130px;
+    height: 130px;
+  }
+
+  #portfolio, #principles {
+    padding: 80px 0;
+
+    .title, .portfolio-content {
+      font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 50px;
+      line-height: 50px;
+      text-align: center;
+      color: #000;
+    }
+
+    .fa-stack {
+      width: 3em;
+    }
+
+    .portfolio-content {
+      text-transform: none;
+      font-weight: normal;
+      font-size: 20px;
+      color: #777;
+    }
+
+    .service-heading {
+      margin-top: 30px;
+      font-weight: 700;
+      text-transform: none;
+      font-size: 24px;
+    }
+
+    .text-muted {
+      font-size: 18px;
+    }
+  }
+
+  #principles {
+    background-color: #fff;
+    .fa-stack {
+      width: 3em;
+      height: 2.5em;
+    }
+  }
+
+  .dark-bg-white-text {
+    padding: 80px 0;
+    color: white;
+    background-color: #404040;
+
+    .section-heading {
+      font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 50px;
+      line-height: 50px;
+    }
+  }
+
+  #counters {
+    padding: 80px 0;
+    background-color: #404040;
+    color: white;
+
+    .title {
+      font-size: 40px;
+      margin-top: 0;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .content {
+      margin-bottom: 20px;
+      font-size: 16px;
+      font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      text-transform: none;
+      font-style: italic;
+      font-weight: 400;
+      min-height: 0;
+    }
+
+    .counters-v2 {
+      background-color: #505050;
+      text-align: center;
+      padding: 60px 50px;
+    }
+
+    .counters-v2 .counters-v2-title {
+      font-size: 28px;
+      margin-bottom: 3px;
+      text-transform: uppercase;
+    }
+
+    .counters-v2-subtitle {
+      color: #efefef;
+      font-style: italic;
+      font-size: 20px;
+    }
+
+    .counters-v2-icon, section#counters .counters-v2-subtitle {
+      color: #efefef;
+      font-size: 44px;
+      margin-bottom: 15px;
+    }
+
+    .counters-v2 .counters-v2-no {
+      display: block;
+      font-size: 40px;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+  }
 }
 
 #user-header {
+  height: 50px;
   .logo {
     margin-left: 30px;
     img {
@@ -31,13 +207,13 @@ html {
   }
 
   ul, li a{
-    color: #aebdc1;
+    color: #000;
     font-weight: 600;
   }
 
   ul, li {
     a:hover {
-      color: black;
+      color: red;
     }
   }
 
@@ -160,6 +336,10 @@ html {
       overflow-x: initial !important;
     }
   }
+}
+
+.home-index {
+  background-image: url("home.png");
 }
 
 select {

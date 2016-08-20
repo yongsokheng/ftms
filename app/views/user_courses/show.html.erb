@@ -23,7 +23,6 @@
 
     <div class="description"><%= @course.description %></div>
 
-    <h3><%= t "courses.list_subject" %></h3>
     <div class="subject-list">
       <% @user_subjects.each_with_index do |user_subject, index| %>
         <div class="col-xs-1">
@@ -36,23 +35,32 @@
             <% end %>
           <% end %>
         </div>
-
-        <div class="subject col-xs-11 row">
-          <div class="col-xs-2 subject-image">
-            <%= set_image user_subject %>
-          </div>
-          <div class="col-xs-10 infor">
-            <div>
-              <span class="subject-name"><%= link_to user_subject.name,
-                user_course_subject_path(@user_course, user_subject.subject) %>
-              </span>&nbsp;
-              <span><i><%= "#{user_subject.during_time} "%>
-                <%= t("user_subjects.labels.days") %></i>
-              </span>
+        <%= link_to user_course_subject_path(@user_course, user_subject.subject) do %>
+          <div class="subject col-xs-11 row">
+            <div class="col-xs-2 subject-image">
+              <%= set_image user_subject %>
             </div>
-            <div><%= truncate(user_subject.description, length: 110) %></div>
+            <div class="col-xs-10 infor">
+              <div>
+                <span class="subject-name">
+                  <%= user_subject.name %>
+                </span>&nbsp;
+                <span>
+                  <i>
+                    <%= "#{user_subject.during_time} "%>
+                    <%= t("user_subjects.labels.days") %>
+                  </i>
+                </span>
+              </div>
+              <div>
+                <%= t "subjects.start_date",
+                  start_date: user_subject.start_date if
+                  user_subject.start_date.present? %>
+              </div>
+              <div><%= truncate(user_subject.description, length: 110) %></div>
+            </div>
           </div>
-        </div>
+        <% end %>
       <% end %>
     </div>
   </div>
