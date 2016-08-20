@@ -2,9 +2,16 @@ class MessageBroadcastJob < ApplicationJob
   queue_as :default
 
   def perform channel, current_user, message_id, message = ""
-    message = render_message(message, current_user) if message.present?
-    ActionCable.server.broadcast channel, message: message, id: message_id
+    if message.present?
+      channel_type = message.chat_room_type
+      channel_id = message.chat_room_id if channel_type == Course.name
+      message = render_message message, current_user
+    end
+    channel_id ||= current_user.id
+    ActionCable.server.broadcast channel, message: message,
+      message_id: message_id, channel_id: channel_id, channel_type: channel_type
   end
+
 
   private
   def render_message message, current_user
