@@ -25,6 +25,10 @@
         <span class="label-status <%= set_status @user_subject.status %>">
           <%= t "courses.labels.status.#{@user_subject.status}" %>
         </span>
+        <%= link_to t("subjects.task.finish"), user_subject_path(@user_subject),
+          method: :put, data: {confirm: t("subjects.buttons.admin.delete_confirm")},
+          class: "btn-finish pull-right" if current_user.is_trainee? && 
+            @user_subject.progress? %>
 
         <div class="description"><%= @user_subject.description %></div>
         <div class="subject-content box-divider">

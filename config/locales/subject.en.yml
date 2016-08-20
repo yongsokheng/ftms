@@ -59,6 +59,7 @@ en:
       edit: "Edit "
       delete: "Delete"
       update: "Update Task"
+      finish: "Finish"
     table:
       task_name: "Name"
       task_progress: "Progress"
