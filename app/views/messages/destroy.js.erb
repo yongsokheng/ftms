@@ -1,1 +1,3 @@
-$("#message-<%= @message.id %>").remove();
+<% if @message.errors.blank? && allow_render_message(@message, @active_room_id) %>
+  $("#message-<%= @message.id %>").remove();
+<% end %>
