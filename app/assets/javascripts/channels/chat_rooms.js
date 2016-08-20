@@ -30,6 +30,7 @@ App.global_chat = App.cable.subscriptions.create({
     }
 
     edit_message();
+    delete_message();
 
     message = message_list.find("#message-" + data["message_id"]);
     current_user = parseInt($("meta[name=current-user]").attr("id"));

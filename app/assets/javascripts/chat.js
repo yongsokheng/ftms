@@ -59,6 +59,7 @@ $(document).on("turbolinks:load", function() {
 $(document).on("turbolinks:load ajaxComplete", function() {
   hide_action();
   edit_message();
+  delete_message();
 
   $(".chat-room").unbind("click").on("click", function() {
     var chat_room_id = $(this).data("id");
@@ -87,14 +88,6 @@ $(document).on("turbolinks:load ajaxComplete", function() {
 
   $("#chat-content #cancel-button").unbind("click").on("click", function() {
     reset_text();
-  });
-
-  var button_delete = $(".btn-delete");
-  button_delete.unbind("click").on("click", function(e) {
-    e.preventDefault();
-    var active_room_id = $("#chat-sidebar .active-room").data("id");
-    button_delete.attr("href", button_delete.attr("href") + "?active_room_id=" + active_room_id);
-    button_delete.submit();
   });
 
   function reset_text() {
@@ -128,5 +121,14 @@ function edit_message() {
     $("#button-save").data("message-id", id);
     $("#chat-textarea").val(content);
     reset_button();
+  });
+}
+
+function delete_message() {
+  $("#chat-content .btn-delete").unbind("click").on("click", function(e) {
+    e.preventDefault();
+    var active_room_id = $("#chat-sidebar .active-room").data("id");
+    $(this).attr("href", $(this).attr("href") + "?active_room_id=" + active_room_id);
+    $(this).submit();
   });
 }
