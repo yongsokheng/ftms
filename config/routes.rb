@@ -64,6 +64,7 @@ Rails.application.routes.draw do
   resources :messages, except: [:index, :show, :edit]
   resources :read_marks, only: :update
   resources :tasks, except: [:new, :edit]
+  resources :user_subjects, only: :update
   resources :user_tasks, only: :update
   resources :notifications, only: :index
   patch "update_notifications" => "notifications#update"

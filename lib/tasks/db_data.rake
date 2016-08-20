@@ -449,6 +449,7 @@ namespace :db do
       Task: ["read", "create", "update", "destroy"],
       User: ["read"],
       UserCourse: ["read"],
+      UserSubject: ["update"],
       UserTask: ["read", "create", "update", "destroy"]
     }
 

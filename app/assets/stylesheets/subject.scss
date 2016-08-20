@@ -46,7 +46,7 @@
     font-size: 14px;
   }
 
-  .btn-action {
+  .btn-action, .btn-finish {
     font-size: 12px;
     line-height: 3;
     padding: 0 2em;
@@ -58,6 +58,11 @@
     background-color: transparent;
     border: 1px solid #21abc7;
     color: #21abc7;
+  }
+
+  .btn-finish {
+    border: 1px solid rgba(255, 153, 0, 0.9);
+    color: rgba(255, 153, 0, 0.9);
   }
 
   .btn-action:hover {
