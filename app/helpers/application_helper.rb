@@ -152,4 +152,13 @@ module ApplicationHelper
   def allow_render_message message, active_room
     message.chat_room_type == Conversation.name && active_room.to_i != current_user.id
   end
+
+  def unseen_number current_user, chat_room
+    chat_room = Conversation.existing_conversation(
+      chat_room.id, current_user.id).first if chat_room.class.name == "User"
+
+    count = 0
+    count = chat_room.messages.unread_by(current_user).size if chat_room
+    count > 0 ? count : nil 
+  end
 end

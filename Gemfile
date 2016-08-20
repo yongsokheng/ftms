@@ -36,6 +36,7 @@ gem "highcharts-rails"
 gem "ajax-datatables-rails", "0.1.2"
 gem "jquery-datatables-rails", github: "rweng/jquery-datatables-rails"
 gem "breadcrumbs_on_rails"
+gem "unread"
 
 group :development, :test do
   gem "fabrication"
