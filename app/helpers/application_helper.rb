@@ -160,6 +160,7 @@ module ApplicationHelper
     count = 0
     count = chat_room.messages.unread_by(current_user).size if chat_room
     count > 0 ? count : nil
+  end
 
   def class_body name
     name == "static_pages" ? "body_home" : "container body-wrapper-content"
