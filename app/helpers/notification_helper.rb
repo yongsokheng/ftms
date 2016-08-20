@@ -8,7 +8,9 @@ module NotificationHelper
       data = "Subject : #{trackable.course_subject.subject_name}"
     end
 
-    t "notifications.keys.#{notification.key}", data: data
+    content = t "notifications.keys.#{notification.key}", data: data
+    content << t("user_subjects.notifications.user", user: notification.user.name) if notification.key == "finish"
+    content
   end
 
   def notification_image notification

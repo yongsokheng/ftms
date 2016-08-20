@@ -8,6 +8,33 @@
       </a>
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
+          <% unless current_user.is_admin? %>
+            <li class="dropdown messages-menu">
+              <%= link_to update_notifications_path, class: "dropdown-toggle",
+                data: {toggle:"dropdown"}, method: :patch, remote: true do %>
+                <i class="fa fa-bell-o"></i>
+                <span class="label label-danger dropdown-label number-notification"><%= not_seen_notification %></span>
+              <% end %>
+              <ul class="dropdown-menu">
+                <li class="header">
+                  <%= t "layouts.notifications.notification" %></li>
+                <li>
+                  <div id="slimScrollDiv">
+                    <ul class="menu" id="slimscroll_admin">
+                      <% current_user.user_notifications.select_notifications
+                        .limit(10).each do |user_notification| %>
+                        <%= render "shared/notification",
+                          notification: user_notification.notification %>
+                      <% end %>
+                    </ul>
+                  </div>
+                </li>
+                <li class="footer">
+                  <%= link_to t("layouts.notifications.view_all"), notifications_path %>
+                </li>
+              </ul>
+            </li>
+          <% end %>
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <%= avatar_user_tag current_user, "user-image", Settings.image_size_50 %>

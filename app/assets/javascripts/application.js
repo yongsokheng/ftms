@@ -92,5 +92,6 @@ $(document).on("turbolinks:load", function() {
   }
 
   $("#slimScrollDiv").slimScroll();
+  $("#slimscroll_admin").slimScroll();
 });
 

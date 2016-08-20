@@ -23,3 +23,5 @@ en:
       during_time: "During time"
       done_time: "Done time"
       y_axis: "Number tasks"
+    notifications:
+      user: " by %{user}"
