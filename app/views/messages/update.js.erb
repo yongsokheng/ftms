@@ -1,4 +1,3 @@
-<% unless @message.errors.any? %>
+<% if @message.errors.blank? && allow_render_message(@message, @active_room_id) %>
   $("#message-<%= @message.id %>").replaceWith("<%= j render @message %>");
 <% end %>
-reset_text();

@@ -28,6 +28,16 @@ App.global_chat = App.cable.subscriptions.create({
     } else {
       message.replaceWith(data["message"]);
     }
+
+    edit_message();
+
+    message = message_list.find("#message-" + data["message_id"]);
+    current_user = parseInt($("meta[name=current-user]").attr("id"));
+    message_user = message.data("user-id");
+    if (current_user != message_user) {
+      message.find(".message-actions").remove();
+    }
+
     $("#chat-body").slimScroll({scrollTo: $("#chat-body")[0].scrollHeight});
   }
 });
