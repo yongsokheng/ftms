@@ -6,8 +6,12 @@ class CoursesController < ApplicationController
   end
 
   def show
-    user_course = @course.user_courses.find_by user_id: current_user.id
-    redirect_to user_course
+    unless current_user.is_trainee?
+      redirect_to [:admin, @course]
+    else
+      user_course = @course.user_courses.find_by user_id: current_user.id
+      redirect_to user_course
+    end
   end
 
   private
