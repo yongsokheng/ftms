@@ -322,18 +322,6 @@ html {
       padding: 2px 3px;
       line-height: .9;
     }
-
-    .notification-content {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    .notification-date {
-      font-size: 10px;
-      color: #999;
-    }
   }
 
   .navbar-nav {
@@ -485,6 +473,19 @@ select {
 
 .progress-bar {
   color: BLACK;
+}
+
+
+.notification-content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.notification-date {
+  font-size: 10px;
+  color: #999;
 }
 
 .user-notification {

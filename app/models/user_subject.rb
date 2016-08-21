@@ -58,7 +58,11 @@ class UserSubject < ApplicationRecord
       notification_key = Notification.keys[:finish]
     end
     create_activity key: key, owner: current_user, recipient: user
-    UserSubjectNotificationBroadCastJob.perform_now self, notification_key, user_id
+    if is_of_user? current_user
+      CourseNotificationBroadCastJob.perform_now course, notification_key, current_user.id, self
+    else
+      UserSubjectNotificationBroadCastJob.perform_now self, notification_key, current_user.id
+    end
   end
 
   def subject
