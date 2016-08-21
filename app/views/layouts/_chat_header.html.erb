@@ -17,7 +17,8 @@
               </li>
               <li class="user-footer">
                 <div class="pull-left">
-                  <%= link_to t("staticpages.profile"), admin_user_path(current_user),
+                  <%= link_to t("staticpages.profile"),
+                    current_user.is_trainee? ? current_user : [:admin, current_user],
                     class: "btn btn-default btn-flat" %>
                 </div>
                 <div class="pull-right">
