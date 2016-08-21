@@ -71,6 +71,11 @@
     color: #fff;
   }
 
+  .btn-finish:hover {
+    background-color: rgba(255, 153, 0, 0.9);
+    border-color: rgba(255, 153, 0, 0.9);
+    color: #fff;
+  }
   .user-task-list {
     .td-image {
       width: 50px;

@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  before_action :authenticate_user!, :set_locale
+  before_action :authenticate_user!, :set_locale, except: :home
   before_action :check_user_access
 
   add_breadcrumb I18n.t("breadcrumbs.paths"), :root_path

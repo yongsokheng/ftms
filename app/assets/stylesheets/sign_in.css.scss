@@ -1,11 +1,11 @@
-body.framgia {
+.framgia {
   background-image: url("background.png");
   -moz-background-size: cover;
   -webkit-background-size: cover;
   background-size: cover;
   background-position: top center !important;
   background-repeat: no-repeat !important;
-  background-attachment: fixed;
+  min-height: 100%;
 }
 #login {
   padding-top: 50px
