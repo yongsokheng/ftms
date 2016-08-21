@@ -156,29 +156,20 @@ namespace :db do
 
     puts "Create Course"
     Course.create!([
-      {name: "Ruby on Rails 2016-07-01",
+      {name: "Ruby on Rails",
         image: File.open(File.join(Rails.root, "app/assets/images/course/Rails-1.png")),
         description: "Learn more Rails with this sequel to the infamous Rails for Zombies course. Increase your Ruby on Rails knowledge with even more zombie learning.",
-        status: 1, programming_language_id: 1, start_date: "2016-07-01", end_date: "2016-08-01"},
-      {name: "Ruby on Rails 2016-08-01",
-        image: File.open(File.join(Rails.root, "app/assets/images/course/Rails-1.png")),
-        description: "Learn more Rails with this sequel to the infamous Rails for Zombies course. Increase your Ruby on Rails knowledge with even more zombie learning.",
-        status: 2, programming_language_id: 1, start_date: "2016-08-01", end_date: "2016-09-01"},
+        status: 1, programming_language_id: 1, start_date: Time.now, end_date: Time.now + 30.days},
 
-      {name: "Android 2016-08-01",
+      {name: "Android",
         image: File.open(File.join(Rails.root, "app/assets/images/Android.png")),
         description: "This tutorial will teach you basic Android programming and will also take you through some advance concepts related to Android application development.",
-        status: 0, programming_language_id: 1, start_date: "2016-08-01", end_date: "2016-09-01"},
+        status: 0, programming_language_id: 1, start_date: Time.now, end_date: Time.now + 30.days},
 
-      {name: "Java 2016-08-01",
-        image: File.open(File.join(Rails.root, "app/assets/images/Java.png")),
-        description: "This reference will take you through simple and practical approach while learning Java Programming language.",
-        status: 1, programming_language_id: 1, start_date: "2016-08-01", end_date: "2016-09-01"},
-
-      {name: "PHP 2016-07-01",
+      {name: "PHP",
         image: File.open(File.join(Rails.root, "app/assets/images/PHP.png")),
         description: "PHP is a server scripting language, and a powerful tool for making dynamic and interactive Web pages",
-        status: 1, programming_language_id: 1, start_date: "2016-07-01", end_date: "2016-08-01"},
+        status: 1, programming_language_id: 1, start_date: Time.now, end_date: Time.now + 30.days},
     ])
 
     puts "Create Subject"
@@ -214,20 +205,6 @@ namespace :db do
       {name: "Project 2 for Android", image: File.open(File.join(Rails.root,
         "app/assets/images/Android.png")),
         description: "Start Project 2 for Android today.\r\n",
-        content: "<p>Get an introduction to redmine, requirement, design database</p>\r\n", during_time: 12},
-
-      {name: "Java Tutorial Book", image: File.open(File.join(Rails.root,
-        "app/assets/images/Java.png")),
-        description: "This reference will take you through simple and practical approach while learning Java Programming language.\r\n",
-        content: "<p>Get an introduction to numbers, Strings, properties, and methods,&nbsp;
-          Learn about conversions, arrays, variables, and more methods</p>\r\n", during_time: 12},
-      {name: "Project 1 for Java", image: File.open(File.join(Rails.root,
-        "app/assets/images/Java.png")),
-        description: "Start Project 1 for Andriod today.\r\n",
-        content: "<p>Get an introduction to redmine, requirement, design database</p>\r\n", during_time: 12},
-      {name: "Project 2 for Java", image: File.open(File.join(Rails.root,
-        "app/assets/images/Java.png")),
-        description: "Start Project 2 for Andriod today.\r\n",
         content: "<p>Get an introduction to redmine, requirement, design database</p>\r\n", during_time: 12},
 
       {name: "PHP Tutorial Book", image: File.open(File.join(Rails.root,
@@ -320,8 +297,32 @@ namespace :db do
       {name: "Git Internals",
         description: "Get an introduction to project git", subject_id: 4},
 
-      {name: "Introduction to Android",
-        description: "Get an introduction to project git", subject_id: 5},
+      {name: "Installing environment",
+        description: "Start your research with Android", subject_id: 5},
+      {name: "Learn about Android architecture",
+        description: "Start your research with Android", subject_id: 5},
+      {name: "Learn about basic components of an Android application",
+        description: "Start your research with Android", subject_id: 5},
+      {name: "Learn about resources in Android",
+        description: "Start your research with Android", subject_id: 5},
+      {name: "Activity",
+        description: "Start your research with Android", subject_id: 5},
+      {name: "UI layout",
+        description: "Start your research with Android", subject_id: 5},
+      {name: "UI Controls",
+        description: "Start your research with Android", subject_id: 5},
+      {name: "Event Handling",
+        description: "Start your research with Android", subject_id: 5},
+      {name: "Animation",
+        description: "Start your research with Android", subject_id: 5},
+      {name: "Database",
+        description: "Start your research with Android", subject_id: 5},
+      {name: "Some other components",
+        description: "Start your research with Android", subject_id: 5},
+      {name: "Some other issues",
+        description: "Start your research with Android", subject_id: 5},
+      {name: "Thread",
+        description: "Start your research with Android", subject_id: 5},
 
       {name: "Requirement understanding",
         description: "Get an introduction to project git", subject_id: 6},
@@ -329,52 +330,50 @@ namespace :db do
       {name: "Requirement understanding",
         description: "Get an introduction to project git", subject_id: 7},
 
-      {name: "Introduct to Java",
-        description: "Get an introduction to project git", subject_id: 8},
+      {name: "Introduction to Laravel",
+        description: "Get an introduction to Laravel", subject_id: 8},
+      {name: "Installation",
+        description: "Get an introduction to Laravel", subject_id: 8},
+      {name: "Routing",
+        description: "Get an introduction to Laravel", subject_id: 8},
+      {name: "Middleware",
+        description: "Get an introduction to Laravel", subject_id: 8},
+      {name: "Controllers",
+        description: "Get an introduction to Laravel", subject_id: 8},
+      {name: "Request Lifecycle",
+        description: "Get an introduction to Laravel", subject_id: 8},
+      {name: "Application Structure",
+        description: "Get an introduction to Laravel", subject_id: 8},
+      {name: "Authentication",
+        description: "Get an introduction to Laravel", subject_id: 8},
+      {name: "Encryption",
+        description: "Get an introduction to Laravel", subject_id: 8},
+      {name: "Filesystem / Cloud Storage",
+        description: "Get an introduction to Laravel", subject_id: 8},
 
       {name: "Requirement understanding",
         description: "Get an introduction to project git", subject_id: 9},
 
       {name: "Requirement understanding",
-        description: "Get an introduction to project git", subject_id: 10},
-
-      {name: "Introduction to PHP",
-        description: "Get an introduction to project git", subject_id: 11},
-
-      {name: "Requirement understanding",
-        description: "Get an introduction to project git", subject_id: 12},
-
-      {name: "Requirement understanding",
-        description: "Get an introduction to project git", subject_id: 13},
-
+        description: "Get an introduction to project git", subject_id: 10}
     ])
 
     puts "Create Course Subject"
     CourseSubject.create!([
       {course_id: 1, subject_id: 1},
-      {course_id: 1, subject_id: 4},
       {course_id: 1, subject_id: 2},
       {course_id: 1, subject_id: 3},
+      {course_id: 1, subject_id: 4},
 
-      {course_id: 2, subject_id: 1},
       {course_id: 2, subject_id: 4},
-      {course_id: 2, subject_id: 2},
-      {course_id: 2, subject_id: 3},
+      {course_id: 2, subject_id: 5},
+      {course_id: 2, subject_id: 6},
+      {course_id: 2, subject_id: 7},
 
-      {course_id: 3, subject_id: 5},
       {course_id: 3, subject_id: 4},
-      {course_id: 3, subject_id: 6},
-      {course_id: 3, subject_id: 7},
-
-      {course_id: 4, subject_id: 8},
-      {course_id: 4, subject_id: 4},
-      {course_id: 4, subject_id: 9},
-      {course_id: 4, subject_id: 10},
-
-      {course_id: 5, subject_id: 11},
-      {course_id: 5, subject_id: 4},
-      {course_id: 5, subject_id: 12},
-      {course_id: 5, subject_id: 13}
+      {course_id: 3, subject_id: 8},
+      {course_id: 3, subject_id: 9},
+      {course_id: 3, subject_id: 10}
     ])
 
     puts "Creating UserCourse"
@@ -398,21 +397,7 @@ namespace :db do
       {active: false, user_id: 14, course_id: 3},
       {active: false, user_id: 15, course_id: 3},
       {active: false, user_id: 16, course_id: 3},
-      {active: false, user_id: 17, course_id: 3},
-
-      {active: false, user_id: 2, course_id: 4},
-      {active: false, user_id: 18, course_id: 4},
-      {active: false, user_id: 19, course_id: 4},
-      {active: false, user_id: 20, course_id: 4},
-      {active: false, user_id: 21, course_id: 4},
-      {active: false, user_id: 22, course_id: 4},
-
-      {active: false, user_id: 2, course_id: 5},
-      {active: false, user_id: 23, course_id: 5},
-      {active: false, user_id: 24, course_id: 5},
-      {active: false, user_id: 25, course_id: 5},
-      {active: false, user_id: 26, course_id: 4},
-      {active: false, user_id: 27, course_id: 4},
+      {active: false, user_id: 17, course_id: 3}
     ])
 
     puts "Document"
