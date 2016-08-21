@@ -163,6 +163,7 @@ module ApplicationHelper
   end
 
   def class_body name
-    name == "static_pages" ? "body_home" : "container body-wrapper-content"
+    name == "static_pages" || name == "sessions" ?
+      "body_home" : "container body-wrapper-content"
   end
 end

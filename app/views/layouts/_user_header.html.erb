@@ -1,4 +1,4 @@
-<header id="user-header" class="navbar navbar-fixed-top navbar-inverse">
+<header id="user-header" class="navbar navbar-fixed-top">
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -13,58 +13,62 @@
           <%= image_tag "logo", title: t("name_system") %>
         <% end %>
       </div>
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li>
-            <%= link_to courses_path do %>
-              <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-              <%= t "user-header.courses" %>
-            <% end %>
-          </li>
-          <li class="dropdown messages-menu">
-            <%= link_to update_notifications_path, class: "dropdown-toggle",
-              data: {toggle:"dropdown"}, method: :patch, remote: true do %>
-              <i class="fa fa-bell-o"></i>
-              <span class="label label-danger dropdown-label number-notification"><%= not_seen_notification %></span>
-            <% end %>
-            <ul class="dropdown-menu">
-              <li class="header">
-                <%= t "layouts.notifications.notification" %></li>
-              <li>
-                <div id="slimScrollDiv">
-                  <ul class="menu">
-                    <% current_user.user_notifications.select_notifications
-                      .limit(10).each do |user_notification| %>
-                      <%= render "shared/notification",
-                        notification: user_notification.notification %>
-                    <% end %>
-                  </ul>
-                </div>
-              </li>
-              <li class="footer">
-                <%= link_to t("layouts.notifications.view_all"), notifications_path %>
-              </li>
-            </ul>
-          </li>
-          <li class="dropdown user user-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <%= avatar_user_tag current_user, "user-image", Settings.image_size_50 %>
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <%= link_to user_path(current_user) do %>
-                  <i class="fa fa-user fa-fw" aria-hidden="true"></i>
-                  <%= t "staticpages.profile" %>
-                <% end %>
-              </li>
-              <li>
-                <%= link_to destroy_user_session_path, method: :delete do  %>
-                  <i class="fa fa-sign-out fa-fw"></i>
-                  <%= t "staticpages.logout" %>
-                <% end %>
-              </li>
-            </ul>
-          </li>
+          <% if user_signed_in? %>
+            <li>
+              <%= link_to courses_path do %>
+                <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                <%= t "user-header.courses" %>
+              <% end %>
+            </li>
+            <li class="dropdown messages-menu">
+              <%= link_to update_notifications_path, class: "dropdown-toggle",
+                data: {toggle:"dropdown"}, method: :patch, remote: true do %>
+                <i class="fa fa-bell-o"></i>
+                <span class="label label-danger dropdown-label number-notification"><%= not_seen_notification %></span>
+              <% end %>
+              <ul class="dropdown-menu">
+                <li class="header">
+                  <%= t "layouts.notifications.notification" %></li>
+                <li>
+                  <div id="slimScrollDiv">
+                    <ul class="menu">
+                      <% current_user.user_notifications.select_notifications
+                        .limit(10).each do |user_notification| %>
+                        <%= render "shared/notification",
+                          notification: user_notification.notification %>
+                      <% end %>
+                    </ul>
+                  </div>
+                </li>
+                <li class="footer">
+                  <%= link_to t("layouts.notifications.view_all"), notifications_path %>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown user user-menu">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <%= avatar_user_tag current_user, "user-image", Settings.image_size_50 %>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <%= link_to user_path current_user do %>
+                    <i class="fa fa-user fa-fw" aria-hidden="true"></i>
+                    <%= t "staticpages.profile" %>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to destroy_user_session_path, method: :delete do  %>
+                    <i class="fa fa-sign-out fa-fw"></i>
+                    <%= t "staticpages.logout" %>
+                  <% end %>
+                </li>
+              </ul>
+            </li>
+          <% else %>
+            <li><%= link_to t("staticpages.login"), new_user_session_path %></li>
+          <% end %>
         </ul>
       </div>
     </div>

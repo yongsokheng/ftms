@@ -46,14 +46,14 @@
     </body>
   <% else %>
     <body id="body-user">
-      <%= render "layouts/user_header" if current_user.present? %>
+      <%= render "layouts/user_header" %>
       <div class="body_wrapper <%= class_body controller_name %>">
         <div class="flash">
           <%= render "layouts/flash" %>
         </div>
         <%= yield %>
       </div>
-      <%= render "layouts/footer" if current_user.present? %>
+      <%= render "layouts/footer" unless controller_name == "sessions" %>
     </body>
   <% end %>
 </html>

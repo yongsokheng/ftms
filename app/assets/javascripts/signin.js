@@ -1,1 +1,1 @@
-$("body").addClass("framgia")
+$(".body_wrapper").addClass("framgia")

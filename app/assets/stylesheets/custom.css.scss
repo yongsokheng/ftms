@@ -9,6 +9,12 @@ html {
   }
 }
 
+#user-header {
+  .navbar-default .navbar-nav > .open > a {
+    background-color: #fff;
+  }
+}
+
 #body-admin, #body-user, .breadcrumb, .content-wrapper {
   background-color: #F6F8F8 !important;
   padding: 0;
@@ -16,7 +22,7 @@ html {
 
 #body-user {
   padding-top: 60px;
-  min-height: 100%;
+  height: 100%;
 }
 
 .body_home {
