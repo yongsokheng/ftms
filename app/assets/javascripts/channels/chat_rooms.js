@@ -43,6 +43,17 @@ App.global_chat = App.cable.subscriptions.create({
       message.find(".message-actions").remove();
     }
 
-    $("#chat-body").slimScroll({scrollTo: $("#chat-body")[0].scrollHeight});
+    var unseen_message = $(".number-message");
+    if (unseen_message.length > 0) {
+      var number_message = 0;
+      if (unseen_message.text() !== "") {
+        number_message = parseInt(unseen_message.text());
+      }
+      unseen_message.html(number_message + 1);
+    }
+
+    if ($("#chat-body").length > 0) {
+      $("#chat-body").slimScroll({scrollTo: $("#chat-body")[0].scrollHeight});
+    }
   }
 });

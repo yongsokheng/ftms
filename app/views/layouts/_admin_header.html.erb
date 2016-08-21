@@ -8,6 +8,13 @@
       </a>
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
+          <li>
+            <%= link_to chats_path do %>
+              <i class="fa fa-weixin" aria-hidden="true"></i>
+              <%= t "chats.chat" %>
+              <span class="label label-danger dropdown-label number-message"></span>
+            <% end %>
+          </li>
           <% unless current_user.is_admin? %>
             <li class="dropdown messages-menu">
               <%= link_to update_notifications_path, class: "dropdown-toggle",

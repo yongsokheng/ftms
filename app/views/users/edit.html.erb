@@ -1,7 +1,7 @@
 <% provide :title, t("user.edit_profile") %>
 
 <div class="row edit-user">
-  <h1 class="text-success center"><%= t "user.edit_profile" %></h1>
+  <h1 class="header-title text-center"><%= t "user.edit_profile" %></h1>
   <div class="col-md-6 col-md-offset-3">
     <%= form_for @user, html: {multipart: true} do |f| %>
       <%= render "shared/error_messages", object: f.object %>
