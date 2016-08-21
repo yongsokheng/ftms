@@ -1,6 +1,6 @@
 <% @task_statuses.each do |key, value| %>
   <div class="status">
-    <i class="fa fa-circle circle-<%= key %>" aria-hidden="true"></i>&nbsp;
+    <i class="fa fa-circle <%= set_color_status key %>" aria-hidden="true"></i>&nbsp;
     <%= t "subjects.tasks.#{key}_tasks" %>
     <%= instance_variable_get "@number_of_task_#{key}" %>/<%= @number_of_task %>
   </div>

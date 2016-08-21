@@ -17,7 +17,7 @@
 
     <span class="header-title"><%= @course.name %></span>
 
-    <span class="label-status <%= set_status @course.status %>">
+    <span class="label-status <%= set_background_color_status @course.status %>">
       <%= t "courses.labels.status.#{@course.status}" %>
     </span>
 
@@ -29,9 +29,10 @@
           <%= link_to user_course_subject_path(@user_course, user_subject.subject),
             title: t("user_subjects.statuses.#{user_subject.status}") do %>
             <% if index == 0 %>
-              <div class="node node-<%= user_subject.status %>"></div>
+              <div class="node <%= set_background_color_status user_subject.status %>"></div>
             <% else %>
-              <div class="node node--connected node-<%= user_subject.status %>"></div>
+              <div class="node node--connected
+                <%= set_background_color_status user_subject.status %>"></div>
             <% end %>
           <% end %>
         </div>

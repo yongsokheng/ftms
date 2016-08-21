@@ -5,7 +5,7 @@
     <ul class="timeline timeline-inverse">
       <% @user_subjects.each do |user_subject| %>
         <li>
-          <i class="fa progress-bar-<%= user_subject.status %>"
+          <i class="fa <%= set_background_color_status user_subject.status %>"
             title="<%= t "user_subjects.statuses.#{user_subject.status}" %>"></i>
           <% if user_subject.init? %>
             <div class="timeline-item">

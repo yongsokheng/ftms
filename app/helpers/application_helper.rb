@@ -81,26 +81,16 @@ module ApplicationHelper
     end
   end
 
-  def task_status status
-    case status
-    when "init"
-      "label label-warning"
-    when "in_progress"
-      "label label-success"
-    when "finished"
-      "label label-info"
-    end
+  def set_color_status status
+    "#{status}-color"
   end
 
-  def set_status status
-    case status
-    when "init"
-      "label label-warning"
-    when "progress"
-      "label label-success"
-    when "finish"
-      "label label-danger"
-    end
+  def set_background_color_status status
+    "#{status}-background-color"
+  end
+
+  def set_border_status status
+    "#{status}-border-color"
   end
 
   def add_breadcrumb_path resource

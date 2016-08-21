@@ -7,12 +7,10 @@
           <%= image_course_tag @course, @course.programming_language_name %>
         </div>
         <div class="col-md-8">
-          <h2 id="course-h2-header">
-            <span id="course-header"><%= @course.name %></span>
-          </h2>
-          <p class="<%= set_status @course.status %>">
+          <span class="header-title"><%= @course.name %></span> &nbsp;
+          <span class="label-status <%= set_background_color_status @course.status %>">
             <%= t "courses.labels.status.#{@course.status}" %>
-          </p>
+          </span>
           <div>
             <p><i><%= @course.description %></i></p>
           </div>
