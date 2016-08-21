@@ -102,7 +102,9 @@ class User < ApplicationRecord
   end
 
   def set_password
-    self.password = Settings.default_password
-    self.password_confirmation = Settings.default_password
+    if new_record?
+      self.password = Settings.default_password
+      self.password_confirmation = Settings.default_password
+    end
   end
 end
