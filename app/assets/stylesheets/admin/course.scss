@@ -136,9 +136,7 @@
       }
     }
   }
-}
 
-#courses {
   .subject {
     background-color: white;
     padding: 5px 8px;
@@ -164,6 +162,12 @@
   tr {
     td {
       border: none;
+    }
+  }
+
+  #sortable {
+    .sortable-table {
+      overflow: auto;
     }
   }
 }
