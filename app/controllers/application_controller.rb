@@ -2,7 +2,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :authenticate_user!, :set_locale, except: :home
-  before_action :check_user_access
 
   add_breadcrumb I18n.t("breadcrumbs.paths"), :root_path
 
@@ -20,7 +19,7 @@ class ApplicationController < ActionController::Base
 
   protected
   def current_ability
-    @current_ability ||= Ability.new current_user
+    @current_ability ||= Ability.new current_user, self.class.parent
   end
 
   def after_sign_in_path_for resource
@@ -46,12 +45,5 @@ class ApplicationController < ActionController::Base
     Subject.human_attribute_name "description"
     Subject.human_attribute_name "courses"
     Subject.human_attribute_name "task_masters"
-  end
-
-  def check_user_access
-    if current_user && current_user.is_trainee? && self.class.parent == Admin
-      flash[:alert] = t "error.not_authorize"
-      redirect_to root_path
-    end
   end
 end

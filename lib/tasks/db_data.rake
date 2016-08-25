@@ -12,114 +12,121 @@ namespace :db do
     puts "Creating User"
     User.create!([
       {name: "Nguyen Binh Dieu", avatar: File.open(File.join(Rails.root,
-        "app/assets/images/user/Nguyen_Binh_Dieu.jpg")), role_id: 1,
+        "app/assets/images/user/Nguyen_Binh_Dieu.jpg")),
         email: "admin@tms.com", password: "12345678",
         password_confirmation: "12345678"},
       {name: "Mai Tuan Viet", avatar: File.open(File.join(Rails.root,
-        "app/assets/images/user/Mai Tuan Viet.jpg")), role_id: 2,
+        "app/assets/images/user/Mai Tuan Viet.jpg")),
         email: "supervisor@tms.com", password: "12345678",
         password_confirmation: "12345678"},
       {name: "Truong Loc Binh", avatar: File.open(File.join(Rails.root,
-        "app/assets/images/user/Truong Loc Binh.jpg")), role_id: 3,
+        "app/assets/images/user/Truong Loc Binh.jpg")),
         email: "truonglocbinh@gmail.com", password: "12345678",
         password_confirmation: "12345678"},
       {name: "Vu Duc Luan", avatar: File.open(File.join(Rails.root,
-        "app/assets/images/user/Vu Duc Luan.jpg")), role_id: 3,
+        "app/assets/images/user/Vu Duc Luan.jpg")),
         email: "vuducluan@gmail.com", password: "12345678",
         password_confirmation: "12345678"},
       {name: "Ngo Van Thien ", avatar: File.open(File.join(Rails.root,
-        "app/assets/images/user/Ngo Van Thien.jpg")), role_id: 3,
+        "app/assets/images/user/Ngo Van Thien.jpg")),
         email: "ngovanthie@gmail.com", password: "12345678",
         password_confirmation: "12345678"},
       {name: "Ngo Van Duong", avatar: File.open(File.join(Rails.root,
-        "app/assets/images/user/Ngo Van Duong.jpg")), role_id: 3,
+        "app/assets/images/user/Ngo Van Duong.jpg")),
         email: "ngovanduong@gmail.com", password: "12345678",
         password_confirmation: "12345678"},
       {name: "Nguyen Thai Son", avatar: File.open(File.join(Rails.root,
-        "app/assets/images/user/Nguyen Thai Son.jpg")), role_id: 3,
+        "app/assets/images/user/Nguyen Thai Son.jpg")),
         email: "nguyenthaison@gmail.com", password: "12345678",
         password_confirmation: "12345678"},
       {name: "Mai Dinh Phu ", avatar: File.open(File.join(Rails.root,
-        "app/assets/images/user/Mai Dinh Phu.jpg")), role_id: 3,
+        "app/assets/images/user/Mai Dinh Phu.jpg")),
         email: "maidinhphu@gmail.com", password: "12345678",
         password_confirmation: "12345678"},
       {name: "Nguyen Van Hien", avatar: File.open(File.join(Rails.root,
-        "app/assets/images/user/Nguyen Van Hien.jpg")), role_id: 3,
+        "app/assets/images/user/Nguyen Van Hien.jpg")),
         email: "nguyenvanhien@gmail.com", password: "12345678",
         password_confirmation: "12345678"},
       {name: "Nguyen Thi Trang", avatar: File.open(File.join(Rails.root,
-        "app/assets/images/user/Nguyen Thi Trang.png")), role_id: 3,
+        "app/assets/images/user/Nguyen Thi Trang.png")),
         email: "nguyenthitrang@gmail.com", password: "12345678",
         password_confirmation: "12345678"},
       {name: "Nguyen Thi Mo", avatar: File.open(File.join(Rails.root,
-        "app/assets/images/user/Nguyen Thi Mo.jpg")), role_id: 3,
+        "app/assets/images/user/Nguyen Thi Mo.jpg")),
         email: "nguyenthimo@gmail.com", password: "12345678",
         password_confirmation: "12345678"},
       {name: "Hoang Van Nam", avatar: File.open(File.join(Rails.root,
-        "app/assets/images/user/Hoang Van Nam.jpg")), role_id: 3,
+        "app/assets/images/user/Hoang Van Nam.jpg")),
         email: "hoangvannam@gmail.com", password: "12345678",
         password_confirmation: "12345678"},
       {name: "Du Thanh Hai", avatar: File.open(File.join(Rails.root,
-        "app/assets/images/user/Bui Quoc Viet.jpg")), role_id: 3,
+        "app/assets/images/user/Bui Quoc Viet.jpg")),
         email: "duthanhhai@gmail.com", password: "12345678",
         password_confirmation: "12345678"},
       {name: "Mai Dinh Phi", avatar: File.open(File.join(Rails.root,
-        "app/assets/images/user/Nguyen Tuan Trong.jpg")), role_id: 3,
+        "app/assets/images/user/Nguyen Tuan Trong.jpg")),
         email: "maidinhphi@gmail.com", password: "12345678",
         password_confirmation: "12345678"},
       {name: "Hoang Thi Linh", avatar: File.open(File.join(Rails.root,
-        "app/assets/images/user/Hoang Thi Linh.jpg")), role_id: 3,
+        "app/assets/images/user/Hoang Thi Linh.jpg")),
         email: "hoangthilinh@gmail.com", password: "12345678",
         password_confirmation: "12345678"},
-      {name: "Dinh Hoang Hai", avatar: nil, role_id: 3,
+      {name: "Dinh Hoang Hai", avatar: nil,
         email: "dinhhoanghai@gmail.com", password: "12345678",
         password_confirmation: "12345678"},
-      {name: "Nguyen Sinh", avatar: nil, role_id: 3,
+      {name: "Nguyen Sinh", avatar: nil,
         email: "nguyensinh@gmail.com", password: "12345678",
         password_confirmation: "12345678"},
-      {name: "Nguyen Tuan Trong", avatar: nil, role_id: 3,
+      {name: "Nguyen Tuan Trong", avatar: nil,
         email: "nguyentuantrong@gmail.com", password: "12345678",
         password_confirmation: "12345678"},
-      {name: "Hoang Linh", avatar: nil, role_id: 3,
+      {name: "Hoang Linh", avatar: nil,
         email: "hoanglinh@gmail.com",  password: "12345678",
         password_confirmation: "12345678"},
-      {name: "Truong Thi Thao", avatar: nil, role_id: 3,
+      {name: "Truong Thi Thao", avatar: nil,
         email: "truongthithao@gmail.com",  password: "12345678",
         password_confirmation: "12345678"},
-      {name: "Can Van Nghi", avatar: nil, role_id: 3,
+      {name: "Can Van Nghi", avatar: nil,
         email: "canvannghi@gmail.com",  password: "12345678",
         password_confirmation: "12345678"},
-      {name: "Luu Binh", avatar: nil, role_id: 3,
+      {name: "Luu Binh", avatar: nil,
         email: "luubinh@gmail.com",  password: "12345678",
         password_confirmation: "12345678"},
-      {name: "Duong Phuong", avatar: nil, role_id: 3,
+      {name: "Duong Phuong", avatar: nil,
         email: "duongphuong@gmail.com",  password: "12345678",
         password_confirmation: "12345678"},
-      {name: "Ha Linh", avatar: nil, role_id: 3,
+      {name: "Ha Linh", avatar: nil,
         email: "halinh@gmail.com",  password: "12345678",
         password_confirmation: "12345678"},
-      {name: "Ly Hoang Nam", avatar: nil, role_id: 3,
+      {name: "Ly Hoang Nam", avatar: nil,
         email: "lyhoangnam@gmail.com",  password: "12345678",
         password_confirmation: "12345678"},
-      {name: "Mai Thao", avatar: nil, role_id: 3,
+      {name: "Mai Thao", avatar: nil,
         email: "maithao@gmail.com", password: "12345678",
         password_confirmation: "12345678"},
-      {name: "Dinh Phuong Linh", avatar: nil, role_id: 3,
+      {name: "Dinh Phuong Linh", avatar: nil,
         email: "dinhphuonglinh@gmail.com", password: "12345678",
         password_confirmation: "12345678"},
-      {name: "Minh Phuong", avatar: nil, role_id: 3,
+      {name: "Minh Phuong", avatar: nil,
         email: "minhphuong@gmail.com", password: "12345678",
         password_confirmation: "12345678"},
-      {name: "So khen", avatar: nil, role_id: 3,
+      {name: "So khen", avatar: nil,
         email: "sokhen@gmail.com",  password: "12345678",
         password_confirmation: "12345678"},
-      {name: "Chenkim", avatar: nil, role_id: 3,
+      {name: "Chenkim", avatar: nil,
         email: "chenkim@gmail.com",  password: "12345678",
         password_confirmation: "12345678"},
-      {name: "Kooru", avatar: nil, role_id: 3,
+      {name: "Kooru", avatar: nil,
         email: "kooru@gmail.com",  password: "12345678",
         password_confirmation: "12345678"}
     ])
+
+    puts "Create User Roles"
+    User.first.role_ids = [1, 2, 3]
+
+    User.where.not(id: 1).each do |user|
+      user.user_roles.create! role_id: 3
+    end
 
     puts "Creating Evaluation Template"
     ["Working days", "Number of task",
@@ -358,47 +365,47 @@ namespace :db do
         description: "Get an introduction to project git", subject_id: 10}
     ])
 
-    puts "Create Course Subject"
-    CourseSubject.create!([
-      {course_id: 1, subject_id: 1},
-      {course_id: 1, subject_id: 2},
-      {course_id: 1, subject_id: 3},
-      {course_id: 1, subject_id: 4},
+    # puts "Create Course Subject"
+    # CourseSubject.create!([
+    #   {course_id: 1, subject_id: 1},
+    #   {course_id: 1, subject_id: 2},
+    #   {course_id: 1, subject_id: 3},
+    #   {course_id: 1, subject_id: 4},
 
-      {course_id: 2, subject_id: 4},
-      {course_id: 2, subject_id: 5},
-      {course_id: 2, subject_id: 6},
-      {course_id: 2, subject_id: 7},
+    #   {course_id: 2, subject_id: 4},
+    #   {course_id: 2, subject_id: 5},
+    #   {course_id: 2, subject_id: 6},
+    #   {course_id: 2, subject_id: 7},
 
-      {course_id: 3, subject_id: 4},
-      {course_id: 3, subject_id: 8},
-      {course_id: 3, subject_id: 9},
-      {course_id: 3, subject_id: 10}
-    ])
+    #   {course_id: 3, subject_id: 4},
+    #   {course_id: 3, subject_id: 8},
+    #   {course_id: 3, subject_id: 9},
+    #   {course_id: 3, subject_id: 10}
+    # ])
 
-    puts "Creating UserCourse"
-    UserCourse.create!([
-      {active: true, user_id: 2, course_id: 1},
-      {active: true, user_id: 3, course_id: 1},
-      {active: true, user_id: 4, course_id: 1},
-      {active: true, user_id: 5, course_id: 1},
-      {active: true, user_id: 6, course_id: 1},
-      {active: true, user_id: 7, course_id: 1},
+    # puts "Creating UserCourse"
+    # UserCourse.create!([
+    #   {active: true, user_id: 2, course_id: 1},
+    #   {active: true, user_id: 3, course_id: 1},
+    #   {active: true, user_id: 4, course_id: 1},
+    #   {active: true, user_id: 5, course_id: 1},
+    #   {active: true, user_id: 6, course_id: 1},
+    #   {active: true, user_id: 7, course_id: 1},
 
-      {active: false, user_id: 2, course_id: 2},
-      {active: false, user_id: 8, course_id: 2},
-      {active: false, user_id: 9, course_id: 2},
-      {active: false, user_id: 10, course_id: 2},
-      {active: false, user_id: 11, course_id: 2},
-      {active: false, user_id: 12, course_id: 2},
+    #   {active: false, user_id: 2, course_id: 2},
+    #   {active: false, user_id: 8, course_id: 2},
+    #   {active: false, user_id: 9, course_id: 2},
+    #   {active: false, user_id: 10, course_id: 2},
+    #   {active: false, user_id: 11, course_id: 2},
+    #   {active: false, user_id: 12, course_id: 2},
 
-      {active: false, user_id: 2, course_id: 3},
-      {active: false, user_id: 13, course_id: 3},
-      {active: false, user_id: 14, course_id: 3},
-      {active: false, user_id: 15, course_id: 3},
-      {active: false, user_id: 16, course_id: 3},
-      {active: false, user_id: 17, course_id: 3}
-    ])
+    #   {active: false, user_id: 2, course_id: 3},
+    #   {active: false, user_id: 13, course_id: 3},
+    #   {active: false, user_id: 14, course_id: 3},
+    #   {active: false, user_id: 15, course_id: 3},
+    #   {active: false, user_id: 16, course_id: 3},
+    #   {active: false, user_id: 17, course_id: 3}
+    # ])
 
     puts "Document"
     Document.create!([
@@ -452,6 +459,5 @@ namespace :db do
 
     puts "create Location"
     Location.create! name: "Keangnam", user_id: 1
-    Location.create! name: "Laboratory", user_id: 2
   end
 end

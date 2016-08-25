@@ -28,6 +28,8 @@ class User < ApplicationRecord
   has_many :receivers, class_name: Conversation.name, foreign_key: :receiver_id,
     dependent: :destroy
   has_many :messages, dependent: :destroy
+  has_many :user_roles, dependent: :destroy
+  has_many :roles, through: :user_roles
 
   validates :name, presence: true, uniqueness: true
   validates_confirmation_of :password
@@ -81,11 +83,15 @@ class User < ApplicationRecord
   end
 
   def is_admin?
-    self.role.name == "admin"
+    check_role "admin"
   end
 
   def is_trainee?
-    role.name == "trainee"
+    check_role "trainee"
+  end
+
+  def is_trainer?
+    check_role "trainer"
   end
 
   def in_course? course
@@ -93,6 +99,10 @@ class User < ApplicationRecord
   end
 
   private
+  def check_role name
+    roles.exists? name: name
+  end
+
   def password_required?
     new_record? ? super : false
   end

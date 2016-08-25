@@ -63,6 +63,11 @@ defaults: &defaults
   chats:
     chat_room_per_page: 20
     message_per_page: 20
+
+  namespace_roles:
+    admin: "Admin"
+    trainee: "Trainee"
+    trainer: "Trainer"
 development:
   <<: *defaults
   neat_setting: 800
