@@ -1,5 +1,5 @@
 <table class="table" id="sortable">
-  <tbody class="col-md-11 pull-right">
+  <tbody class="sortable-table">
     <% @course_subjects.each do |course_subject| %>
       <tr data-item-id=<%= course_subject.id %>
         data-url=<%= admin_course_course_subject_path course_subject.course, course_subject %>
