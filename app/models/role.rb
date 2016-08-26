@@ -2,6 +2,7 @@ class Role < ApplicationRecord
   has_many :users, dependent: :destroy
   has_many :permissions, dependent: :destroy
   has_many :user_roles, dependent: :destroy
+  has_many :users, through: :user_roles
 
   validates :name, presence: true, uniqueness: {case_sensitive: false}
 
@@ -11,4 +12,5 @@ class Role < ApplicationRecord
 
   scope :not_admin, ->{where.not name: "admin"}
   scope :trainee, ->{where name: "trainee"}
+  scope :trainer, ->{find_by name: "trainer"}
 end

@@ -7,13 +7,20 @@
         <%= f.text_field :name, class: "form-control" %>
 
         <%= f.label :email %>
-        <%= f.text_field :email, class: "form-control" %>
+        <%= f.text_field :email, class: "form-control" %><br>
 
         <% if current_user.is_admin? %>
           <%= f.label :role_id %>
-          <%= f.select :role_id, options_for_select(@roles.collect{|role| [role.name,
-            role.id]}, f.object.role_id), {}, class: "form-control" %>
+          <%= f.collection_check_boxes :role_ids, @roles, :id, :name do |role| %>
+            <span class="label label-default">
+              <%= role.label do %>
+                <%= role.check_box %> &nbsp;
+                <%= role.text %> &nbsp;
+              <% end %>
+            </span>
+          <% end %>
         <% end %>
+        <br>
 
         <%= f.label :trainer_id %>
         <%= f.select :trainer_id, options_for_select(@trainers.collect{|trainer| [trainer.name,
