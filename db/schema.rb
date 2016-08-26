@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160818064627) do
+ActiveRecord::Schema.define(version: 20160825091002) do
 
   create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "trackable_type"
@@ -274,6 +274,15 @@ ActiveRecord::Schema.define(version: 20160818064627) do
     t.index ["user_id"], name: "index_user_notifications_on_user_id", using: :btree
   end
 
+  create_table "user_roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.integer  "role_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["role_id"], name: "index_user_roles_on_role_id", using: :btree
+    t.index ["user_id"], name: "index_user_roles_on_user_id", using: :btree
+  end
+
   create_table "user_subjects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "status",            default: 0
     t.integer  "user_id"
@@ -315,7 +324,6 @@ ActiveRecord::Schema.define(version: 20160818064627) do
     t.string   "name"
     t.string   "avatar"
     t.integer  "trainer_id"
-    t.integer  "role_id"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "email",                  default: "", null: false
@@ -330,7 +338,6 @@ ActiveRecord::Schema.define(version: 20160818064627) do
     t.string   "last_sign_in_ip"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-    t.index ["role_id"], name: "index_users_on_role_id", using: :btree
   end
 
   add_foreign_key "course_subjects", "courses"
@@ -350,6 +357,8 @@ ActiveRecord::Schema.define(version: 20160818064627) do
   add_foreign_key "tasks", "course_subjects", on_delete: :cascade
   add_foreign_key "user_notifications", "notifications"
   add_foreign_key "user_notifications", "users"
+  add_foreign_key "user_roles", "roles"
+  add_foreign_key "user_roles", "users"
   add_foreign_key "user_subjects", "course_subjects", on_delete: :cascade
   add_foreign_key "user_subjects", "courses"
   add_foreign_key "user_subjects", "user_courses"
@@ -357,5 +366,4 @@ ActiveRecord::Schema.define(version: 20160818064627) do
   add_foreign_key "user_tasks", "tasks", on_delete: :cascade
   add_foreign_key "user_tasks", "user_subjects", on_delete: :cascade
   add_foreign_key "user_tasks", "users"
-  add_foreign_key "users", "roles"
 end

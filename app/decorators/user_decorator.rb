@@ -6,6 +6,6 @@ class UserDecorator < Draper::Decorator
   end
 
   def allow_access_admin
-    role.allow_access_admin  
+    roles.exists? allow_access_admin: true
   end
 end
