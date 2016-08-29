@@ -1,4 +1,4 @@
-class Admin::EvaluationsController < ApplicationController
+class Trainer::EvaluationsController < ApplicationController
   load_and_authorize_resource
   load_and_authorize_resource :user
 
@@ -29,7 +29,7 @@ class Admin::EvaluationsController < ApplicationController
   def create
     if @evaluation.save
       flash[:success] = flash_message "created"
-      redirect_to admin_evaluations_path
+      redirect_to trainer_evaluations_path
     else
       flash[:failed] = flash_message "not_created"
       redirect_to :back
