@@ -3,7 +3,8 @@ class EvaluationTemplatesDatatable
 
   delegate :params, :link_to, to: :@view
 
-  def initialize view
+  def initialize view, namespace
+    @namespace = namespace
     @view = view
   end
 
@@ -24,10 +25,11 @@ class EvaluationTemplatesDatatable
         evaluation_template.name,
         evaluation_template.min_point,
         evaluation_template.max_point,
-        link_to(@view.t("button.edit"), @view.edit_admin_evaluation_template_path(evaluation_template),
+        link_to(@view.t("button.edit"),
+          eval("@view.edit_#{@namespace}_evaluation_template_path(evaluation_template)"),
           class: "text-primary pull-right"),
         link_to(@view.t("button.delete"),
-          @view.admin_evaluation_template_path(evaluation_template),
+          eval("@view.#{@namespace}_evaluation_template_path(evaluation_template)"),
           method: :delete, data: {confirm: @view.t("messages.delete.confirm")},
           class: "text-danger pull-right")
       ]
