@@ -442,7 +442,8 @@ namespace :db do
       User: ["read"],
       UserCourse: ["read"],
       UserSubject: ["update"],
-      UserTask: ["read", "create", "update", "destroy"]
+      UserTask: ["read", "create", "update", "destroy"],
+      FeedBack: ["create"]
     }
 
     trainer_permissions.each do |permission|

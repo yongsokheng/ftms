@@ -54,6 +54,10 @@
                 </li>
               </ul>
             </li>
+            <li>
+              <%= link_to t("feed_backs.title"), "#", class: "btn-feed-back",
+                data: {toggle: "modal", target: "#feed-back-modal"} %>
+            </li>
             <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <%= avatar_user_tag current_user, "user-image", Settings.image_size_50 %>
