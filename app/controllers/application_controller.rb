@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
   before_action :authenticate_user!, :set_locale, except: :home
   before_action :new_feed_back
+  before_action :get_namespace
 
   add_breadcrumb I18n.t("breadcrumbs.paths"), :root_path
 
@@ -50,5 +51,9 @@ class ApplicationController < ActionController::Base
 
   def new_feed_back
     @feed_back = FeedBack.new
+  end
+
+  def get_namespace
+    @namespace = self.class.parent.to_s.downcase
   end
 end

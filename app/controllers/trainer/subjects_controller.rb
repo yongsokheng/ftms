@@ -1,4 +1,4 @@
-class Admin::SubjectsController < ApplicationController
+class Trainer::SubjectsController < ApplicationController
   load_and_authorize_resource
   load_and_authorize_resource :course
 
@@ -22,7 +22,7 @@ class Admin::SubjectsController < ApplicationController
     @user_subjects_not_finishs = @user_subjects.not_finish @user_subjects.finish
 
     add_breadcrumb_path "courses"
-    add_breadcrumb @course.name, admin_course_path(@course)
+    add_breadcrumb @course.name, trainer_course_path(@course)
     add_breadcrumb @course_subject.subject_name
   end
 
@@ -38,7 +38,7 @@ class Admin::SubjectsController < ApplicationController
     @subject = Subject.new subject_params
     if @subject.save
       flash[:success] = flash_message "created"
-      redirect_to admin_subjects_path
+      redirect_to trainer_subjects_path
     else
       flash[:failed] = flash_message "not_created"
       render :new
@@ -47,14 +47,14 @@ class Admin::SubjectsController < ApplicationController
 
   def edit
     add_breadcrumb_path "subjects"
-    add_breadcrumb @subject.name, admin_subject_task_masters_path(@subject)
+    add_breadcrumb @subject.name, trainer_subject_task_masters_path(@subject)
     add_breadcrumb_edit "subjects"
   end
 
   def update
     if @subject.update_attributes subject_params
       flash[:success] = flash_message "updated"
-      redirect_to admin_subject_task_masters_path(@subject)
+      redirect_to trainer_subject_task_masters_path(@subject)
     else
       flash[:failed] = flash_message "not_updated"
       render :edit
@@ -68,7 +68,7 @@ class Admin::SubjectsController < ApplicationController
       flash.now[:failed] = flash_message "not_deleted"
     end
     respond_to do |format|
-      format.html {redirect_to admin_subjects_path}
+      format.html {redirect_to trainer_subjects_path}
     end
   end
 

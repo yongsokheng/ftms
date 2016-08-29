@@ -1,0 +1,90 @@
+<div id="subjects-form">
+  <%= form_for [:trainer, @subject] do |f| %>
+    <div class="row">
+      <%= render "shared/error_messages", object: @subject %>
+      <div class="title"><%= @subject.name %></div>
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-2 text-right">
+            <span><%= t "subjects.fields.name" %>:</span>
+          </div>
+          <div class="col-md-9">
+            <%= f.text_field :name, class: "form-control", required: true,
+              placeholder: I18n.t("subjects.form.input_subject_name") %>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-2 text-right">
+            <span><%= t "subjects.image" %>:</span>
+          </div>
+          <div class="col-md-9">
+            <%= f.file_field :image, class: "form-control" %>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-2 text-right">
+            <span><%= t "subjects.description" %>:</span>
+          </div>
+          <div class="col-md-9">
+            <%= f.text_area :description, class: "form-control",
+              placeholder: I18n.t("subjects.form.input_subject_description") %>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-2 text-right">
+            <span><%= t "subjects.content" %></span>
+          </div>
+          <div class="col-md-9">
+            <%= f.text_area :content, class: "ckeditor-field form-control" %>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-2 text-right">
+            <span><%= t "subjects.during_time" %>:</span>
+          </div>
+          <div class="col-md-9">
+            <%= f.text_field :during_time, class: "form-control", required: true,
+              placeholder: I18n.t("subjects.form.input_subject_during_time") %>
+          </div>
+        </div>
+        <br>
+      </div>
+    </div><br>
+    <div class="row">
+      <div class="col-md-2 text-right"><%= t "subjects.document" %></div>
+      <div class="col-md-9">
+        <%= f.fields_for :documents do |builder| %>
+          <%= render "document_fields", f: builder %>
+        <% end %>
+        <strong><%= link_to_add_fields t("subjects.document"), f, :documents %></strong>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-2 col-md-offset-6">
+        <h3><%= t "subjects.task.list_tasks" %></h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <%= f.fields_for :task_masters do |builder| %>
+          <%= render "task_master_fields", f: builder %>
+        <% end %>
+        <span id="add-task-masters">
+          <%= link_to_add_fields t("subjects.dynamic_form.add"), f, :task_masters %>
+        </span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-1 col-md-offset-10">
+        <%= f.submit (f.object.new_record? ? t("button.create")
+          : t("button.save")), class: "btn btn-primary text-right" %>
+      </div>
+    </div>
+  <% end %>
+</div>

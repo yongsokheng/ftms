@@ -1,0 +1,61 @@
+<div id="admin-subject-show">
+  <div class="row">
+    <div class="col-md-2">
+      <%= set_image @subject %>
+    </div>
+    <div class="col-md-8">
+      <h2 class="subject-name"><%= @subject.name %></h2>
+      <div class="description"><%= @subject.description %></div>
+      <p class="working-days">
+        <%= "#{t "subjects.fields.during_time"}:
+          #{@subject.during_time} #{t "subjects.fields.days"}" %>
+      </p>
+      <p class="documents"><%= t("subjects.documents") %>&nbsp;
+        <% @subject.documents.each do |doc| %>
+          <%= link_to doc.name, doc.content.url, target: "_blank" %>&nbsp;
+        <% end %>
+      </p>
+    </div>
+    <div class="col-md-2">
+      <div class="dropdown pull-left">
+        <button id="dLabel" type="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false"
+          class="btn btn-default">
+          <span class="glyphicon glyphicon-align-justify"
+            aria-hidden="true"></span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-right"
+            aria-labelledby="dLabel">
+            <li>
+              <a  href="<%= edit_trainer_subject_path @subject %>">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+                <%= t "courses.buttons.admin.edit" %>
+              </a>
+            </li>
+            <li>
+              <a href="<%= trainer_subject_path @subject %>",
+                data-method="delete",
+                data-confirm="<%= t "messages.delete.confirm" %>">
+                <i class="fa fa-trash" aria-hidden="true"></i>
+                <%= t "button.delete" %>
+              </a>
+            </li>
+          </ul>
+      </div>
+    </div>
+  </div>
+  <div class="content-subject"><%= @subject.content.html_safe %></div>
+  <div id="tasks">
+    <table class="table table-striped tbl-task">
+      <thead>
+        <tr>
+          <th class="name"><%= t "tasks.fields.name" %></th>
+          <th class="description"><%= t "tasks.fields.description" %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @task_masters %>
+      </tbody>
+    </table>
+  </div>
+</div>

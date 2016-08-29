@@ -1,0 +1,27 @@
+<div class="row form-new-tasks">
+  <div class="col-md-11 new-task-master">
+    <div class="row">
+      <div class="col-md-2 text-right">
+        <span><%= t "tasks.fields.name" %>:</span>
+      </div>
+      <div class="col-md-10">
+        <%= f.text_field :name, class: "form-control",
+          placeholder: t("tasks.form.input_task_name") %>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-2 text-right">
+        <span><%= t "tasks.description" %>:</span>
+      </div>
+      <div class="col-md-10">
+        <%= f.text_area :description, class: "form-control",
+          placeholder: t("tasks.form.input_task_description") %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-1">
+    <%= link_to_remove_fields t("subjects.dynamic_form.remove"), f %>
+  </div>
+</div>
+<br>

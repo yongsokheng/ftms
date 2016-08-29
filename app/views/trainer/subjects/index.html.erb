@@ -1,14 +1,14 @@
 <div id="list-subjects">
   <div class="row">
     <div class="col-md-12 title">
-      <%= t "layouts.admin.subjects" %>
+      <%= t "layouts.trainer.subjects" %>
       <span>
-        <%= link_to t("subjects.buttons.admin.new"),
-          new_admin_subject_path, class: "btn btn-success pull-right" %>
+        <%= link_to t("subjects.buttons.trainer.new"),
+          new_trainer_subject_path, class: "btn btn-success pull-right" %>
       </span>
     </div>
   </div>
-  <table id="subjects" class="table table-bordered display" data-source="<%= admin_subjects_url(format: "json") %>" >
+  <table id="subjects" class="table table-bordered display" data-source="<%= trainer_subjects_url(format: "json") %>" >
     <thead>
       <tr class="active">
         <th></th>
