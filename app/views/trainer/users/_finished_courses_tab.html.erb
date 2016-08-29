@@ -1,0 +1,13 @@
+<div class="tab-pane" id="finished_courses">
+  <ul class="timelines timeline-inverse">
+    <% if @finished_courses.any? %>
+      <% @finished_courses.each do |course| %>
+        <%= render "users/course", user_course: course %>
+      <% end %>
+    <% else %>
+      <p class="text text-danger">
+        <%= t "user.titles.none_finished_course" %>
+      </p>
+    <% end %>
+  </ul>
+</div>

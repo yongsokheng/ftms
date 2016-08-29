@@ -1,0 +1,22 @@
+<div class="timeline-item">
+  <div class="timeline-title row">
+    <div class="col-md-6">
+      <div class="timeline-header">
+        <%= link_to user_subject.subject.name,
+          [@inprogress_course, user_subject.subject] %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <%= render "shared/progress_bar", percent: user_subject.percent_progress,
+        status: user_subject.status %>
+    </div>
+  </div>
+  <div class="timeline-body">
+    <div class="user-task">
+      <table class="table">
+        <%= render partial: "trainer/users/user_task", collection: user_subject.user_tasks,
+          as: :user_task %>
+      </table>
+    </div>
+  </div>
+</div>

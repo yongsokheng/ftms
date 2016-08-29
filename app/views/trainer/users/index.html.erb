@@ -1,0 +1,25 @@
+<div id="users" class="profile-active">
+  <div class="title">
+    <%= t "layouts.user" %>
+    <span>
+      <%= link_to t("user.buttons.new"), new_trainer_user_path,
+        class: "btn btn-success pull-right" %>
+    </span>
+  </div>
+
+  <table id="tbl-user" class="table table-bordered display"
+    data-source="<%= trainer_users_url format: "json" %>" >
+    <thead>
+      <tr class="active">
+        <th></th>
+        <th><%= t "user.table.name" %></th>
+        <th class="email"><%= t "user.table.email" %></th>
+        <th class="role"><%= t "user.role" %></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</div>

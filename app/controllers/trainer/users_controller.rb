@@ -1,4 +1,4 @@
-class Admin::UsersController < ApplicationController
+class Trainer::UsersController < ApplicationController
   load_and_authorize_resource
   before_action :load_data, except: [:index, :show, :destroy]
   before_action :load_breadcrumb_edit, only: [:edit, :update]
@@ -20,7 +20,7 @@ class Admin::UsersController < ApplicationController
   def create
     if @user.save
       flash[:success] = flash_message "created"
-      redirect_to admin_users_path
+      redirect_to trainer_users_path
     else
       render :new
     end
@@ -33,7 +33,7 @@ class Admin::UsersController < ApplicationController
   def update
     if @user.update_attributes user_params
       flash[:success] = flash_message "updated"
-      redirect_to admin_users_path
+      redirect_to trainer_users_path
     else
       render :edit
     end
@@ -45,7 +45,7 @@ class Admin::UsersController < ApplicationController
     else
       flash[:alert] = flash_message "not_deleted"
     end
-    redirect_to admin_users_path
+    redirect_to trainer_users_path
   end
 
   def show
@@ -81,7 +81,7 @@ class Admin::UsersController < ApplicationController
 
   def load_breadcrumb_edit
     add_breadcrumb_path "users"
-    add_breadcrumb @user.name, admin_user_path(@user)
+    add_breadcrumb @user.name, trainer_user_path(@user)
     add_breadcrumb_edit "users"
   end
 

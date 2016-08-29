@@ -3,7 +3,8 @@ class UsersDatatable
 
   delegate :params, :link_to, to: :@view
 
-  def initialize view
+  def initialize view, namespace
+    @namespace = namespace
     @view = view
     @current_user = @view.current_user
     @trainees = User.trainees
@@ -23,11 +24,11 @@ class UsersDatatable
     users.each_with_index.map do |user, index|
       [
         index + 1,
-        link_to(user.name, @view.admin_user_path(user)),
+        link_to(user.name, eval("@view.#{@namespace}_user_path(user)")),
         user.email,
         user.roles.pluck(:name).join(", "),
-        link_to(@view.t("button.edit"), @view.edit_admin_user_path(user), class: "pull-right"),
-        link_to(@view.t("button.delete"), @view.admin_user_path(user),
+        link_to(@view.t("button.edit"), eval("@view.edit_#{@namespace}_user_path(user)"), class: "pull-right"),
+        link_to(@view.t("button.delete"), eval("@view.#{@namespace}_user_path(user)"),
           method: :delete, data: {confirm: @view.t("messages.delete.confirm")},
           class: "text-danger pull-right")
       ]

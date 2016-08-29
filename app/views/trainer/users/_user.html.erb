@@ -1,0 +1,10 @@
+<tr>
+  <td class="name"><%= link_to user.name, [:trainer, user] %></td>
+  <td class="email"><%= user.email %></td>
+  <td class="role"><%= user.role_name %></td>
+  <td class="action">
+    <%= link_to t("button.edit"), edit_trainer_user_path(user), class: "text-primary" %>&nbsp;
+    <%= link_to t("button.delete"), [:trainer, user], method: :delete, data: {confirm: t("messages.delete.confirm")},
+      class: "text-danger" %>
+  </td>
+</tr>
