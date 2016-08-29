@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
 
   protected
   def current_ability
-    @current_ability ||= Ability.new current_user, self.class.parent
+    @current_ability ||= Ability.new current_user, @namespace
   end
 
   def after_sign_in_path_for resource

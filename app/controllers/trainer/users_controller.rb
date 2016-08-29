@@ -61,6 +61,8 @@ class Trainer::UsersController < ApplicationController
     end
 
     @note = Note.new
+    @note.author_id = current_user.id
+    @note.user_id = @user.id
     @notes = Note.load_notes @user, current_user
 
     add_breadcrumb @user.name

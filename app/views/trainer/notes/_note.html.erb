@@ -1,0 +1,12 @@
+<tr class="note">
+  <td><%= note.name %></td>
+  <td class="col-action">
+    <div class="action" hidden>
+      <%= link_to "", edit_trainer_note_path(note), remote: true,
+        class: "glyphicon glyphicon-pencil" %>&nbsp;
+      <%= link_to "", [:trainer, note], method: :delete,
+        data: {confirm: t("messages.delete.confirm")}, remote: true,
+        class: "glyphicon glyphicon-trash" %>
+    </div>
+  </td>
+</tr>

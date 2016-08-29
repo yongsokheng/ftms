@@ -75,6 +75,7 @@ Rails.application.routes.draw do
     resources :evaluations, only: :index
     resources :evaluation_templates
     resources :ranks
+    resources :notes, except: :index
   end
 
   root "static_pages#home"
