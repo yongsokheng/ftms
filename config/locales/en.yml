@@ -212,6 +212,7 @@ en:
     finish: "Finish"
     send: "Send"
     cancel: "Cancel"
+    close: "Close"
   roles:
     allocate: "Allocate"
     roles: "Roles"
@@ -289,3 +290,5 @@ en:
     table:
       name: "Name"
       manager: "Manager"
+  feed_backs:
+    title: Feed back

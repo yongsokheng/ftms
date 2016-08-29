@@ -1,0 +1,7 @@
+<% if @feed_back.errors.any? %>
+  $(".error").html("<%= j render "shared/error_messages", object: @feed_back %>");
+<% else %>
+  $(".flash").html("<%= j render "shared/flash_banner" %>");
+  $("#feed-back-modal").modal("hide");
+  $("#feed_back_content").val("");
+<% end %>

@@ -1,0 +1,31 @@
+<div class="feed-back">
+  <div class="modal fade" id="feed-back-modal" tabindex="-1"
+    role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <%= form_for @feed_back, remote: true do |f| %>
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"
+              aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel">
+              <%= t "feed_backs.title" %>
+            </h4>
+          </div>
+          <div class="error"></div>
+          <div class="modal-body">
+            <%= f.label :content %>
+            <%= f.text_area :content, class: "form-control" %>
+          </div>
+          <div class="modal-footer">
+            <%= f.submit t("button.send"), class: "btn btn-primary" %>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+              <%= t "button.close" %>
+            </button>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

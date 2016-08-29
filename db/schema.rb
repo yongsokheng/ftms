@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160825091002) do
+ActiveRecord::Schema.define(version: 20160826065125) do
 
   create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "trackable_type"
@@ -112,6 +112,14 @@ ActiveRecord::Schema.define(version: 20160825091002) do
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.index ["user_id"], name: "index_evaluations_on_user_id", using: :btree
+  end
+
+  create_table "feed_backs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text     "content",    limit: 65535
+    t.integer  "user_id"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["user_id"], name: "index_feed_backs_on_user_id", using: :btree
   end
 
   create_table "locations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -345,6 +353,7 @@ ActiveRecord::Schema.define(version: 20160825091002) do
   add_foreign_key "evaluation_details", "evaluation_templates"
   add_foreign_key "evaluation_details", "evaluations"
   add_foreign_key "evaluations", "users"
+  add_foreign_key "feed_backs", "users"
   add_foreign_key "locations", "users"
   add_foreign_key "messages", "users"
   add_foreign_key "notes", "evaluations"
