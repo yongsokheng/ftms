@@ -68,6 +68,7 @@ defaults: &defaults
     admin: "admin"
     trainee: "trainee"
     trainer: "trainer"
+  number_day_of_user_chart: 7
 development:
   <<: *defaults
   neat_setting: 800

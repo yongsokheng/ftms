@@ -76,6 +76,9 @@ Rails.application.routes.draw do
     resources :evaluation_templates
     resources :ranks
     resources :notes, except: :index
+    resources :universities, except: :show
+    resources :statuses, except: :show
+    resources :user_types, except: :show
   end
 
   root "static_pages#home"

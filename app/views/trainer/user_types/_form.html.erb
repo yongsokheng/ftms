@@ -1,0 +1,11 @@
+<%= form_for [:trainer, @user_type] do |f| %>
+  <div class="row">
+    <%= render "shared/error_messages", object: @user_type %>
+    <div class="col-md-6">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control", required: true %><br>
+      <%= f.submit (f.object.new_record? ? t("button.create")
+        : t("button.update")), class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

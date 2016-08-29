@@ -1,0 +1,30 @@
+<div id="statuses" class="profile-active">
+  <p class="pull-right">
+    <%= link_to t("button.new"), new_trainer_status_path, class: "btn btn-success" %>
+  </p>
+
+  <table class="table table-striped tbl-status">
+    <thead>
+      <th class="index"><%= t "statuses.table.index" %></th>
+      <th class="name"><%= t "statuses.table.name" %></th>
+      <th class="action"><%= t "statuses.table.action" %></th>
+    </thead>
+    <tbody>
+      <% unless @statuses.nil? %>
+        <% @statuses.each.with_index 1 do |status, index| %>
+          <tr>
+            <td><%= index %></td>
+            <td><%= status.name %></td>
+            <td class="action">
+              <%= link_to t("button.edit"), edit_trainer_status_path(status),
+                class: "text-primary" %> &nbsp;
+              <%= link_to t("button.delete"), trainer_status_path(status),
+                method: :delete, data: {confirm: t("messages.delete.confirm")},
+                class: "text-danger" %>
+            </td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

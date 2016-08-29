@@ -3,8 +3,9 @@ class UniversitiesDatatable
 
   delegate :params, :link_to, to: :@view
 
-  def initialize view
+  def initialize view, namespace
     @view = view
+    @namespace = namespace
   end
 
   def as_json options = {}
@@ -22,9 +23,9 @@ class UniversitiesDatatable
       [
         index + 1,
         university.name,
-        link_to(@view.t("button.edit"), @view.edit_admin_university_path(university),
+        link_to(@view.t("button.edit"), eval("@view.edit_#{@namespace}_university_path(university)"),
           class: "text-primary pull-right"),
-        link_to(@view.t("button.delete"), @view.admin_university_path(university),
+        link_to(@view.t("button.delete"), eval("@view.#{@namespace}_university_path(university)"),
           method: :delete, data: {confirm: @view.t("messages.delete.confirm")},
           class: "text-danger pull-right")
       ]
