@@ -1,0 +1,7 @@
+<% unless @subject.id.nil? %>
+  $("#subject_section").
+    append("<%= escape_javascript(render "subject", subject: @subject) %>");
+<% end %>
+$("#flash").children().remove();
+$("#flash").prepend("<%= j render partial: "shared/flash_banner" %>");
+$("#show_flash").fadeOut(1000);

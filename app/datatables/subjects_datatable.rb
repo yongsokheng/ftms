@@ -3,8 +3,9 @@ class SubjectsDatatable
 
   delegate :params, :link_to, to: :@view
 
-  def initialize view
+  def initialize view, namespace
     @view = view
+    @namespace = namespace
   end
 
   def as_json options = {}
@@ -21,7 +22,7 @@ class SubjectsDatatable
     subjects.each_with_index.map do |subject, index|
       [
         index + 1,
-        link_to(subject.name, @view.admin_subject_task_masters_path(subject)),
+        link_to(subject.name, eval("@view.#{@namespace}_subject_task_masters_path(subject)")),
         subject.description
       ]
     end

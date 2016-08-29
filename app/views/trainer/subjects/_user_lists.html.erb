@@ -1,0 +1,16 @@
+<%= render "trainer/subjects/subject_info" %>
+<table class="user-task-info table">
+  <thead>
+    <tr>
+      <th><%= t "subjects.fields.name" %></th>
+      <th><%= t "subjects.fields.start_date" %></th>
+      <th><%= t "subjects.fields.end_date" %></th>
+      <th><%= t "subjects.fields.status" %></th>
+      <th><%= t "subjects.fields.progress" %></th>
+      <th class="action"><%= t "subjects.fields.action" %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @user_subjects %>
+  </tbody>
+</table>

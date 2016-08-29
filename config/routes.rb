@@ -44,6 +44,12 @@ Rails.application.routes.draw do
     resources :notes, except: :index
     resources :locations
   end
+  
+  namespace :trainer do
+    resources :subjects do
+      resources :task_masters, only: :index
+    end
+  end
 
   root "static_pages#home"
 

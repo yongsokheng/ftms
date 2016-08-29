@@ -1,0 +1,75 @@
+<div class="row">
+  <div class="col-md-2">
+    <%= set_image @course_subject %>
+  </div>
+  <div class="col-md-8">
+    <h2 id="subject-h2-header">
+      <span id="subject-header"><%= @course_subject.subject_name %></span>
+    </h2>
+    <div>
+      <i><%= @course_subject.subject_description %></i>
+    </div>
+    <p class="working-days">
+      <%= "#{t "subjects.fields.during_time"}:
+        #{@subject.during_time} #{t "subjects.fields.days"}" %>
+    </p>
+  </div>
+  <div class="col-md-2">
+    <div class="dropdown pull-right">
+      <button id="dLabel" type="button" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false"
+        class="btn btn-default">
+        <span class="glyphicon glyphicon-align-justify"
+          aria-hidden="true"></span>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-right"
+        aria-labelledby="dLabel">
+        <li>
+          <% if @course.progress? %>
+            <% if @user_subjects.init.any? %>
+              <a href="<%= trainer_status_subject_path @course_subject, "start" %>",
+                data-method="patch",
+                data-remote="true",
+                data-confirm="<%= t "trainer.confirms.start_all" %>">
+                <i class="fa fa-check" aria-hidden="true"></i>
+                <%= t "trainer.actions.show_subject.start_all" %>
+              </a>
+            <% end %>
+
+            <% unless @user_subjects.size == @user_subjects.finish.size %>
+              <a href="<%= trainer_status_subject_path @course_subject, "finish" %>",
+                data-method="patch",
+                data-remote="true",
+                data-confirm="<%= t "trainer.confirms.finish_all" %>">
+                <i class="fa fa-minus-square-o" aria-hidden="true"></i>
+                <%= t "trainer.actions.show_subject.finish_all" %>
+              </a>
+            <% end %>
+          <% end %>
+        </li>
+        <li>
+          <a href="<%= edit_trainer_course_course_subject_path @course,
+            @course_subject %>">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+            <%= t "courses.buttons.trainer.edit" %>
+          </a>
+        </li>
+        <li>
+          <a href="<%= trainer_course_course_subject_path @course,
+            @course_subject %>",
+            data-method="delete",
+            data-confirm="<%= t "messages.delete.confirm" %>">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+            <%= t "button.delete" %>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="box-divider">
+  <div class="label-title"><%= t "user_tasks.description" %></div>
+  <p><%= @course_subject.subject_content.html_safe %></p>
+</div>

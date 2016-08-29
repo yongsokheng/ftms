@@ -95,7 +95,7 @@ module ApplicationHelper
 
   def add_breadcrumb_path resource
     add_breadcrumb t("breadcrumbs.#{resource}.all"),
-      "admin_#{resource}_path".to_sym
+      "#{@namespace}_#{resource}_path".to_sym
   end
 
   def add_breadcrumb_index resource
