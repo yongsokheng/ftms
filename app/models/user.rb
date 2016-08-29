@@ -1,9 +1,9 @@
 class User < ApplicationRecord
 
-  QUERY = "id NOT IN (SELECT user_id
+  QUERY = "users.id NOT IN (SELECT user_id
     FROM user_courses, courses WHERE user_courses.course_id = courses.id
     AND (courses.status = 0 OR courses.status = 1)
-    AND courses.id <> :course_id) AND role_id = 3"
+    AND courses.id <> :course_id)"
 
   mount_uploader :avatar, ImageUploader
 
@@ -53,13 +53,13 @@ class User < ApplicationRecord
   delegate :id, :name, to: :role, prefix: true, allow_nil: true
 
   scope :available_of_course, ->course_id{where QUERY, course_id: course_id}
-  scope :trainers, ->{joins(:role).where("roles.name = 'trainer'")}
-  scope :trainees, ->{joins(:role).where("roles.name = 'trainee'")}
+  scope :trainers, ->{joins(:user_roles).where("user_roles.role_id = 2").uniq}
+  scope :trainees, ->{joins(:user_roles).where("user_roles.role_id = 3").uniq}
   scope :find_course, ->course{joins(:user_courses)
     .where("user_courses.course_id in (?)", course).uniq}
   scope :show_members, ->{order(:role_id, :name).limit Settings.number_member_show}
-  scope :select_all, ->{joins :role}
-  scope :not_trainees, ->{joins(:role).where("roles.name != 'trainee'")}
+  scope :select_all, ->{joins(:user_roles).uniq}
+  scope :not_trainees, ->{joins(:user_roles).where("user_roles.role_id != 3")}
   scope :by_location, ->location_id{
     joins(:profile).where("profiles.location_id = ?", location_id)
   }

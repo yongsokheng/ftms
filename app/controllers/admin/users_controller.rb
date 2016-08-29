@@ -76,7 +76,7 @@ class Admin::UsersController < ApplicationController
     datas.each do |data|
       instance_variable_set "@#{data.table_name}", data.all
     end
-    @trainers = Role.trainer.users
+    @trainers = User.trainers
   end
 
   def load_breadcrumb_edit

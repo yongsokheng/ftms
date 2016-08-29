@@ -12,5 +12,4 @@ class Role < ApplicationRecord
 
   scope :not_admin, ->{where.not name: "admin"}
   scope :trainee, ->{where name: "trainee"}
-  scope :trainer, ->{find_by name: "trainer"}
 end
