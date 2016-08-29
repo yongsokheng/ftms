@@ -434,7 +434,8 @@ namespace :db do
       Subject: ["read"],
       User: ["read"],
       UserCourse: ["read"],
-      UserSubject: ["update"]
+      UserSubject: ["update"],
+      FeedBack: ["read"]
     }
 
     trainee_permissions = {
