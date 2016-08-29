@@ -1,0 +1,37 @@
+<div id="users">
+  <%= form_for [:trainer, @user] do |f| %>
+    <div class="row">
+      <%= render "shared/error_messages", object: @user %>
+      <div class="col-md-6">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-control" %>
+
+        <%= f.label :email %>
+        <%= f.text_field :email, class: "form-control" %><br>
+
+        <%= f.label :role_id %>
+        <span class="label label-default">
+          <%= f.label :role_id do %>
+            <%= f.check_box :role_id, {checked: true, disabled: "disabled"} %> &nbsp;
+            <%= t "user.type.trainee" %> &nbsp;
+          <% end %>
+        </span>
+        <br>
+
+        <%= f.label :trainer_id %>
+        <%= f.select :trainer_id, options_for_select(@trainers.collect{|trainer| [trainer.name,
+          trainer.id]}, f.object.trainer_id), {include_blank: true}, class: "form-control" %>
+      </div>
+    </div>
+    <hr />
+
+    <%= render "profile_form", f: f %>
+
+    <div class="row">
+      <div class="col-md-12">
+        <%= f.submit (f.object.new_record? ? t("buttons.create") : t("buttons.update")),
+          class: "btn btn-primary pull-right" %>
+      </div>
+    </div>
+  <% end %>
+</div>

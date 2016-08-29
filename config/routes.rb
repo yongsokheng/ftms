@@ -68,6 +68,11 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :trainer do
+    root "courses#index"
+    resources :users
+  end
+
   root "static_pages#home"
 
   resources :courses, only: [:show, :index] do

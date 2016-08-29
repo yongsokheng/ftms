@@ -1,0 +1,92 @@
+<div class="profile-form">
+  <%= f.fields_for :profile do |ff| %>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="row form-group">
+          <div class="col-md-4">
+            <%= ff.label :start_training_date %>
+          </div>
+          <div class="col-md-8">
+            <%= ff.text_field :start_training_date, class: "form-control datepicker" %>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-md-4">
+            <%= ff.label :leave_date %>
+          </div>
+          <div class="col-md-8">
+            <%= ff.text_field :leave_date, class: "form-control datepicker" %>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-md-4">
+            <%= ff.label :finish_training_date %>
+          </div>
+          <div class="col-md-8">
+            <%= ff.text_field :finish_training_date, class: "form-control datepicker" %>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-md-4">
+            <%= ff.label :contract_date %>
+          </div>
+          <div class="col-md-8">
+            <%= ff.text_field :contract_date, class: "form-control datepicker" %>
+          </div>
+        </div>
+
+        <div class="row form-group">
+          <div class="col-md-4">
+            <%= ff.label :location_id %>
+          </div>
+          <div class="col-md-8">
+            <%= select_profile_field "location", @locations, ff %>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="row form-group">
+          <div class="col-md-4">
+            <%= ff.label :user_type %>
+          </div>
+          <div class="col-md-8">
+            <%= select_profile_field "user_type", @user_types, ff %>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-md-4">
+            <%= ff.label :university %>
+          </div>
+          <div class="col-md-8">
+            <%= select_profile_field "university", @universities, ff %>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-md-4">
+            <%= ff.label :programming_language %>
+          </div>
+          <div class="col-md-8">
+            <%= select_profile_field "programming_language", @programming_languages, ff %>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-md-4">
+            <%= ff.label :status %>
+          </div>
+          <div class="col-md-8">
+            <%= select_profile_field "status", @statuses, ff %>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-md-4">
+            <%= ff.label :ready_for_project %>
+          </div>
+          <div class="col-md-8">
+            <%= ff.check_box :ready_for_project, {}, 1, 0 %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
