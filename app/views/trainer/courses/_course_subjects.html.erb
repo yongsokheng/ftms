@@ -1,0 +1,29 @@
+<table class="table" id="sortable">
+  <tbody class="sortable-table">
+    <% @course_subjects.each do |course_subject| %>
+      <tr data-item-id=<%= course_subject.id %>
+        data-url=<%= trainer_course_course_subject_path course_subject.course, course_subject %>
+        class="item">
+        <td>
+          <div class="subject row">
+            <div class="col-xs-2 subject-image">
+              <%= set_image course_subject %>
+            </div>
+            <div class="col-xs-10 infor">
+              <div>
+                <span class="subject-name"><%= link_to course_subject.subject_name,
+                  trainer_course_subject_path(@course, course_subject.subject) %>
+                </span>&nbsp;
+                <span><i><%= "#{course_subject.subject.during_time} "%>
+                  <%= t "user_subjects.labels.days" %></i>
+                </span>
+              </div>
+              <div><%= truncate course_subject.subject_description, length: 110 %></div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

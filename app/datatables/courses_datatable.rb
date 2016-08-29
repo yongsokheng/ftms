@@ -3,8 +3,9 @@ class CoursesDatatable
 
   delegate :params, :link_to, to: :@view
 
-  def initialize view
+  def initialize view, namespace
     @view = view
+    @namespace = namespace
   end
 
   def as_json options = {}
@@ -21,10 +22,10 @@ class CoursesDatatable
     courses.each_with_index.map do |course, index|
       [
         course.id,
-        link_to(course.name, @view.admin_course_path(course)),
+        link_to(course.name, eval("@view.#{@namespace}_course_path(course)")),
         course.load_trainers.map do |trainer|
           link_to(@view.avatar_user_tag(trainer, "profile-user",
-          Settings.image_size_20), @view.admin_user_path(trainer),
+          Settings.image_size_20), eval("@view.#{@namespace}_user_path(trainer)"),
           title: trainer.name)
         end,
         I18n.t("courses.labels.status.#{course.status}")

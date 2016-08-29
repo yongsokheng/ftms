@@ -1,0 +1,17 @@
+<%= render "shared/course_tab", course: @course, active_tab: Settings.tabs.subjects %>
+
+<div class="row">
+  <div class="col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading"><strong><%= t "subjects.about_subject" %></strong></div>
+      <div class="panel-body">
+        <strong><%= t "subjects.subject_name" %></strong>
+        <%= @course_subject.subject_name %></br>
+        <strong><%= t "subjects.subject_description" %></strong>
+        <%= @course_subject.subject_description %></br>
+        <strong><%= t "subjects.subject_content" %></strong>
+        <%= @course_subject.subject_content %></br>
+      </div>
+    </div>
+  </div>
+</div>

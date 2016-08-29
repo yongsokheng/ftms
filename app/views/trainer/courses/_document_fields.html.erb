@@ -1,0 +1,12 @@
+<div class="row document-field">
+  <div class="col-md-6">
+    <%= f.text_field :name, placeholder: t("courses.document_name"),
+      class: "form-control" %>
+  </div>
+  <div class="col-md-5">
+    <%= f.file_field :content %><br>
+  </div>
+  <div class="col-md-1">
+    <%= link_to_remove_fields t("courses.document_remove"), f %>
+  </div>
+</div>

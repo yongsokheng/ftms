@@ -30,9 +30,9 @@
               <a href="<%= trainer_status_subject_path @course_subject, "start" %>",
                 data-method="patch",
                 data-remote="true",
-                data-confirm="<%= t "trainer.confirms.start_all" %>">
+                data-confirm="<%= t "admin.confirms.start_all" %>">
                 <i class="fa fa-check" aria-hidden="true"></i>
-                <%= t "trainer.actions.show_subject.start_all" %>
+                <%= t "admin.actions.show_subject.start_all" %>
               </a>
             <% end %>
 
@@ -40,9 +40,9 @@
               <a href="<%= trainer_status_subject_path @course_subject, "finish" %>",
                 data-method="patch",
                 data-remote="true",
-                data-confirm="<%= t "trainer.confirms.finish_all" %>">
+                data-confirm="<%= t "admin.confirms.finish_all" %>">
                 <i class="fa fa-minus-square-o" aria-hidden="true"></i>
-                <%= t "trainer.actions.show_subject.finish_all" %>
+                <%= t "admin.actions.show_subject.finish_all" %>
               </a>
             <% end %>
           <% end %>

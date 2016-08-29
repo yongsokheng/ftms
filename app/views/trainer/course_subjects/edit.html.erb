@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="title">
+      <span>
+        <%= @course_subject.subject_name %>
+        <%= link_to t("subjects.task.new_task"), new_trainer_course_subject_task_path(@course_subject.id),
+          class: "btn btn-success pull-right" %>
+      </span>
+    </div>
+    <%= form_for @course_subject, url: trainer_course_course_subject_path,
+      method: :patch do |f| %>
+      <div class="row">
+        <%= render "shared/error_messages", object: @course_subject %>
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-12">
+              <%= f.text_field :subject_name, class: "form-control",
+                required: true,
+                placeholder: I18n.t("subjects.form.input_subject_name") %>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-12">
+              <%= f.file_field :image, class: "form-control" %>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-12">
+              <%= f.text_area :subject_description, class: "form-control",
+                required: true,
+                placeholder: I18n.t("subjects.form.input_subject_description") %>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-12">
+              <%= f.text_area :subject_content, class: "ckeditor-field form-control",
+                required: true %>
+            </div>
+          </div>
+          <br>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-1 col-md-offset-10">
+          <%= f.submit (f.object.new_record? ? t("subjects.buttons.admin.create")
+            : t("subjects.buttons.admin.update")),
+            class: "btn btn-primary text-right" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

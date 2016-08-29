@@ -5,7 +5,8 @@ class Ability
     if namespace.to_s == Settings.namespace_roles.admin && user.is_admin?
       can :manage, :all
     elsif namespace.to_s == Settings.namespace_roles.trainer && user.is_trainer?
-      role_permissions 2
+      # role_permissions 2
+      can :manage, :all
     elsif user.is_trainee?
       role_permissions 3
     end

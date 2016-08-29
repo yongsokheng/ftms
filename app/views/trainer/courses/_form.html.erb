@@ -1,0 +1,97 @@
+<%= form_for [:trainer, @course] do |f| %>
+  <div class="row">
+    <%= render "shared/error_messages", object: @course %>
+    <div class="title"><%= @course.name %></div>
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-2 text-right">
+          <span><%= t "courses.name" %></span>
+        </div>
+        <div class="col-md-9">
+          <%= f.text_field :name, class: "form-control", required: true,
+            placeholder: I18n.t("courses.form.input_course_name") %>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-2 text-right">
+          <span><%= t "courses.image" %></span>
+        </div>
+        <div class="col-md-9">
+          <%= f.file_field :image %>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-2 text-right">
+          <span><%= t "courses.description" %></span>
+        </div>
+        <div class="col-md-9">
+          <%= f.text_area :description, class: "form-control",
+            placeholder: I18n.t("courses.form.input_course_description") %>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-2 text-right">
+          <span><%= t "courses.start_date" %></span>
+        </div>
+        <div class="col-md-3">
+          <%= f.text_field :start_date, class: "form-control datepicker", required: true,
+            placeholder: I18n.t("courses.form.input_course_start_date") %>
+        </div>
+        <div class="col-md-3 text-right">
+          <span><%= t "courses.end_date" %></span>
+        </div>
+        <div class="col-md-3">
+          <%= f.text_field :end_date, class: "form-control datepicker", required: true,
+            placeholder: I18n.t("courses.form.input_course_end_date") %>
+        </div>
+      </div>
+      <br>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2 text-right">
+      <span><%= t "courses.language" %></span>
+    </div>
+    <div class="col-md-3">
+      <%= f.select :programming_language_id, @programming_languages.collect{|u| [u.name, u.id]},
+        {prompt: ""}, {selected: f.object.programming_language_id, required: true,
+        class: "form-control"} %>
+    </div>
+  </div><br>
+  <div class="row">
+    <div class="col-md-2 text-right">
+      <span><%= t "courses.list_subjects" %></span>
+    </div>
+    <div class="col-md-9">
+      <%= f.collection_check_boxes :subject_ids, @subjects, :id, :name do |b| %>
+        <span class="label label-default list-subjects">
+          <%= b.label do %>
+            <%= b.check_box %>&nbsp;
+            <%=  b.text %>&nbsp;
+          <% end %>
+        </span>
+      <% end %>
+    </div>
+  </div><br>
+  <div class="row">
+    <div class="col-md-2 text-right">
+      <span><%= t "courses.document" %></span>
+    </div>
+    <div class="col-md-9">
+      <%= f.fields_for :documents do |builder| %>
+        <%= render "document_fields", f: builder %>
+      <% end %>
+      <p><%= link_to_add_fields t("courses.document"), f, :documents %></p>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-1 col-md-offset-10">
+      <%= f.submit (f.object.new_record? ? t("button.create")
+        : t("buttons.save")), class: "btn btn-primary text-right" %>
+    </div>
+  </div>
+<% end %>

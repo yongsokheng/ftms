@@ -1,4 +1,4 @@
-class Admin::CoursesController < ApplicationController
+class Trainer::CoursesController < ApplicationController
   load_and_authorize_resource
   before_action :load_data, except: [:index, :show, :destroy]
 
@@ -19,14 +19,14 @@ class Admin::CoursesController < ApplicationController
 
   def edit
     add_breadcrumb_path "courses"
-    add_breadcrumb @course.name, :admin_course_path
+    add_breadcrumb @course.name, :trainer_course_path
     add_breadcrumb_edit "courses"
   end
 
   def create
     if @course.save
       flash[:success] = flash_message "created"
-      redirect_to admin_courses_path
+      redirect_to trainer_courses_path
     else
       flash[:failed] = flash_message "not_created"
       render :new
@@ -36,7 +36,7 @@ class Admin::CoursesController < ApplicationController
   def update
     if @course.update_attributes course_params
       flash[:success] = flash_message "updated"
-      redirect_to admin_course_path(@course)
+      redirect_to trainer_course_path(@course)
     else
       flash[:failed] = flash_message "not_updated"
       render :edit
@@ -50,7 +50,7 @@ class Admin::CoursesController < ApplicationController
     @trainees = @course.users.trainees
 
     add_breadcrumb_path "courses"
-    add_breadcrumb @course.name, :admin_course_path
+    add_breadcrumb @course.name, :trainer_course_path
   end
 
   def destroy
@@ -59,7 +59,7 @@ class Admin::CoursesController < ApplicationController
     else
       flash[:failed] = flash_message "not_deleted"
     end
-    redirect_to admin_courses_path
+    redirect_to trainer_courses_path
   end
 
   private
