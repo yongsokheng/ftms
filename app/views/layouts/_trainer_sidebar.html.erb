@@ -1,6 +1,6 @@
-<div id="admin-header">
+<div id="trainer-header">
   <header class="main-header">
-    <%= link_to admin_root_path, class: "logo" do %>
+    <%= link_to trainer_root_path, class: "logo" do %>
       <span class="logo-lg"><%= t :name_system %></span>
     <% end %>
     <nav class="navbar navbar-static-top" role="navigation">
@@ -15,33 +15,31 @@
               <span class="label label-danger dropdown-label number-message"></span>
             <% end %>
           </li>
-          <% unless current_user.is_admin? %>
-            <li class="dropdown messages-menu">
-              <%= link_to update_notifications_path, class: "dropdown-toggle",
-                data: {toggle:"dropdown"}, method: :patch, remote: true do %>
-                <i class="fa fa-bell-o"></i>
-                <span class="label label-danger dropdown-label number-notification"><%= not_seen_notification %></span>
-              <% end %>
-              <ul class="dropdown-menu">
-                <li class="header">
-                  <%= t "layouts.notifications.notification" %></li>
-                <li>
-                  <div id="slimScrollDiv">
-                    <ul class="menu" id="slimscroll_admin">
-                      <% current_user.user_notifications.select_notifications
-                        .limit(10).each do |user_notification| %>
-                        <%= render "shared/notification",
-                          notification: user_notification.notification %>
-                      <% end %>
-                    </ul>
-                  </div>
-                </li>
-                <li class="footer">
-                  <%= link_to t("layouts.notifications.view_all"), notifications_path %>
-                </li>
-              </ul>
-            </li>
-          <% end %>
+          <li class="dropdown messages-menu">
+            <%= link_to update_notifications_path, class: "dropdown-toggle",
+              data: {toggle:"dropdown"}, method: :patch, remote: true do %>
+              <i class="fa fa-bell-o"></i>
+              <span class="label label-danger dropdown-label number-notification"><%= not_seen_notification %></span>
+            <% end %>
+            <ul class="dropdown-menu">
+              <li class="header">
+                <%= t "layouts.notifications.notification" %></li>
+              <li>
+                <div id="slimScrollDiv">
+                  <ul class="menu" id="slimscroll_admin">
+                    <% current_user.user_notifications.select_notifications
+                      .limit(10).each do |user_notification| %>
+                      <%= render "shared/notification",
+                        notification: user_notification.notification %>
+                    <% end %>
+                  </ul>
+                </div>
+              </li>
+              <li class="footer">
+                <%= link_to t("layouts.notifications.view_all"), notifications_path %>
+              </li>
+            </ul>
+          </li>
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <%= avatar_user_tag current_user, "user-image", Settings.image_size_50 %>
@@ -54,7 +52,7 @@
               </li>
               <li class="user-footer">
                 <div class="pull-left">
-                  <%= link_to t("staticpages.profile"), admin_user_path(current_user),
+                  <%= link_to t("staticpages.profile"), trainer_user_path(current_user),
                     class: "btn btn-default btn-flat" %>
                 </div>
                 <div class="pull-right">
@@ -83,29 +81,22 @@
       <ul class="sidebar-menu">
         <% if can? :read, Course %>
           <li>
-            <%= link_to admin_courses_path do %>
+            <%= link_to trainer_courses_path do %>
               <i class="fa fa-calendar"></i><span><%= t "layouts.courses" %></span>
             <% end %>
           </li>
         <% end %>
         <% if can? :read, Subject %>
           <li>
-            <%= link_to admin_subjects_path do %>
+            <%= link_to trainer_subjects_path do %>
               <i class="fa fa-laptop"></i><span><%= t "layouts.subjects" %></span>
             <% end %>
           </li>
         <% end %>
-        <% if can? :read, Role %>
+        <% if can? :read, User %>
           <li>
-            <%= link_to admin_roles_path do %>
-              <i class="fa fa-table"></i><span><%= t "layouts.roles" %></span>
-            <% end %>
-          </li>
-        <% end %>
-        <% if can? :read, Location %>
-          <li>
-            <%= link_to admin_locations_path do %>
-              <i class="fa fa-map-marker"></i><span><%= t "layouts.locations" %></span>
+            <%= link_to trainer_users_path do %>
+              <i class="fa fa-user"></i><span><%= t "layouts.users" %></span>
             <% end %>
           </li>
         <% end %>
@@ -120,14 +111,14 @@
               object: [Evaluation, EvaluationTemplate, Rank] %>
           </li>
         <% end %>
-        <% if can?(:read, University) || can?(:read, Status) ||
-          can?(:read, UserType) || can?(:read, User) %>
+        <% if can?(:read, Role) || can?(:read, Location) ||
+          can?(:read, University) || can?(:read, Status) || can?(:read, UserType) %>
           <li id="user-profiles-header" class="treeview">
             <a href="javascript:void(0)">
-              <i class="fa fa-book"></i><span><%= t "layouts.user_profiles" %></span>
+              <i class="fa fa-book"></i><span><%= t "layouts.system" %></span>
               <i class="fa fa-angle-left pull-right"></i>
             </a>
-            <%= render "layouts/side_panel", object: [User, University,
+            <%= render "layouts/side_panel", object: [Role, Location, University,
               Status, UserType] %>
           </li>
         <% end %>
