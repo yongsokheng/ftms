@@ -166,6 +166,7 @@ en:
     time:
       format: "yyyy/mm/dd"
   layouts:
+    system: "System"
     courses: "Courses"
     subjects: "Subjects"
     course: "Course:"
@@ -179,7 +180,7 @@ en:
     status: "Status"
     evaluations: "Evaluations"
     user_profiles: "User profiles"
-    user: "User"
+    users: "Users"
     locations: "Locations"
     footer:
       street: "13F Keangnam Landmark 72 Tower, Plot E6, Pham Hung Road, Nam Tu Liem, Ha Noi, Viet Nam"

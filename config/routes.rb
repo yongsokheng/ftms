@@ -49,6 +49,22 @@ Rails.application.routes.draw do
     resources :subjects do
       resources :task_masters, only: :index
     end
+    root "courses#index"
+    resources :course_masters
+    resources :courses do
+      resources :subjects, only: :show
+      resource :assign_trainers, only: [:edit, :update]
+      resource :assign_trainees, only: [:edit, :update]
+      resource :change_status_courses, only: :update
+      resources :course_subjects, except: :new
+      resources :clone_courses, only: :create
+    end
+    resources :subjects do
+      resources :task_masters, only: :index
+    end
+    resources :users do
+      resource :evaluations
+    end
   end
 
   root "static_pages#home"
