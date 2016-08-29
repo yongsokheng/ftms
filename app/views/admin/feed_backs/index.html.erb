@@ -1,0 +1,22 @@
+<div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th><%= t "feed_backs.index" %></th>
+        <th><%= t "feed_backs.user" %></th>
+        <th><%= t "feed_backs.content" %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @feed_backs.each.with_index 1 do |feed_back, index| %>
+        <tr>
+          <td><%= index %></td>
+          <td>
+            <%= link_to feed_back.user_name, admin_user_path(feed_back.user) %>
+          </td>
+          <td><%= feed_back.content %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -122,6 +122,14 @@
               Status, UserType] %>
           </li>
         <% end %>
+        <% if can? :read, FeedBack %>
+          <li>
+            <%= link_to admin_feed_backs_path do %>
+              <i class="fa fa-question" aria-hidden="true"></i>
+              <%= t "feed_backs.title" %>
+            <% end %>
+          </li>
+        <% end %>
       </ul>
     </section>
   </aside>

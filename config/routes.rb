@@ -43,6 +43,7 @@ Rails.application.routes.draw do
     resources :profiles
     resources :notes, except: :index
     resources :locations
+    resources :feed_backs, only: :index
   end
   
   namespace :trainer do

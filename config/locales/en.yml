@@ -281,6 +281,8 @@ en:
       all: "All Locations"
       new: "New"
       edit: "Edit"
+    feed_backs:
+      all: "All Feed Back"
   datatables:
     search_name: "Search name"
     search_name_email: "Search name or email"
@@ -292,4 +294,7 @@ en:
       name: "Name"
       manager: "Manager"
   feed_backs:
-    title: Feed back
+    title: "Feed back"
+    content: "Content"
+    user: "User"
+    index: "Index"
