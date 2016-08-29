@@ -25,7 +25,7 @@ class UsersDatatable
         index + 1,
         link_to(user.name, @view.admin_user_path(user)),
         user.email,
-        user.role_name,
+        user.roles.pluck(:name).join(", "),
         link_to(@view.t("button.edit"), @view.edit_admin_user_path(user), class: "pull-right"),
         link_to(@view.t("button.delete"), @view.admin_user_path(user),
           method: :delete, data: {confirm: @view.t("messages.delete.confirm")},

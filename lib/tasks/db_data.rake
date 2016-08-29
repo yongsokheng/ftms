@@ -124,7 +124,9 @@ namespace :db do
     puts "Create User Roles"
     User.first.role_ids = [1, 2, 3]
 
-    User.where.not(id: 1).each do |user|
+    User.second.user_roles.create! role_id: 2
+
+    User.offset(2).each do |user|
       user.user_roles.create! role_id: 3
     end
 
@@ -365,47 +367,47 @@ namespace :db do
         description: "Get an introduction to project git", subject_id: 10}
     ])
 
-    # puts "Create Course Subject"
-    # CourseSubject.create!([
-    #   {course_id: 1, subject_id: 1},
-    #   {course_id: 1, subject_id: 2},
-    #   {course_id: 1, subject_id: 3},
-    #   {course_id: 1, subject_id: 4},
+    puts "Create Course Subject"
+    CourseSubject.create!([
+      {course_id: 1, subject_id: 1},
+      {course_id: 1, subject_id: 2},
+      {course_id: 1, subject_id: 3},
+      {course_id: 1, subject_id: 4},
 
-    #   {course_id: 2, subject_id: 4},
-    #   {course_id: 2, subject_id: 5},
-    #   {course_id: 2, subject_id: 6},
-    #   {course_id: 2, subject_id: 7},
+      {course_id: 2, subject_id: 4},
+      {course_id: 2, subject_id: 5},
+      {course_id: 2, subject_id: 6},
+      {course_id: 2, subject_id: 7},
 
-    #   {course_id: 3, subject_id: 4},
-    #   {course_id: 3, subject_id: 8},
-    #   {course_id: 3, subject_id: 9},
-    #   {course_id: 3, subject_id: 10}
-    # ])
+      {course_id: 3, subject_id: 4},
+      {course_id: 3, subject_id: 8},
+      {course_id: 3, subject_id: 9},
+      {course_id: 3, subject_id: 10}
+    ])
 
-    # puts "Creating UserCourse"
-    # UserCourse.create!([
-    #   {active: true, user_id: 2, course_id: 1},
-    #   {active: true, user_id: 3, course_id: 1},
-    #   {active: true, user_id: 4, course_id: 1},
-    #   {active: true, user_id: 5, course_id: 1},
-    #   {active: true, user_id: 6, course_id: 1},
-    #   {active: true, user_id: 7, course_id: 1},
+    puts "Creating UserCourse"
+    UserCourse.create!([
+      {active: true, user_id: 2, course_id: 1},
+      {active: true, user_id: 3, course_id: 1},
+      {active: true, user_id: 4, course_id: 1},
+      {active: true, user_id: 5, course_id: 1},
+      {active: true, user_id: 6, course_id: 1},
+      {active: true, user_id: 7, course_id: 1},
 
-    #   {active: false, user_id: 2, course_id: 2},
-    #   {active: false, user_id: 8, course_id: 2},
-    #   {active: false, user_id: 9, course_id: 2},
-    #   {active: false, user_id: 10, course_id: 2},
-    #   {active: false, user_id: 11, course_id: 2},
-    #   {active: false, user_id: 12, course_id: 2},
+      {active: false, user_id: 2, course_id: 2},
+      {active: false, user_id: 8, course_id: 2},
+      {active: false, user_id: 9, course_id: 2},
+      {active: false, user_id: 10, course_id: 2},
+      {active: false, user_id: 11, course_id: 2},
+      {active: false, user_id: 12, course_id: 2},
 
-    #   {active: false, user_id: 2, course_id: 3},
-    #   {active: false, user_id: 13, course_id: 3},
-    #   {active: false, user_id: 14, course_id: 3},
-    #   {active: false, user_id: 15, course_id: 3},
-    #   {active: false, user_id: 16, course_id: 3},
-    #   {active: false, user_id: 17, course_id: 3}
-    # ])
+      {active: false, user_id: 2, course_id: 3},
+      {active: false, user_id: 13, course_id: 3},
+      {active: false, user_id: 14, course_id: 3},
+      {active: false, user_id: 15, course_id: 3},
+      {active: false, user_id: 16, course_id: 3},
+      {active: false, user_id: 17, course_id: 3}
+    ])
 
     puts "Document"
     Document.create!([
