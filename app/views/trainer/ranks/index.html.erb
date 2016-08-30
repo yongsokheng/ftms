@@ -4,11 +4,11 @@
       <%= t "layouts.ranks" %>
       <span>
         <%= link_to t("rank.buttons.new"),
-          new_admin_rank_path, class: "btn btn-success pull-right" %>
+          new_trainer_rank_path, class: "btn btn-success pull-right" %>
       </span>
     </div>
   </div>
-  <table id="rank-tbl" class="table table-bordered display" data-source="<%= admin_ranks_url(format: "json") %>" >
+  <table id="rank-tbl" class="table table-bordered display" data-source="<%= trainer_ranks_url(format: "json") %>" >
     <thead>
       <tr class="active">
         <th></th>

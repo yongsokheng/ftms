@@ -1,4 +1,4 @@
-class Admin::RanksController < ApplicationController
+class Trainer::RanksController < ApplicationController
   load_and_authorize_resource
 
   def index
@@ -19,7 +19,7 @@ class Admin::RanksController < ApplicationController
   def create
     if @rank.save
       flash[:success] = flash_message "created"
-      redirect_to admin_ranks_path
+      redirect_to trainer_ranks_path
     else
       flash[:failed] = flash_message "not_created"
       render :new
@@ -35,7 +35,7 @@ class Admin::RanksController < ApplicationController
   def update
     if @rank.update_attributes rank_params
       flash[:success] = flash_message "updated"
-      redirect_to admin_ranks_path
+      redirect_to trainer_ranks_path
     else
       flash_message[:failed] = flash_message "not_updated"
       render :edit

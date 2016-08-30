@@ -74,6 +74,7 @@ Rails.application.routes.draw do
       as: :status_subject
     resources :evaluations, only: :index
     resources :evaluation_templates
+    resources :ranks
   end
 
   root "static_pages#home"

@@ -3,7 +3,8 @@ class RanksDatatable
 
   delegate :params, :link_to, to: :@view
 
-  def initialize view
+  def initialize view, namespace
+    @namespace = namespace
     @view = view
   end
 
@@ -24,9 +25,9 @@ class RanksDatatable
         rank.rank_value,
         rank.begin_point,
         rank.end_point,
-        link_to(@view.t("button.edit"), @view.edit_admin_rank_path(rank),
+        link_to(@view.t("button.edit"), eval("@view.edit_#{@namespace}_rank_path(rank)"),
           class: "text-primary pull-right"),
-        link_to(@view.t("button.delete"), @view.admin_rank_path(rank),
+        link_to(@view.t("button.delete"), eval("@view.#{@namespace}_rank_path(rank)"),
           method: :delete, data: {confirm: @view.t("messages.delete.confirm")},
           class: "text-danger pull-right")
       ]
