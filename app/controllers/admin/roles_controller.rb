@@ -52,6 +52,6 @@ class Admin::RolesController < ApplicationController
 
   private
   def role_params
-    params.require(:role).permit :name, :allow_access_admin
+    params.require(:role).permit Role::ATTRIBUTES_ROLE_PARAMS
   end
 end

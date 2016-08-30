@@ -6,6 +6,7 @@
       <%= f.text_field :name, class: "form-control", required: true %>
       <%= f.check_box :allow_access_admin, {}, 1, 0 %>
       <%= f.label :allow_access_admin %>
+      <%= f.select :role_type, Role.role_types.keys, {}, class: "form-control" %>
       <br>
       <%= f.submit (f.object.new_record? ? t("roles.buttons.admin.create")
         : t("roles.buttons.admin.update")), class: "btn btn-primary" %>
