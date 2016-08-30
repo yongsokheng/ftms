@@ -84,15 +84,15 @@ class User < ApplicationRecord
   end
 
   def is_admin?
-    check_role "admin"
+    check_role Role.role_types[:admin]
   end
 
   def is_trainee?
-    check_role "trainee"
+    check_role Role.role_types[:trainee]
   end
 
   def is_trainer?
-    check_role "trainer"
+    check_role Role.role_types[:trainer]
   end
 
   def in_course? course
@@ -100,8 +100,8 @@ class User < ApplicationRecord
   end
 
   private
-  def check_role name
-    roles.exists? name: name
+  def check_role role_type
+    roles.exists? role_type: role_type
   end
 
   def password_required?
