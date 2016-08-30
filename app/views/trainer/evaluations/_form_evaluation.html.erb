@@ -1,0 +1,54 @@
+<%= form_for @evaluation, url: trainer_user_evaluations_path do |f| %>
+  <p class="pull-right"><%= f.submit (f.object.new_record? ? t("evaluations.create")
+    : t("evaluations.update")), class: "btn btn-primary" %></p>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-2">
+      <div class="title"><%= @user.name %></div>
+    </div>
+  </div>
+  <%= render "shared/error_messages", object: @evaluation %>
+  <div class="row">
+    <div class="col-md-4">
+      <%= f.label :assessment %>
+      <%= f.text_area :assessment, class: "form-control" %>
+    </div>
+    <div class="col-md-4">
+      <%= f.label :total_point %>
+      <%= f.number_field :total_point, class: "form-control", readonly: true %>
+    </div>
+
+    <div class="col-md-4">
+      <%= f.label :current_rank %>
+      <%= f.text_field :current_rank, class: "form-control", readonly: true %>
+
+      <%= f.hidden_field :user_id, value: @user.id %>
+    </div>
+    <%= f.hidden_field :user_id, value: @user.id %>
+  </div>
+  <hr/>
+  <div class="row">
+    <div class="evaluation-details col-md-6">
+      <div class="title"><%= t "layouts.evaluation" %></div>
+      <table class="table table-striped tbl-evaluation-details">
+        <thead>
+          <tr>
+            <th class="name"><%= t "evaluation.table.thead.name" %></th>
+            <th class="point"><%= t "evaluation.table.thead.point" %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= f.fields_for :evaluation_details do |builder| %>
+            <%= render "evaluation_details", f: builder %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="note col-md-6">
+      <div class="title"><%= t "notes.title" %></div>
+      <%= f.fields_for :notes do |builder| %>
+        <%= render "note_fields", f: builder %>
+      <% end %>
+      <p><%= link_to_add_fields t("notes.dynamic_form.add"), f, :notes %></p>
+    </div>
+  </div>
+<% end %>

@@ -3,7 +3,8 @@ class EvaluationsDatatable
 
   delegate :params, :link_to, to: :@view
 
-  def initialize view
+  def initialize view, namespace
+    @namespace = namespace
     @view = view
     @current_user = @view.current_user
     @trainees = User.trainees
@@ -28,11 +29,11 @@ class EvaluationsDatatable
         user.evaluation_current_rank,
         if user.evaluation.nil?
           link_to(@view.t("evaluations.evaluate"),
-            @view.new_admin_user_evaluations_path(user),
+            eval("@view.new_#{@namespace}_user_evaluations_path(user)"),
             class: "pull-right")
         else
           link_to(@view.t("evaluations.evaluate"),
-            @view.edit_admin_user_evaluations_path(user),
+            eval("@view.edit_#{@namespace}_user_evaluations_path(user)"),
             class: "pull-right")
         end
       ]

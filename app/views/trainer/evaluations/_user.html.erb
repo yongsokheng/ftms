@@ -1,0 +1,14 @@
+<tr>
+  <td class="name"><%= user.name %></td>
+  <td class="total_point"><%= user.evaluation_total_point %></td>
+  <td class="current_rank"><%= user.evaluation_current_rank %></td>
+  <td class="action">
+    <% if user.evaluation.nil? %>
+      <%= link_to t("evaluations.evaluate"),
+        new_trainer_user_evaluations_path(user), class: "btn btn-success" %>
+    <% else %>
+      <%= link_to t("evaluations.evaluate"),
+        edit_trainer_user_evaluations_path(user), class: "btn btn-primary" %>
+    <% end %>
+  </td>
+</tr>
