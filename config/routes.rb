@@ -66,11 +66,7 @@ Rails.application.routes.draw do
     resources :users do
       resource :evaluations
     end
-  end
-
-  namespace :trainer do
-    root "courses#index"
-    resources :users
+    resources :feed_backs, only: :index
   end
 
   root "static_pages#home"
