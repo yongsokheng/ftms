@@ -298,3 +298,8 @@ en:
     content: "Content"
     user: "User"
     index: "Index"
+  charts:
+    user_sign_up:
+      title: "Number of User sign up"
+      number_user: "Number of User"
+      number_user_show: "Number of sign up : <b>{point.y:.1f} users</b>"

@@ -63,6 +63,8 @@ class User < ApplicationRecord
   scope :by_location, ->location_id{
     joins(:profile).where("profiles.location_id = ?", location_id)
   }
+  scope :created_between, ->start_date, end_date{where("DATE(created_at) >=
+    ? AND DATE(created_at) <= ?", start_date, end_date)}
 
   delegate :total_point, :current_rank, to: :evaluation, prefix: true, allow_nil: true
 
