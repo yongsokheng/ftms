@@ -1,4 +1,4 @@
-class Admin::EvaluationTemplatesController < ApplicationController
+class Trainer::EvaluationTemplatesController < ApplicationController
   load_and_authorize_resource
 
   def index
@@ -25,7 +25,7 @@ class Admin::EvaluationTemplatesController < ApplicationController
   def create
     if @evaluation_template.save
       flash[:success] = flash_message "created"
-      redirect_to admin_evaluation_templates_path
+      redirect_to trainer_evaluation_templates_path
     else
       flash[:failed] = flash_message "not_created"
       render :new
@@ -35,7 +35,7 @@ class Admin::EvaluationTemplatesController < ApplicationController
   def update
     if @evaluation_template.update_attributes evaluation_template_params
       flash[:success] = flash_message "updated"
-      redirect_to admin_evaluation_templates_path
+      redirect_to trainer_evaluation_templates_path
     else
       flash_message[:failed] = flash_message "not_updated"
       render :edit
