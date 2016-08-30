@@ -1,0 +1,113 @@
+<% provide :title, t("courses.course") %>
+<div id="courses">
+  <div class="row course-show">
+    <div class="col-md-9 left-side-course">
+      <div class="row">
+        <div class="col-md-2">
+          <%= image_course_tag @course, @course.programming_language_name %>
+        </div>
+        <div class="col-md-8">
+          <span class="header-title"><%= @course.name %></span> &nbsp;
+          <span class="label-status <%= set_background_color_status @course.status %>">
+            <%= t "courses.labels.status.#{@course.status}" %>
+          </span>
+          <div>
+            <p><i><%= @course.description %></i></p>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="dropdown pull-right">
+            <button id="dLabel" type="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"
+              class="btn btn-default">
+              <span class="glyphicon glyphicon-align-justify"
+                aria-hidden="true"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right"
+              aria-labelledby="dLabel">
+              <li>
+                <% if @course.init? %>
+                  <a href="<%= trainer_course_change_status_courses_path @course %>",
+                    data-method="patch",
+                    data-confirm="<%= t "courses.confirms.confirm_start" %>">
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                    <%= t "courses.buttons.admin.start" %>
+                  </a>
+                <% elsif @course.progress? %>
+                  <a href="<%= trainer_course_change_status_courses_path @course %>",
+                    data-method="patch",
+                    data-confirm="<%= t "courses.confirms.confirm_finish" %>">
+                    <i class="fa fa-minus-square-o" aria-hidden="true"></i>
+                    <%= t "courses.buttons.admin.finish" %>
+                  </a>
+                <% elsif @course.finish? %>
+                  <a href="<%= trainer_course_change_status_courses_path @course %>",
+                    data-method="patch",
+                    data-confirm="<%= t "courses.confirms.confirm_reopen" %>">
+                    <i class="fa fa-retweet" aria-hidden="true"></i>
+                    <%= t "courses.buttons.admin.reopen" %>
+                  </a>
+                <% end %>
+              </li>
+              <li>
+                <a href="<%= trainer_course_clone_courses_path @course %>",
+                  data-method="post",
+                  data-confirm="<%= t "courses.confirms.confirm_clone" %>">
+                  <i class="fa fa-clone" aria-hidden="true"></i>
+                  <%= t "button.clone" %>
+                </a>
+              </li>
+              <li>
+                <a  href="<%= edit_trainer_course_path %>">
+                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                  <%= t "courses.buttons.admin.edit" %>
+                </a>
+              </li>
+              <li>
+                <a href="<%= trainer_course_path @course %>",
+                  data-method="delete",
+                  data-confirm="<%= t "messages.delete.confirm" %>">
+                  <i class="fa fa-trash" aria-hidden="true"></i>
+                  <%= t "button.delete" %>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <br>
+      <section class="content row">
+        <%= render "course_subjects" %>
+      </section>
+    </div>
+
+    <div class="col-md-3 user-infor right-side-course">
+      <h2 class="label"><%= t "courses.labels.trainer" %>
+        (<%= @trainers.size %>)&nbsp;
+        <%= link_to edit_trainer_course_assign_trainers_path(@course) do %>
+          <i class="ionicons ion-android-person-add"></i>
+        <% end %>
+      </h2>
+      <ul>
+        <% @trainers.each do |trainer| %>
+          <li class="label-user"><%= avatar_user_tag trainer, "profile-trainer",
+            Settings.image_size_50 %>
+            <%= link_to trainer.name, [:trainer, trainer] %></li>
+        <% end %>
+      </ul>
+      <h2 class="label"><%= t "courses.labels.trainee" %>
+        (<%= @trainees.size %>)
+        <%= link_to edit_trainer_course_assign_trainees_path(@course) do %>&nbsp;
+          <i class="ionicons ion-android-person-add"></i>
+        <% end %>
+      </h2>
+      <ul>
+        <% @trainees.each do |trainee| %>
+          <li class="label-user"><%= avatar_user_tag trainee, "profile-user",
+            Settings.image_size_50 %>
+            <%= link_to trainee.name, [:trainer, trainee] %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

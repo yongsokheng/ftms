@@ -45,11 +45,8 @@ Rails.application.routes.draw do
     resources :locations
     resources :feed_backs, only: :index
   end
-  
+
   namespace :trainer do
-    resources :subjects do
-      resources :task_masters, only: :index
-    end
     root "courses#index"
     resources :course_masters
     resources :courses do
@@ -67,6 +64,14 @@ Rails.application.routes.draw do
       resource :evaluations
     end
     resources :feed_backs, only: :index
+
+    resources :course_subjects do
+      resources :user_subjects, only: :update
+      resources :tasks, except: :show
+    end
+
+    patch "status_subject/:course_subject_id/:status" => "status_subjects#update",
+      as: :status_subject
   end
 
   root "static_pages#home"

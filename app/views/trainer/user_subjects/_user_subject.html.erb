@@ -1,0 +1,25 @@
+<tr>
+  <td><%= link_to user_subject.user.name, [:trainer, user_subject.user] %></td>
+  <td><%= user_subject.start_date %></td>
+  <td><%= user_subject.end_date %></td>
+  <td><%= user_subject.status %></td>
+  <td>
+    <%= render "shared/progress_bar", percent: user_subject.percent_progress,
+        status: user_subject.status %>
+  </td>
+  <td class="action">
+    <% if @course.progress? %>
+        <% if user_subject.init? %>
+          <%= link_to t("admin.actions.show_subject.start"),
+            [:trainer, @course_subject, user_subject],
+            method: :patch, remote: true, class: "btn btn-primary btn-status" %>
+        <% elsif user_subject.progress? %>
+          <%= link_to t("admin.actions.show_subject.finish"),
+            [:trainer, @course_subject, user_subject],
+            method: :patch, remote: true, class: "btn btn-success btn-status" %>
+        <% end %>
+      </div>
+    <% end %>
+  </td>
+</tr>
+

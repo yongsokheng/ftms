@@ -1,0 +1,33 @@
+<div class="title"><%= t "subjects.new_task" %></div>
+<%= form_for :task, url: trainer_course_subject_tasks_path(
+  @course_subject.id), html: {method: :post}  do |f| %>
+  <%= render "shared/error_messages", object: @course_subject %>
+
+  <div class="row">
+    <div class="col-md-12">
+      <%= f.text_field :name, class: "form-control", required: true,
+        placeholder: t("tasks.form.input_task_name") %>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-12">
+      <%= f.file_field :image, class: "form-control" %>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-12">
+      <%= f.text_area :description, class: "form-control",
+        required: true,
+        placeholder: t("tasks.form.input_task_description") %>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-1 col-md-offset-10">
+      <%= f.submit t("subjects.submit.create_task"),
+        class: "btn btn-success"%>
+    </div>
+  </div>
+<% end %>

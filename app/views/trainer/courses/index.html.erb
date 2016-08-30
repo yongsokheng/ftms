@@ -1,0 +1,35 @@
+<div id="courses">
+  <div id="admin-courses">
+    <div class="row">
+      <div class="col-md-12 title">
+        <%= t "layouts.courses" %>
+        <span>
+          <%= link_to t("courses.buttons.admin.new"),
+            new_trainer_course_path, class: "btn btn-success pull-right" %>
+        </span>
+      </div>
+    </div>
+    <table id="course-tbl" class="table table-bordered display"
+      data-source="<%= trainer_courses_url format: "json" %>" >
+      <thead>
+        <tr class="active">
+          <th><%= t "courses.table.id" %></th>
+          <th><%= t "courses.table.name" %></th>
+          <th><%= t "courses.table.trainers" %></th>
+          <th><%= t "courses.table.status" %></th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+      <tfoot hidden>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><%= t "courses.table.all_status" %></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
+
