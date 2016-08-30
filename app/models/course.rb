@@ -29,6 +29,11 @@ class Course < ApplicationRecord
 
   scope :active_course, ->{where status: "progress"}
 
+  scope :created_between, ->start_date, end_date{where("DATE(created_at) >=
+    ? AND DATE(created_at) <= ?", start_date, end_date)}
+  scope :finished_between, ->start_date, end_date{where("DATE(updated_at) >=
+    ? AND DATE(updated_at) <= ? AND status = #{statuses[:finish]}", start_date, end_date)}
+
   accepts_nested_attributes_for :user_courses, allow_destroy: true
   accepts_nested_attributes_for :documents,
     reject_if: proc {|attributes| attributes["content"].blank?}, allow_destroy: true

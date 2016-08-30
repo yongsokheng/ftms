@@ -283,6 +283,8 @@ en:
       edit: "Edit"
     feed_backs:
       all: "All Feed Back"
+    dashboard:
+      all: "Dashboard"
   datatables:
     search_name: "Search name"
     search_name_email: "Search name or email"
@@ -303,3 +305,11 @@ en:
       title: "Number of User sign up"
       number_user: "Number of User"
       number_user_show: "Number of sign up : <b>{point.y:.1f} users</b>"
+    new_course:
+      title: "Number new Course"
+      number_course: "Number of Course"
+      number_course_show: "Number new course : <b>{point.y:.1f} course</b>"
+    course_finished:
+      title: "Number finished Course"
+      number_course: "Number of Course"
+      number_course_show: "Number finished course : <b>{point.y:.1f} course</b>"
