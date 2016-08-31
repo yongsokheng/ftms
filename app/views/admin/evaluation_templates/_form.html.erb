@@ -6,10 +6,12 @@
       <%= f.text_field :name, class: "form-control", required: true %>
 
       <%= f.label :min_point %>
-      <%= f.number_field :min_point, class: "form-control", required: true %>
+      <%= f.number_field :min_point, min: Settings.evaluations.min,
+        class: "form-control", required: true %>
 
       <%= f.label :max_point %>
-      <%= f.number_field :max_point, class: "form-control", required: true %>
+      <%= f.number_field :max_point, min: Settings.evaluations.min,
+        class: "form-control", required: true %>
       <br>
 
       <%= f.submit yield(:submit), class: "btn btn-primary" %>

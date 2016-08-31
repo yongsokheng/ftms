@@ -8,7 +8,7 @@ class CloneCourseService
       begin
         new_course = @course.dup
         new_course.status = Settings.course.init
-        new_course.image = File.open @course.image.path
+        new_course.image = File.open @course.image.path if @course.image.path
         new_course.save!
         clone_course_subject @course, new_course
       true
