@@ -28,7 +28,7 @@
       </div>
     </body>
   <% elsif current_user.present? &&
-    (current_user.is_trainer? || current_user.is_admin?) %>
+    (@namespace == "trainer" || @namespace == "admin") %>
     <body id="body-admin" class="skin-blue sidebar-mini wysihtml5-supported" >
       <div class="wrapper">
         <%= render "layouts/#{@namespace}_sidebar" %>

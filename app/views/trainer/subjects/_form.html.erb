@@ -47,7 +47,7 @@
             <span><%= t "subjects.during_time" %>:</span>
           </div>
           <div class="col-md-9">
-            <%= f.text_field :during_time, class: "form-control", required: true,
+            <%= f.number_field :during_time, class: "form-control", required: true,
               placeholder: I18n.t("subjects.form.input_subject_during_time") %>
           </div>
         </div>

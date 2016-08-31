@@ -8,7 +8,6 @@ en:
       thread:
         name: "Name"
         action: "Action"
-        allow_access_admin: "Allow access admin"
     buttons:
       admin:
         new: "New"
