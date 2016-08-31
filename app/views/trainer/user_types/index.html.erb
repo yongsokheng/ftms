@@ -1,0 +1,26 @@
+<div id="types" class="profile-active">
+  <p class="pull-right"><%= link_to t("button.new"),
+    new_trainer_user_type_path, class: "btn btn-success" %></p>
+  <table class="table table-striped tbl-type">
+    <thead>
+      <tr>
+        <th class="name"><%= t "table.thead.name" %></th>
+        <th class="action"><%= t "table.thread.action" %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @user_types.each do |user_type| %>
+        <tr>
+          <td class="name"><%= user_type.name %></td>
+          <td class="action">
+            <%= link_to t("button.edit"), edit_trainer_user_type_path(user_type),
+              class: "text-primary" %> &nbsp;
+            <%= link_to t("button.delete"), trainer_user_type_path(user_type),
+              method: :delete, data: {confirm: t("messages.delete.confirm")},
+              class: "text-danger" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

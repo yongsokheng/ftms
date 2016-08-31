@@ -1,4 +1,4 @@
-class Admin::UniversitiesController < ApplicationController
+class Trainer::UniversitiesController < ApplicationController
   load_and_authorize_resource except: :show
 
   def index
@@ -20,7 +20,7 @@ class Admin::UniversitiesController < ApplicationController
   def create
     if @university.save
       flash[:success] = flash_message "created"
-      redirect_to admin_universities_path
+      redirect_to trainer_universities_path
     else
       flash[:failed] = flash_message "not_created"
       render :new
@@ -36,7 +36,7 @@ class Admin::UniversitiesController < ApplicationController
   def update
     if @university.update_attributes university_params
       flash[:success] = flash_message "updated"
-      redirect_to admin_universities_path
+      redirect_to trainer_universities_path
     else
       flash_message[:failed] = flash_message "not_updated"
       render :edit

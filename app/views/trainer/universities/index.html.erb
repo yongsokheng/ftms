@@ -1,0 +1,24 @@
+<div id="universities" class="profile-active">
+  <div class="row">
+    <div class="col-md-12 title">
+      <%= t "layouts.universities" %>
+      <span>
+        <%= link_to t("buttons.new"),
+            new_trainer_university_path, class: "btn btn-success pull-right" %>
+      </span>
+    </div>
+  </div>
+  <table id="university-tbl" class="table table-bordered display"
+    data-source="<%= trainer_universities_url(format: "json") %>">
+    <thead>
+      <tr class="active">
+        <th></th>
+        <th class="name"><%= t "table.thead.name" %></th>
+        <th class="action"></th>
+        <th class="action"></th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</div>
