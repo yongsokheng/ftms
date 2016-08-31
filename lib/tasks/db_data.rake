@@ -4,10 +4,9 @@ namespace :db do
     Rake::Task["db:migrate:reset"].invoke
 
     puts "Creating Role"
-    ["admin", "trainer"].each do |name|
-      Fabricate :role, name: name, allow_access_admin: true
-    end
-    Fabricate :role, name: "trainee", allow_access_admin: false
+    Fabricate :role, name: "admin", role_type: 0
+    Fabricate :role, name: "trainer", role_type: 1
+    Fabricate :role, name: "trainee", role_type: 2
 
     puts "Creating User"
     User.create!([

@@ -8,7 +8,6 @@ ja:
         thread:
             name: "名"
             action: "アクション"
-            allow_access_admin: "管理"
     buttons:
       admin:
         create: "作ります"
