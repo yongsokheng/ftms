@@ -4,8 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!, :set_locale, except: :home
   before_action :new_feed_back
   before_action :get_namespace
-
-  add_breadcrumb I18n.t("breadcrumbs.paths"), :root_path
+  before_action :set_root_path
 
   include ApplicationHelper
   include PublicActivity::StoreController
@@ -35,6 +34,17 @@ class ApplicationController < ActionController::Base
   end
 
   private
+  def set_root_path
+    if current_user.nil?
+    elsif current_user.is_admin? && @namespace == "admin"
+      add_breadcrumb I18n.t("breadcrumbs.paths"), "/admin"
+    elsif current_user.is_trainer? && @namespace == "trainer"
+      add_breadcrumb I18n.t("breadcrumbs.paths"), "/trainer"
+    else
+      add_breadcrumb I18n.t("breadcrumbs.paths"), :root_path
+    end
+  end
+
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
     User.human_attribute_name "name"
