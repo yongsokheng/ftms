@@ -52,6 +52,7 @@
 //= require bindWithDelay
 //= require pagination
 //= require admin/location
+//= require admin/dashboard_user_chart
 
 $(document).on("turbolinks:load ajaxComplete", function() {
   $(".alert").delay(3000).fadeOut();
