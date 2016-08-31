@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-md-3">
         <%= render "admin/users/profile" %>
-        <%= render "admin/users/notes" unless current_user.is_trainee? %>
+        <%= render "admin/users/notes" if @namespace == Settings.namespace_roles.admin %>
       </div>
 
       <div class="col-md-9">

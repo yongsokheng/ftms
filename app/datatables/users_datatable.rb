@@ -40,7 +40,7 @@ class UsersDatatable
   end
 
   def fetch_users
-    if @current_user.is_admin?
+    if @current_user.is_admin? && @namespace == Settings.namespace_roles.admin
       users = User.select_all
     else
       courses = @current_user.user_courses.pluck :course_id

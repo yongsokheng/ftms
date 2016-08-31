@@ -1,0 +1,10 @@
+<%= form_for [:trainer, @note], remote: true do |f| %>
+  <div class="errors"></div>
+  <%= f.text_area :name, placeholder: t("notes.add_note"), required: true,
+    class: "form-control" %>
+  <hr>
+  <a type="button" class="btn btn-default" data-dismiss="modal" aria-label="Close">
+    <%= t "buttons.cancel" %>
+  </a>
+  <%= f.submit t("buttons.save"), class: "btn btn-primary pull-right" %>
+<% end %>
