@@ -90,8 +90,10 @@ class UserSubject < ApplicationRecord
   end
 
   def percent_progress
-    user_task_size = user_tasks.size
-    (user_tasks.finished.size.to_f / user_task_size) * 100 if user_task_size > 0
+    if start_date.present?
+      user_current_time = (Time.zone.today - start_date).to_f
+      user_current_time * 100 / during_time
+    end
   end
 
   private

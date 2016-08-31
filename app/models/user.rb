@@ -57,7 +57,7 @@ class User < ApplicationRecord
   scope :trainees, ->{joins(:user_roles).where("user_roles.role_id = 3").uniq}
   scope :find_course, ->course{joins(:user_courses)
     .where("user_courses.course_id in (?)", course).uniq}
-  scope :show_members, ->{order(:role_id, :name).limit Settings.number_member_show}
+  scope :show_members, ->{limit Settings.number_member_show}
   scope :select_all, ->{joins(:user_roles).uniq}
   scope :not_trainees, ->{joins(:user_roles).where("user_roles.role_id != 3")}
   scope :by_location, ->location_id{
