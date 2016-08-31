@@ -1,0 +1,16 @@
+<div>
+  <div class="trainer-structure">
+    <%= link_to [:admin, trainer], title: trainer.name do %>
+      <%= avatar_user_tag trainer, "img-circle", Settings.image_size_30 %>
+      <%= trainer.name %>
+    <% end %>
+  </div>
+
+  <div class="subject-structure">
+    <% CourseSubject.load_course_subjects_for_trainer(trainer)
+      .each do |subject, course_subject| %>
+      <%= render "course_subject", subject: Subject.find(subject),
+        course_subject_ids: course_subject.pluck(:id) %>
+    <% end %>
+  </div>
+</div>

@@ -4,4 +4,6 @@ class Location < ApplicationRecord
   has_many :profiles
 
   validates :name, presence: true, uniqueness: {case_sensitive: false}
+
+  delegate :name, to: :manager, prefix: true, allow_nil: true
 end

@@ -86,6 +86,12 @@
             Status, UserType] %>
         </li>
         <li>
+          <%= link_to admin_organization_charts_path do %>
+            <i class="fa fa-sitemap" aria-hidden="true"></i>
+            <%= t "layouts.organization_chart" %>
+          <% end %>
+        </li>
+        <li>
           <%= link_to admin_feed_backs_path do %>
             <i class="fa fa-question" aria-hidden="true"></i>
             <%= t "feed_backs.title" %>

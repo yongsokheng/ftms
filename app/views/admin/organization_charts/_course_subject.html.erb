@@ -1,0 +1,16 @@
+<% if UserSubject.load_by_course_subject(course_subject_ids).any? %>
+  <div class="subject">
+    <div class="subject-name">
+      <%= link_to admin_subject_task_masters_path(subject),
+        title: subject.name do %>
+        <%= set_image subject, Settings.image_size_40 %>
+        <%= subject.name %>
+      <% end %>
+    </div>
+    <div>
+      <%= render partial: "user_subject",
+        collection: UserSubject.load_by_course_subject(course_subject_ids),
+        as: :user_subject %>
+    </div>
+  </div>
+<% end %>
