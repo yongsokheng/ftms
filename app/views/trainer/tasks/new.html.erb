@@ -1,4 +1,3 @@
-<div class="title"><%= t "subjects.new_task" %></div>
 <%= form_for :task, url: trainer_course_subject_tasks_path(
   @course_subject.id), html: {method: :post}  do |f| %>
   <%= render "shared/error_messages", object: @course_subject %>
