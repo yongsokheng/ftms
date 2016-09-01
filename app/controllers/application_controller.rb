@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied do |exception|
     flash[:alert] = exception.message
-    redirect_to main_app.root_path
+    redirect_to get_root_path
   end
 
   def default_url_options options = {}
@@ -24,7 +24,14 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for resource
-    if current_user.is_admin?
+    get_root_path
+  end
+
+  private
+  def get_root_path
+    if current_user.nil?
+      root_path
+    elsif current_user.is_admin?
       admin_root_path
     elsif current_user.is_trainer?
       trainer_root_path
@@ -33,12 +40,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  private
   def set_root_path
     if current_user.nil?
-    elsif current_user.is_admin? && @namespace == "admin"
+    elsif current_user.is_admin? && @namespace == Settings.namespace_roles.admin
       add_breadcrumb I18n.t("breadcrumbs.paths"), "/admin"
-    elsif current_user.is_trainer? && @namespace == "trainer"
+    elsif current_user.is_trainer? && @namespace == Settings.namespace_roles.trainer
       add_breadcrumb I18n.t("breadcrumbs.paths"), "/trainer"
     else
       add_breadcrumb I18n.t("breadcrumbs.paths"), :root_path

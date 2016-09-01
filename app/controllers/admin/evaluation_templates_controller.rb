@@ -37,7 +37,6 @@ class Admin::EvaluationTemplatesController < ApplicationController
       flash[:success] = flash_message "updated"
       redirect_to admin_evaluation_templates_path
     else
-      flash_message[:failed] = flash_message "not_updated"
       render :edit
     end
   end
