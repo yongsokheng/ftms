@@ -70,6 +70,7 @@ class User < ApplicationRecord
     ? AND DATE(created_at) <= ?", start_date, end_date)}
 
   delegate :total_point, :current_rank, to: :evaluation, prefix: true, allow_nil: true
+  delegate :location_id, to: :profile, prefix: true, allow_nil: true
 
   after_create :create_user_profile
   before_validation :set_password

@@ -39,7 +39,7 @@ class CoursesDatatable
 
   def fetch_courses
     current_user = @view.current_user
-    current_courses = current_user.is_admin? ? Course : current_user.courses
+    current_courses = @namespace == Settings.namespace_roles.admin ? Course : current_user.courses
     courses = current_courses.order("#{sort_column} #{sort_direction}")
       .where("name like :search", search: "%#{params[:sSearch]}%")
       .per_page_kaminari(page).per per_page
