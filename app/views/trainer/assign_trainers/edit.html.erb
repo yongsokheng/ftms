@@ -1,5 +1,4 @@
 <div id="trainees">
-  <h3 class="title"><%= t "courses.assign_trainers" %></h3>
   <%= form_for @course, url: trainer_course_assign_trainers_path,
     method: :patch do |f| %>
     <%= render "shared/error_messages", object: @course %>

@@ -1,6 +1,5 @@
 <%= form_for @role, url: admin_role_allocate_permissions_path, method: :patch do |f| %>
   <%= render "shared/error_messages", object: @role %>
-  <div class="title"><%= t "roles.layouts.allocate_permission" %></div>
   <div class="row">
     <div class="col-md-1 title"><%= @role.name %></div>
     <div class="col-md-1 col-md-offset-8"><%= f.submit :submit,

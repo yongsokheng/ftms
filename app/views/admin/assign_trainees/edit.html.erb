@@ -1,5 +1,4 @@
 <div id="trainees">
-  <h3 class="title"><%= t "courses.assign_trainees" %></h3>
   <%= form_for @course, url: admin_course_assign_trainees_path, method: :patch do |f| %>
     <%= render "shared/error_messages", object: @course %>
     <%= render "shared/form_assign", f: f, users: @trainees, course_users:
