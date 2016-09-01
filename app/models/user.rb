@@ -53,13 +53,16 @@ class User < ApplicationRecord
   delegate :id, :name, to: :role, prefix: true, allow_nil: true
 
   scope :available_of_course, ->course_id{where QUERY, course_id: course_id}
-  scope :trainers, ->{joins(:user_roles).where("user_roles.role_id = 2").uniq}
-  scope :trainees, ->{joins(:user_roles).where("user_roles.role_id = 3").uniq}
+  scope :trainers, ->{joins(user_roles: :role)
+    .where("roles.role_type = ?", Role.role_types[:trainer])}
+  scope :trainees, ->{joins(user_roles: :role)
+    .where("roles.role_type = ?", Role.role_types[:trainee])}
   scope :find_course, ->course{joins(:user_courses)
-    .where("user_courses.course_id in (?)", course).uniq}
+    .where("user_courses.course_id in (?)", course).distinct}
   scope :show_members, ->{limit Settings.number_member_show}
-  scope :select_all, ->{joins(:user_roles).uniq}
-  scope :not_trainees, ->{joins(:user_roles).where("user_roles.role_id != 3")}
+  scope :select_all, ->{joins(:user_roles).distinct}
+  scope :not_trainees, ->{joins(user_roles: :role)
+    .where("roles.role_type != ?", Role.role_types[:trainee]).distinct}
   scope :by_location, ->location_id{
     joins(:profile).where("profiles.location_id = ?", location_id)
   }
