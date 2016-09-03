@@ -1,23 +1,7 @@
 en:
   admin:
-    subject:
-      name: "Name"
-      description: "Description"
-      tasks: "Task"
-      name_task: "Name"
-      description_task: "Description"
-      save: "Save"
-      labels:
-        show: "Show"
-        user_list: "User List"
-      flashes:
-        update: "updated"
-        not_update: "not updated"
     actions:
       show_subject:
-        title: "%{object_label}"
-        menu: "Show"
-        breadcrumb: "%{object_label}"
         start: "Start"
         finish: "Finish"
         start_all: "Start all"

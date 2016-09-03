@@ -2,13 +2,13 @@ en:
   evaluation:
     table:
       thead:
-        name: "Name"
-        total_point: "Total point"
-        current_rank: "Current rank"
-        min_point: "Min point"
-        max_point: "Max point"
+        name: Name
+        point: Point
+      thread:
         action: "Action"
-        point: "Point"
+        current_rank: "Current Rank"
+        name: "Name"
+        total_point: Total Point
   evaluation_template:
     buttons:
       new: "New"
@@ -16,19 +16,12 @@ en:
       update: "Update"
   layouts:
     evaluation_template: "Evaluation Templates"
+    paths: "Paths"
   notes:
     title: "Notes"
-    edit: "Edit"
-    delete: "Delete"
-    update: "Update"
-    panel_update: "Update Note"
-    table:
-      index: "Index"
-      note_name: "Name"
-      created_at: "Created at"
-      updated_at: "Updated at"
     dynamic_form:
       add: "Add New Note"
       remove: "Remove"
   seach_user:
     name_contain: "Name Contain: "
+  message-link-to-function: "Message Link To Funtion"

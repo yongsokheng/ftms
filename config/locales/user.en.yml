@@ -1,5 +1,8 @@
 en:
   user:
+    buttons:
+      new: New
+    role: Role
     login: "Log in"
     edit_profile: "Edit profile"
     new_user: "New user"
@@ -10,27 +13,11 @@ en:
       avatar: "Avatar"
     place_holder:
       password_confirmation: "Password Confirmation"
-    action:
-      edit: "Edit"
     profile:
-      name: "Name: "
       email: "Email: "
-    basic_info: "Basic information"
     table:
       name: "Name"
       email: "Email"
-      start_training_date: "Start training"
-      finish_training_date: "Finish training"
-      leave_date: "Leave"
-      contract_date: "Contract"
-      trainer: "Trainer"
-      ready_for_project: "Ready for project"
-      type: "Type"
-      university: "University"
-      progress: "Progress"
-      status: "Status"
-      action: "Action"
-      role: "Role"
     tabs:
       activities: "Activities"
       finished_courses: "Finished courses"
@@ -49,5 +36,4 @@ en:
     submit: "Update profile"
     save: "Save"
     new: "New"
-    add_note: "Add Note"
     cancel: "Cancel"

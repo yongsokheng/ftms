@@ -1,23 +1,11 @@
 en:
   roles:
-    layouts:
-      create_role: "Create role"
-      edit_role: "Edit role"
-      allocate_permission: "Allocate permission"
     table:
       thread:
         name: "Name"
-        action: "Action"
     buttons:
       admin:
         new: "New"
         create: "Create"
-        edit: "Edit"
         update: "Update"
-        delete: "Delete"
-        delete_confirm: "Are you sure"
-        assignuser: "Assign User"
-    create_role: "Create role"
-    no_role: "No role to display"
-    name: "Name"
     select_all: "Select All"

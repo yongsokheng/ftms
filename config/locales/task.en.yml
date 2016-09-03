@@ -1,16 +1,10 @@
 en:
   tasks:
-    spent_time: "Spent time: "
-    hours: "hour(s)"
-    update: "Update"
-    progress: "Progress: "
-    status: "Status: "
-    edit: "edit task"
+    description: Description
     update: "Update"
     fields:
       name: "Name"
       description: "Description"
-      image: "Image"
     form:
       input_task_name: "Enter task name..."
       input_task_description: "Enter task description..."

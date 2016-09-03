@@ -4,24 +4,11 @@ en:
       init: "New"
       progress: "Progress"
       finish: "Finish"
-    fields:
-      status: "Status"
-      name: "Name"
-      estimate_time: "Estimate time"
-      spent_time: "Spent time"
-      progress: "Progress"
-    status:
-      new: "New"
     labels:
-      content: "Content"
       days: "days"
     chart:
       title: "Trainee progress"
       task_total: "Total finished tasks"
-      task_do: "Task do"
-      task_finish: "Task finish"
-      during_time: "During time"
-      done_time: "Done time"
       y_axis: "Number tasks"
     notifications:
       user: " by %{user}"
