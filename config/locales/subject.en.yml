@@ -1,25 +1,17 @@
 en:
   subjects:
     image: "Image"
-    breadcrumb:
-      subjects: "Subjects"
     documents: "Documents: "
-    init_subjects: "New subjects: "
-    progress_subjects: "In progress subjects: "
-    finish_subjects: "Finished subjects: "
-    tasks:
-      in_progress_tasks: "In progress tasks: "
-      finished_tasks: "Finished tasks: "
     dynamic_form:
       add: "Add task master"
       remove: "Remove"
     buttons:
+      trainer:
+        new: "New"
       admin:
         new: "New"
         create: "Create"
-        edit: "Edit"
         update: "Update"
-        delete: "Delete"
         delete_confirm: "Are you sure"
     about_subject: "Subject"
     create_subject: "Create new subject"
@@ -27,45 +19,23 @@ en:
     subject_description: "Description"
     subject_content: "Content"
     edit_subject: "Edit subject"
-    subject_mangement: "Subject Managament"
     fields:
       name: "Name"
       description: "Description"
-      content: "Content"
       during_time: "Working day"
       days: "(days)"
       start_date: "Start date"
       end_date: "End date"
       progress: "Progress"
-      image: "Image"
       action: "Action"
       status: "Status"
-    label:
-      issues: "Issues"
-      action: "Action"
-      task: "Task"
-      action: "Action"
     submit:
       create_task: "Create"
     task:
-      finish_all: "Finish all"
-      assigned: "Assigned for:"
-      had_not_assigned: "Task had not assigned yet"
-      name: "Name"
-      description: "Description"
-      submit: "Submit"
       new_task: "New task"
       list_tasks: "List tasks"
-      edit: "Edit "
-      delete: "Delete"
       update: "Update Task"
       finish: "Finish"
-    table:
-      task_name: "Name"
-      task_progress: "Progress"
-      task_status: "Status"
-      task_update: "Update"
-      task_decription: "Description"
     form:
       input_subject_name: "Enter subject name..."
       input_subject_description: "Enter subject description..."
@@ -80,9 +50,6 @@ en:
     content: "Content"
     during_time: "During Time"
     note_during_time: "This subject should take approximately %{during_time} days."
-    discuss: "Discuss Subject"
-    subject_complete: "Subject Complete"
-    assigned: "Assigned: "
     document: "Add Document"
     document_name: "Name"
     document_remove: "Remove"
@@ -90,4 +57,8 @@ en:
       member_details: "Member details"
       trainees: "Trainees"
       trainers: "Trainers"
-
+    new_task: New Task
+  subject:
+    fields:
+      content: "Content"
+      description: "Description"

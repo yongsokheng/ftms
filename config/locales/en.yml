@@ -3,9 +3,6 @@ en:
   name_system: "Framgia TMS"
   user-header:
     courses: "Courses"
-  language-name:
-    en: "English"
-    ja: "Japanese"
   document:
     name: "Documents"
   error:
@@ -17,21 +14,9 @@ en:
     not_authorize: "You are not authorized to access this page."
   staticpages:
     framgia: "Framgia Trainning Management System"
-    about: "About"
-    help: "Help"
-    contact: "Contact"
-    banner: "Framgia TMS"
-    go: "Go!"
-    new: "New"
-    place_search: "Search for..."
     profile: "Profile"
     logout: "Logout"
     login: "Sign in"
-    more_info: "More information"
-    courses_active: "Courses Active"
-    courses: "Courses"
-    users: "Users"
-    user_inprogress: "Users in progress"
     home: "Home"
     content:
       title: "learn more. faster."
@@ -72,8 +57,6 @@ en:
   messages:
     delete:
       confirm: "Are you sure?"
-  flashs:
-    access_denied: "Permission denied"
     user:
       mustlogin: "You need to login to access!"
     messages:
@@ -90,66 +73,37 @@ en:
       unknow_errors: "Transaction fails"
   tasks:
     update: "Update"
-    complete: "Complete"
-    assignee: "Assignee"
   subjects:
-    finish: "Finish"
-    subject: "Subject"
-    finish_subject: "Finish subject"
-    subject_finished: "Subject finished"
-    coming_soon: "You don't have active course"
-    infor: "Basic information"
     start_date: "Start date:"
-    end_date: "End date:"
-    status: "Status:"
-    introduction: "Introduction"
-    tasks: "Tasks"
     start_date: "Start date: %{start_date}"
   signins:
     banner: "Login"
-  member: "Member"
   activity:
-    activities: "Activities"
     finish_course: "has finished course "
     start_course: "has started course "
     start_subject: "has started subject"
-    close_subject: "closed subject"
-    assign_trainee: "assign"
-    assign_subject: "assign subject"
-    remove_trainee: "remove trainee"
     finish_subject: "has finished subject"
-    finish_task: "has finish task"
-    remove_subject: "remove subject"
-    deleted: "Deleted."
-    to_course: "to course"
-    as_supervisor: "as supervisor of course"
-    from_course: "from course"
-    ago: "ago."
   courses:
     course: "Course"
     name: "Name:"
     description: "Description:"
-    content: "Content:"
     list_subjects: "List subjects:"
     image: "Image:"
-    create_course: "Create a new course"
     status: "Status:"
-    score: "Score"
     start_date: "Start date:"
     end_date: "End date:"
-    in_progress: "In-progress course"
-    finished: "Finish courses"
-    create: "Create"
     language: "Language"
-    no_user: "No user"
-    list_users: "List users"
     trainees: "Trainees"
     trainers: "Trainers"
-    see_more: "See more"
-  user_task:
-    name: "Name:"
-    description: "Description:"
-    status: "Status:"
+    buttons:
+      admin:
+        start:
+          finished: "Finished"
+      trainer:
+        edit: "Edit"
+    tab:
+      trainees: "Trainees"
+      trainers: "Trainers"
   status:
     start: "start"
     progress: "progress"
@@ -200,7 +154,6 @@ en:
     notifications:
       view_all: "View all"
       notification: "New notifications"
-      warning: "Desktop notifications not available in your browser!"
   button:
     save: "Save"
     edit: "Edit"
@@ -214,14 +167,10 @@ en:
     send: "Send"
     cancel: "Cancel"
     close: "Close"
-  roles:
-    allocate: "Allocate"
-    roles: "Roles"
+  buttons:
+    edit: Edit
   evaluations:
     evaluate: "Evaluate"
-    edit: "Edit"
-    add: "Add"
-    remove: "Remove"
     create: "Create"
     update: "Update"
   breadcrumbs:
@@ -240,16 +189,11 @@ en:
       all: "All roles"
       new: "New"
       edit: "Edit"
-      allocate: "Allocate"
-      edit: "Edit"
       allocate_permissions: "Allocate Permissions"
-    user_task:
-      update: "Update"
     evaluation_templates:
       all: "All Evaluation Templates"
       new: "New"
       edit: "Edit"
-      allocate_permissions: "Allocate Permissions"
     evaluations:
       all: "All Evaluations"
       new: "New"
@@ -291,10 +235,6 @@ en:
     show_menu: "Show _MENU_"
   notifications:
     notification: "Notifications"
-  locations:
-    table:
-      name: "Name"
-      manager: "Manager"
   feed_backs:
     title: "Feed back"
     content: "Content"
@@ -313,3 +253,11 @@ en:
       title: "Number finished Course"
       number_course: "Number of Course"
       number_course_show: "Number finished course : <b>{point.y:.1f} course</b>"
+  table:
+    thead:
+      max_point: Max Point
+      min_point: Min Point
+    thread:
+      action: Action
+  user_tasks:
+    description: Description
