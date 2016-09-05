@@ -1,28 +1,34 @@
-<div class="col-md-1 td-image" title="<%= t "user_tasks.statuses.#{user_task.status}" %>">
+<div class="col-md-1 td-image col-xs-1" title="<%= t "user_tasks.statuses.#{user_task.status}" %>">
   <%= image_tag "#{user_task.status}.png", size: Settings.image_size_40 %>
 </div>
-<div class="col-md-11">
+<div class="col-md-9 col-xs-9">
   <div class="task-name">
     <%= user_task.task_name %>
   </div>
   <div class="task-description" title="<%= user_task.task_description %>">
     <%= user_task.task_description %>
   </div>
-  <div>
-    <% if current_user?(user_task.user) && user_task.subject_in_progress? &&
-      !user_task.finished? %>
-      <span class="action" hidden>
-        <% if user_task.in_progress? %>
-          <%= link_to t("button.finish"), user_task_path(user_task), method: :patch,
-            remote: true, data:{confirm: t("messages.delete.confirm")} %>
-        <% end %>
-        <% if user_task.nil_master? %>
-          | <%= link_to t("button.edit"), "#", data: {toggle: "modal", target: "#user-task-#{user_task.id}"}, title: t("subjects.task.update") %> |
+</div>
+<div class="col-md-2 col-xs-2">
+  <% if current_user?(user_task.user) && user_task.subject_in_progress? &&
+    !user_task.finished? %>
+    <div class="action" hidden>
+      <% if user_task.in_progress? %>
+        <div>
+          <%= link_to t("button.finish"), user_task_path(user_task),
+            method: :patch,
+            remote: true, data:{confirm: t("messages.delete.confirm")},
+            class: "btn btn-finish btn-finish-task" %>
+        </div>
+      <% end %>
+      <% if user_task.nil_master? %>
+        <%= link_to t("button.edit"), "#", data: {toggle: "modal",
+          target: "#user-task-#{user_task.id}"},
+          title: t("subjects.task.update") %> |
 
-          <%= link_to t("button.delete"), user_task.task, method: :delete,
-            data:{confirm: t("messages.delete.confirm")} %>
-        <% end %>
-      </span>
-    <% end %>
-  </div>
+        <%= link_to t("button.delete"), user_task.task, method: :delete,
+          data:{confirm: t("messages.delete.confirm")} %>
+      <% end %>
+    </div>
+  <% end %>
 </div>
