@@ -1,0 +1,12 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th class="trainee-image"><%= link_to avatar_user_tag(trainer, "img-circle",
+        Settings.image_size_30), trainer %></th>
+      <th><%= link_to trainer.name, trainer %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render partial: "trainee", collection: trainer.trainees, as: :trainee %>
+  </tbody>
+</table>

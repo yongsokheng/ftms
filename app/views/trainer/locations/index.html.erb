@@ -1,0 +1,25 @@
+<div id="list-locations" class="row">
+  <div class="col-md-12">
+    <div class="title">
+      <span class="pull-right">
+        <%= link_to t("locations.buttons.trainer.new"),
+          new_trainer_location_path, class: "btn btn-success pull-right" %>
+      </span>
+    </div>
+
+    <table id="tbl-location" class="table table-bordered"
+      data-source="<%= trainer_locations_url format: "json" %>">
+      <thead>
+        <tr class="active">
+          <th></th>
+          <th><%= t "locations.name" %></th>
+          <th><%= t "locations.manager" %></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+</div>

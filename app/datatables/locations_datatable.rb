@@ -3,8 +3,9 @@ class LocationsDatatable
 
   delegate :params, :link_to, to: :@view
 
-  def initialize view
+  def initialize view, namespace
     @view = view
+    @namespace = namespace
   end
 
   def as_json options = {}
@@ -22,15 +23,17 @@ class LocationsDatatable
       manager = location.manager
       [
         index + 1,
-        link_to(location.name, @view.admin_location_path(location)),
+        link_to(location.name, eval("@view.#{@namespace}_location_path(location)")),
         if location.manager.present?
           link_to(@view.avatar_user_tag(manager, "profile-user",
-            Settings.image_size_20), @view.admin_user_path(manager),
+            Settings.image_size_20), eval("@view.#{@namespace}_user_path(manager)"),
             title: location.name)
         end,
-        link_to(@view.t("button.edit"), @view.edit_admin_location_path(location),
+        link_to(@view.t("button.edit"),
+          eval("@view.edit_#{@namespace}_location_path(location)"),
           class: "text-primary pull-right"),
-        link_to(@view.t("button.delete"), @view.admin_location_path(location),
+        link_to(@view.t("button.delete"),
+          eval("@view.#{@namespace}_location_path(location)"),
           method: :delete, data: {confirm: @view.t("messages.delete.confirm")},
           class: "text-danger pull-right")
       ]

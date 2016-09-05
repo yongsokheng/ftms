@@ -1,4 +1,4 @@
-class Admin::RolesController < ApplicationController
+class Trainer::RolesController < ApplicationController
   load_and_authorize_resource
 
   def index
@@ -18,7 +18,7 @@ class Admin::RolesController < ApplicationController
   def create
     if @role.save
       flash[:success] = flash_message "created"
-      redirect_to admin_roles_path
+      redirect_to trainer_roles_path
     else
       flash[:failed] = flash_message "not_created"
       render :new
@@ -34,7 +34,7 @@ class Admin::RolesController < ApplicationController
   def update
     if @role.update_attributes role_params
       flash[:success] = flash_message "updated"
-      redirect_to admin_roles_path
+      redirect_to trainer_roles_path
     else
       flash[:failed] = flash_message "not_update"
       render :edit
