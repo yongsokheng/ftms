@@ -1,5 +1,6 @@
 en:
   courses:
+    start: "Start"
     confirms:
       confirm_clone: "Are you sure to clone this course?"
       clone_success: "Clone success"
@@ -11,7 +12,6 @@ en:
       admin:
         new: "New"
         edit: "Edit"
-        start: "Start"
         finish: "Finish"
         reopen: "Reopen"
     no_course: "No course to display"

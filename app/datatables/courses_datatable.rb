@@ -28,7 +28,7 @@ class CoursesDatatable
           Settings.image_size_20), eval("@view.#{@namespace}_user_path(trainer)"),
           title: trainer.name)
         end,
-        I18n.t("courses.labels.status.#{course.status}")
+        course.decorate.set_status
       ]
     end
   end
