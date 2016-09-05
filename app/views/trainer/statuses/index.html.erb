@@ -18,6 +18,8 @@
             <td class="action">
               <%= link_to t("button.edit"), edit_trainer_status_path(status),
                 class: "text-primary" %> &nbsp;
+            </td>
+            <td>
               <%= link_to t("button.delete"), trainer_status_path(status),
                 method: :delete, data: {confirm: t("messages.delete.confirm")},
                 class: "text-danger" %>
