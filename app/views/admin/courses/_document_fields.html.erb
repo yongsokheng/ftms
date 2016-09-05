@@ -4,9 +4,14 @@
       class: "form-control" %>
   </div>
   <div class="col-md-5">
+    <%= link_to f.object.name, f.object.content.url, target: "_blank" if f.object.name %>
     <%= f.file_field :content %><br>
   </div>
   <div class="col-md-1">
     <%= link_to_remove_fields t("courses.document_remove"), f %>
   </div>
+  <div class="col-md-10">
+    <%= f.text_area :description, class: "form-control", placeholder: t("document.description") %>
+  </div>
 </div>
+<hr>

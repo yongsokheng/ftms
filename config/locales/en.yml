@@ -5,6 +5,7 @@ en:
     courses: "Courses"
   document:
     name: "Documents"
+    description: "Document description"
   error:
     form: "The form contains "
     error: "error"

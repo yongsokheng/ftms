@@ -415,6 +415,10 @@ select {
     a {
       text-decoration: underline !important;
     }
+
+    abbr[title] {
+      border-bottom: none;
+    }
   }
 
   .box-title {
