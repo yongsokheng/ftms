@@ -37,10 +37,14 @@ class UserSubject < ApplicationRecord
   class << self
     def update_all_status status, current_user, course_subject
       if status == "start"
-        load_users(statuses[:init]).update_all(status: statuses[:progress], start_date: Time.now)
+        load_users(statuses[:init]).update_all(status: statuses[:progress],
+          start_date: Time.now)
         key = "user_subject.start_all_subject"
       else
-        load_users(statuses[:progress]).update_all(status: statuses[:finish], end_date: Time.now)
+        load_users(statuses[:init]).update_all status: statuses[:progress],
+          start_date: Time.now
+        load_users(statuses[:progress]).update_all status: statuses[:finish],
+          end_date: Time.now
         key = "user_subject.finish_all_subject"
       end
       course_subject.create_activity key: key, owner: current_user, recipient: course_subject.course
