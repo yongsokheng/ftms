@@ -14,27 +14,29 @@
           <%= f.collection_check_boxes :role_ids, @roles, :id, :name do |role| %>
             <span class="label label-default">
               <%= role.label do %>
-                <%= role.check_box %> &nbsp;
+                <%= role.check_box id: "check_role_#{role.object.role_type}" %> &nbsp;
                 <%= role.text %> &nbsp;
               <% end %>
             </span>
           <% end %>
         <% end %>
         <br>
-
-        <%= f.label :trainer_id %>
-        <%= f.select :trainer_id, options_for_select(@trainers.collect{|trainer| [trainer.name,
-          trainer.id]}, f.object.trainer_id), {include_blank: true}, class: "form-control" %>
+        <div class="profile-form">
+          <%= f.label :trainer_id %>
+          <%= f.select :trainer_id, options_for_select(@trainers.collect{|trainer| [trainer.name,
+            trainer.id, {"data-location-id": trainer.profile_location_id}]},
+            f.object.trainer_id), {include_blank: true}, class: "form-control" %>
+        </div>
       </div>
     </div>
-    <hr />
+    <hr/>
 
     <%= render "profile_form", f: f %>
 
     <div class="row">
       <div class="col-md-12">
         <%= f.submit (f.object.new_record? ? t("buttons.create") : t("buttons.update")),
-          class: "btn btn-primary pull-right" %>
+          class: "btn btn-primary pull-right", id: "user-form-submit" %>
       </div>
     </div>
   <% end %>

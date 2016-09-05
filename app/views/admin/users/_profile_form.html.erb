@@ -1,7 +1,18 @@
-<div class="profile-form">
+<div>
   <%= f.fields_for :profile do |ff| %>
     <div class="row">
-      <div class="col-md-6">
+      <div class="row form-group">
+      <div class="col-md-9 form-group">
+        <div class="col-md-1">
+          <%= ff.label :location_id %>
+        </div>
+        <div class="col-md-7">
+          <%= select_profile_field "location", @locations, ff %>
+        </div>
+        <br>
+        <hr>
+      </div>
+      <div class="col-md-6 profile-form">
         <div class="row form-group">
           <div class="col-md-4">
             <%= ff.label :start_training_date %>
@@ -35,17 +46,9 @@
           </div>
         </div>
 
-        <div class="row form-group">
-          <div class="col-md-4">
-            <%= ff.label :location_id %>
-          </div>
-          <div class="col-md-8">
-            <%= select_profile_field "location", @locations, ff %>
-          </div>
-        </div>
       </div>
 
-      <div class="col-md-6">
+      <div class="col-md-6 profile-form">
         <div class="row form-group">
           <div class="col-md-4">
             <%= ff.label :user_type %>
