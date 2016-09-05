@@ -1,7 +1,7 @@
 <%= form_for [:trainer, @rank] do |f| %>
   <div class="row">
     <%= render "shared/error_messages", object: @rank %>
-    <div class="col-md-6">
+    <div class="col-md-5">
       <%= f.label :begin_point %>
       <%= f.number_field :begin_point, class: "form-control", required: true %>
 
@@ -11,8 +11,9 @@
       <%= f.label :rank_value %>
       <%= f.number_field :rank_value, class: "form-control text-field", step: 0.1, required: true %>
       <br>
-
-      <%= f.submit yield(:submit), class: "btn btn-primary" %>
+      <div class="pull-right">
+        <%= f.submit yield(:submit), class: "btn btn-primary" %>
+      </div>
     </div>
   </div>
 <% end %>
