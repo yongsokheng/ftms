@@ -27,7 +27,7 @@
         </span>
         <%= link_to t("subjects.task.finish"), user_subject_path(@user_subject),
           method: :put, data: {confirm: t("subjects.buttons.admin.delete_confirm")},
-          class: "btn-finish pull-right" if current_user.is_trainee? && 
+          class: "btn-finish pull-right" if current_user.is_trainee? &&
             @user_subject.progress? %>
 
         <div class="description"><%= @user_subject.description %></div>
@@ -37,13 +37,8 @@
         </div>
       </div>
 
-      <div>
-        <% unless @user_subject.init? %>
-          <div id="user-subjects-charts"
-            data-user-name="<%= @user_tasks_chart_data.keys %>"
-            data-total-number-tasks="<%= @user_tasks_chart_data.values %>">
-          </div>
-        <% end %>
+      <div class="user-subjects-charts">
+        <%= render "user_subject_charts" %>
       </div>
       <br>
 

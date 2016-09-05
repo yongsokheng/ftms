@@ -7,6 +7,7 @@ class UserTasksController < ApplicationController
       track_activity
       task_statistic
       flash.now[:success] = flash_message "updated"
+      load_chart_data
     else
       flash.now[:error] = flash_message "not_updated"
     end
@@ -32,6 +33,15 @@ class UserTasksController < ApplicationController
     @task_statuses = UserTask.statuses
     @task_statuses.each do |key, value|
       instance_variable_set "@number_of_task_#{key}", user_tasks.send(key).size
+    end
+  end
+
+  def load_chart_data
+    @user_subject = @user_task.user_subject
+    @user_tasks_chart_data = {}
+
+    @user_subject.course_subject.user_subjects.each do |user_subject|
+      @user_tasks_chart_data[user_subject.user.name] = user_subject.user_tasks.finished.size
     end
   end
 end
