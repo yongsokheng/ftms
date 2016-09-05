@@ -1,0 +1,10 @@
+<% if @university.errors.any? %>
+  $(".errors").html("<%= j render "shared/error_messages", object: @university %>");
+<% else %>
+  $("#user_profile_attributes_university_id").append($("<option></option>")
+    .attr("value", <%= @university.id %>)
+    .text("<%= @university.name %>")
+    .prop("selected", true));
+  $("#university-modal").modal("hide");
+  $(".flash").html("<%= j render "layouts/flash" %>");
+<% end %>

@@ -265,3 +265,7 @@ en:
       action: Action
   user_tasks:
     description: Description
+  quick_form:
+    university: "Enter university name..."
+    usertype: "Enter type name..."
+    location: "Enter location name..."
