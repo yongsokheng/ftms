@@ -1,6 +1,4 @@
 <%= form_for @evaluation, url: trainer_user_evaluations_path do |f| %>
-  <p class="pull-right"><%= f.submit (f.object.new_record? ? t("evaluations.create")
-    : t("evaluations.update")), class: "btn btn-primary" %></p>
   <div class="row">
     <div class="col-md-6 col-md-offset-2">
       <div class="title"><%= @user.name %></div>
@@ -49,6 +47,12 @@
         <%= render "note_fields", f: builder %>
       <% end %>
       <p><%= link_to_add_fields t("notes.dynamic_form.add"), f, :notes %></p>
+    </div>
+    <div class="row">
+      <div class="col-md-1 col-md-offset-10">
+        <p class="pull-right"><%= f.submit (f.object.new_record? ? t("evaluations.create")
+          : t("evaluations.update")), class: "btn btn-primary" %></p>
+      </div>
     </div>
   </div>
 <% end %>

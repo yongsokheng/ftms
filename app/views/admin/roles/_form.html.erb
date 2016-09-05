@@ -1,13 +1,15 @@
 <%= form_for [:admin, @role] do |f| %>
   <div class="row">
     <%= render "shared/error_messages", object: @role %>
-    <div class="col-md-10">
+    <div class="col-md-12">
       <%= f.label :name %>
       <%= f.text_field :name, class: "form-control", required: true %>
       <%= f.select :role_type, Role.role_types.keys, {}, class: "form-control" %>
       <br>
-      <%= f.submit (f.object.new_record? ? t("roles.buttons.admin.create")
-        : t("roles.buttons.admin.update")), class: "btn btn-primary" %>
+      <div class="pull-right">
+        <%= f.submit (f.object.new_record? ? t("roles.buttons.admin.create")
+          : t("roles.buttons.admin.update")), class: "btn btn-primary" %>
+      </div>
     </div>
   </div>
 <% end %>

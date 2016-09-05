@@ -1,7 +1,7 @@
 <%= form_for [:trainer, @evaluation_template] do |f| %>
   <div class="row">
     <%= render "shared/error_messages", object: @evaluation_template %>
-    <div class="col-md-6">
+    <div class="col-md-5">
       <%= f.label :name %>
       <%= f.text_field :name, class: "form-control", required: true %>
 
@@ -11,8 +11,9 @@
       <%= f.label :max_point %>
       <%= f.number_field :max_point, class: "form-control", required: true %>
       <br>
-
-      <%= f.submit yield(:submit), class: "btn btn-primary" %>
+      <div class="pull-right">
+        <%= f.submit yield(:submit), class: "btn btn-primary" %>
+      </div>
     </div>
   </div>
 <% end %>

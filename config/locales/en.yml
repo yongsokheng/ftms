@@ -57,6 +57,7 @@ en:
   messages:
     delete:
       confirm: "Are you sure?"
+  flashs:
     user:
       mustlogin: "You need to login to access!"
     messages:
