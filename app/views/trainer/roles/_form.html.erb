@@ -1,0 +1,14 @@
+<%= form_for [:trainer, @role] do |f| %>
+  <div class="row">
+    <%= render "shared/error_messages", object: @role %>
+    <div class="col-md-10">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control", required: true %>
+      <%= f.select :role_type, Role.role_types.keys, {}, class: "form-control" %>
+      <br>
+      <div class="pull-right">
+        <%= f.submit yield(:submit), class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+<% end %>

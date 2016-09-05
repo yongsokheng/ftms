@@ -8,4 +8,8 @@ en:
         new: "New"
         create: "Create"
         update: "Update"
+      trainer:
+        new: "New"
+        create: "Create"
+        update: "Update"
     select_all: "Select All"

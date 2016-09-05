@@ -1,0 +1,20 @@
+<div id="locations-form" class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for [:trainer, @location] do |f| %>
+      <%= render "shared/error_messages", object: @location %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control", required: true,
+        placeholder: t("locations.form.input_location_name") %>
+
+      <%= f.label :user_id %>
+      <%= f.select :user_id, @managers.collect{|u| [u.name, u.id]},
+        {include_blank: true}, {selected: f.object.user_id, class: "form-control"} %>
+
+      <br />
+      <div class="pull-right">
+        <%= f.submit yield(:submit), class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-class Admin::LocationsController < ApplicationController
+class Trainer::LocationsController < ApplicationController
   load_and_authorize_resource
   before_action :load_managers, except: :destroy
 
@@ -27,7 +27,7 @@ class Admin::LocationsController < ApplicationController
   def create
     if @location.save
       flash[:success] = flash_message "created"
-      redirect_to admin_locations_path
+      redirect_to trainer_locations_path
     else
       flash[:failed] = flash_message "not_created"
       render :new
@@ -43,7 +43,7 @@ class Admin::LocationsController < ApplicationController
   def update
     if @location.update_attributes location_params
       flash[:success] = flash_message "created"
-      redirect_to admin_locations_path
+      redirect_to trainer_locations_path
     else
       flash[:failed] = flash_message "not_created"
       render :edit
@@ -56,7 +56,7 @@ class Admin::LocationsController < ApplicationController
     else
       flash[:failed] = flash_message "not_deleted"
     end
-    redirect_to admin_locations_path
+    redirect_to trainer_locations_path
   end
 
   private

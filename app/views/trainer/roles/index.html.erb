@@ -1,0 +1,23 @@
+<div id="roles">
+  <div class="row">
+    <div class="col-md-12 title">
+      <span>
+        <%= link_to t("roles.buttons.trainer.new"),
+          new_trainer_role_path, class: "btn btn-success pull-right" %>
+      </span>
+    </div>
+  </div>
+  <table id="role-tbl" class="table table-bordered display"
+    data-source="<%= trainer_roles_url(format: "json") %>" >
+    <thead>
+      <tr class="active">
+        <th></th>
+        <th ><%= t "roles.table.thread.name" %></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</div>

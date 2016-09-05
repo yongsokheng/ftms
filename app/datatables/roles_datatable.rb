@@ -3,7 +3,8 @@ class RolesDatatable
 
   delegate :params, :link_to, to: :@view
 
-  def initialize view
+  def initialize view, namespace
+    @namespace = namespace
     @view = view
   end
 
@@ -21,10 +22,12 @@ class RolesDatatable
     roles.each_with_index.map do |role, index|
       [
         index + 1,
-        link_to(role.name, @view.edit_admin_role_allocate_permissions_path(role)),
-        link_to(@view.t("button.edit"), @view.edit_admin_role_path(role), class: "text-primary pull-right"),
-        link_to(@view.t("button.delete"), @view.admin_role_path(role),
-          method: :delete, data: {confirm: @view.t("messages.delete.confirm")}, class: "text-danger pull-right")
+        link_to(role.name, eval("@view.edit_admin_role_allocate_permissions_path(role)")),
+        link_to(@view.t("button.edit"), eval("@view.edit_#{@namespace}_role_path(role)"),
+          class: "text-primary pull-right"),
+        link_to(@view.t("button.delete"), eval("@view.#{@namespace}_role_path(role)"),
+          method: :delete, data: {confirm: @view.t("messages.delete.confirm")},
+          class: "text-danger pull-right")
       ]
     end
   end
