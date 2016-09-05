@@ -3,7 +3,8 @@ class User < ApplicationRecord
   QUERY = "users.id NOT IN (SELECT user_id
     FROM user_courses, courses WHERE user_courses.course_id = courses.id
     AND (courses.status = 0 OR courses.status = 1)
-    AND courses.id <> :course_id)"
+    AND courses.id <> :course_id) AND profiles.programming_language_id =
+    :programming_language_id"
 
   mount_uploader :avatar, ImageUploader
 
@@ -52,7 +53,10 @@ class User < ApplicationRecord
 
   delegate :id, :name, to: :role, prefix: true, allow_nil: true
 
-  scope :available_of_course, ->course_id{where QUERY, course_id: course_id}
+  scope :available_of_course, ->course_id, programming_language_id{
+    joins(:profile).where(QUERY, course_id: course_id,
+    programming_language_id: programming_language_id)
+  }
   scope :trainers, ->{joins(user_roles: :role)
     .where("roles.role_type = ?", Role.role_types[:trainer])}
   scope :trainees, ->{joins(user_roles: :role)
@@ -72,7 +76,6 @@ class User < ApplicationRecord
   delegate :total_point, :current_rank, to: :evaluation, prefix: true, allow_nil: true
   delegate :location_id, to: :profile, prefix: true, allow_nil: true
 
-  after_create :create_user_profile
   before_validation :set_password
 
   accepts_nested_attributes_for :profile
