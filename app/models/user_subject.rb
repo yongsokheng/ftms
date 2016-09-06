@@ -120,6 +120,6 @@ class UserSubject < ApplicationRecord
 
   def check_end_date
     errors.add :end_date, I18n.t("error.wrong_end_date") if
-      start_date.present? && start_date > Date.today || start_date > end_date
+      start_date.present? && (start_date > Date.today || start_date > end_date)
   end
 end

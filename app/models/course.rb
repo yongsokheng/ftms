@@ -36,13 +36,13 @@ class Course < ApplicationRecord
 
   accepts_nested_attributes_for :user_courses, allow_destroy: true
   accepts_nested_attributes_for :documents,
-    reject_if: proc {|attributes| attributes["content"].blank?}, allow_destroy: true
+    reject_if: :document_rejectable?, allow_destroy: true
 
   USER_COURSE_ATTRIBUTES_PARAMS = [user_courses_attributes: [:id, :user_id, :_destroy]]
   COURSE_ATTRIBUTES_PARAMS = [:name, :image, :description,
     :programming_language_id,
     :start_date, :end_date, documents_attributes:
-    [:id, :name, :content, :_destroy], subject_ids: []]
+    [:id, :name, :content, :description, :_destroy], subject_ids: []]
 
   delegate :name, to: :programming_language, prefix: true, allow_nil: true
 
@@ -81,5 +81,10 @@ class Course < ApplicationRecord
 
   def load_trainees
     users.trainees
+  end
+
+  private
+  def document_rejectable?
+    attributes["content"].blank? && new_record?
   end
 end
