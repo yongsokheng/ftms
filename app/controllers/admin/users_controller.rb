@@ -3,7 +3,7 @@ class Admin::UsersController < ApplicationController
   before_action :load_data, except: [:index, :show, :destroy]
   before_action :load_breadcrumb_edit, only: [:edit, :update]
   before_action :load_breadcrumb_new, only: [:new, :create]
-  before_action :quick_create_profile, only: [:new, :edit]
+  before_action :quick_create_profile, except: [:index, :destroy, :show]
 
   def index
     respond_to do |format|

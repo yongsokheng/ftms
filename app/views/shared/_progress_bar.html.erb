@@ -1,7 +1,8 @@
-<div class="progress <%= set_border_status status %>">
-  <div class="progress-bar <%= set_background_color_status status %>" role="progressbar"
-    aria-valuenow="<%= percent %>" aria-valuemin="0" aria-valuemax="100"
-    style="width: <%= percentage_format percent %>;">
+<div class="progress">
+  <div class="progress-bar progress-bar-striped active
+    <%= progressbar_color percent if percent %>"
+    role="progressbar" aria-valuemin="0" aria-valuemax="100"
+    style="width:<%= percentage_format percent %>">
     <%= percentage_format percent %>
   </div>
 </div>

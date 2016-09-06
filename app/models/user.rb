@@ -35,6 +35,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
   validates_confirmation_of :password
+  validates :roles, presence: true
 
   acts_as_reader
 
