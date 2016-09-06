@@ -52,6 +52,7 @@
 //= require bindWithDelay
 //= require pagination
 //= require admin/location
+//= require admin/user
 //= require admin/dashboard_chart
 
 $(document).on("turbolinks:load ajaxComplete", function() {

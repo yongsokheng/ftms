@@ -12,12 +12,15 @@ class Admin::UserTypesController < ApplicationController
   end
 
   def create
-    if @user_type.save
-      flash[:success] = flash_message "created"
-      redirect_to admin_user_types_path
-    else
-      flash[:failed] = flash_message "not_created"
-      redirect_to :new
+    respond_to do |format|
+      if @user_type.save
+        flash.now[:success] = flash_message "created"
+        format.html {redirect_to admin_user_types_path}
+      else
+        flash.now[:failed] = flash_message "not_created"
+        format.html {render :new}
+      end
+      format.js
     end
   end
 
