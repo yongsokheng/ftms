@@ -1,12 +1,12 @@
 <div class="trainee-structure">
-  <%= link_to [:admin, user_subject.user], title: user_subject.user_name do %>
+  <%= link_to [:admin, user], title: user.name do %>
     <div class="profile-structure">
       <div class="avatar">
-        <%= avatar_user_tag user_subject.user, "img-circle",
+        <%= avatar_user_tag user, "img-circle",
           Settings.image_size_40 %></div>
       <div>
         <strong><%= t "organization_charts.trainee" %></strong><br>
-        <%= user_subject.user_name %>
+        <%= user.name %>
       </div>
     </div>
   <% end %>

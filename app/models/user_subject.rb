@@ -21,10 +21,11 @@ class UserSubject < ApplicationRecord
   scope :not_finish, -> user_subjects {where.not(id: user_subjects)}
   scope :sort_by_course_subject, ->{joins(:course_subject).order("course_subjects.order asc")}
   scope :order_by_course_subject , ->{joins(:course_subject).order "course_subjects.row_order"}
-  scope :load_by_course_subject, ->course_subject_ids do
-    order_by_course_subject.where("course_subjects.id in (?)
-      AND user_subjects.status = ?", course_subject_ids,
-      UserSubject.statuses[:progress]).includes :user
+
+  scope :load_by_course_subject, ->course_subject_ids, trainer_id do
+    order_by_course_subject.joins(:user).where("course_subjects.id in (?)
+      AND user_subjects.status = ? AND users.trainer_id = ?", course_subject_ids,
+      UserSubject.statuses[:progress], trainer_id).includes :user
   end
 
   enum status: [:init, :progress, :finish]

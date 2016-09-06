@@ -1,0 +1,14 @@
+<% if (free_trainees = User.by_trainer(trainer.id).free_trainees).any? %>
+  <div class="free-trainee">
+    <div class="subject">
+      <div class="subject-name">
+        <%= image_tag "user.png", size: Settings.image_size_40 %>
+        <span class="title-name"><%= t "organization_charts.free_trainee" %></span>
+      </div>
+      <div>
+        <%= render partial: "free_trainee",
+          collection: free_trainees, as: :user %>
+      </div>
+    </div>
+  </div>
+<% end %>

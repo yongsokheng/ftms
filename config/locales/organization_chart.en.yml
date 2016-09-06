@@ -1,0 +1,6 @@
+en:
+  organization_charts:
+    manager: "Manager"
+    trainer: "Trainer"
+    trainee: "Trainee"
+    free_trainee: "Free Trainees"
