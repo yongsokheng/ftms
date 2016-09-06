@@ -3,7 +3,7 @@ $(document).on("turbolinks:load", function() {
   if(tbl_user.length > 0) {
     set_datatable(tbl_user, [0, 4, 5]);
   }
-  if ($('#check_role_trainee').is(':checked')) {
+  if ($('#check_role_trainee, #user_role_id').is(':checked')) {
     $('.profile-form').show();
   }
   $('#check_role_trainee').unbind('change').on('change', function() {

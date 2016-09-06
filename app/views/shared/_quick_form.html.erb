@@ -7,6 +7,10 @@
           <%= f.label :name, class:"control-label" %>
           <%= f.text_field :name, class: "form-control", required: true,
             placeholder: t("quick_form.#{object.class.name.downcase}") %>
+          <% if object.class.to_s == Location.name %>
+            <%= f.select :user_id, managers.collect{|u| [u.name, u.id]}, {},
+              {selected: f.object.user_id, class: "form-control"} %>
+          <% end %>
         </div>
       </div>
       <div class="modal-footer">

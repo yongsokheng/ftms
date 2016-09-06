@@ -104,5 +104,6 @@ class Admin::UsersController < ApplicationController
     @location = Location.new
     @user_type = UserType.new
     @university = University.new
+    @managers = User.not_trainees
   end
 end

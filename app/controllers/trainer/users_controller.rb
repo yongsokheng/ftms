@@ -3,6 +3,7 @@ class Trainer::UsersController < ApplicationController
   before_action :load_data, except: [:index, :show, :destroy]
   before_action :load_breadcrumb_edit, only: [:edit, :update]
   before_action :load_breadcrumb_new, only: [:new, :create]
+  before_action :quick_create_profile, except: [:index, :destroy, :show]
 
   def index
     respond_to do |format|
@@ -99,5 +100,12 @@ class Trainer::UsersController < ApplicationController
 
   def build_profile
     @user.build_profile
+  end
+
+  def quick_create_profile
+    @location = Location.new
+    @user_type = UserType.new
+    @university = University.new
+    @managers = User.not_trainees
   end
 end

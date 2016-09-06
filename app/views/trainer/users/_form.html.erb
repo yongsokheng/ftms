@@ -20,7 +20,7 @@
 
         <%= f.label :trainer_id %>
         <%= f.select :trainer_id, options_for_select(@trainers.collect{|trainer| [trainer.name,
-          trainer.id]}, f.object.trainer_id), {include_blank: true}, class: "form-control" %>
+          trainer.id]}, f.object.trainer_id), {}, {disabled: true, class: "form-control"} %>
       </div>
     </div>
     <hr />
@@ -41,3 +41,8 @@
     </div>
   <% end %>
 </div>
+<% [@location, @user_type, @university].each do |object| %>
+  <div class="modal fade modal-form" id="<%= object.class.name.downcase %>-modal" role="dialog">
+    <%= render "shared/quick_form", object: object, managers: @managers %>
+  </div>
+<% end %>

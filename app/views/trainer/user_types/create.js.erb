@@ -1,0 +1,10 @@
+<% if @user_type.errors.any? %>
+  $(".errors").html("<%= j render "shared/error_messages", object: @user_type %>");
+<% else %>
+  $("#user_profile_attributes_user_type_id").append($("<option></option>")
+    .attr("value", <%= @user_type.id %>)
+    .text("<%= @user_type.name %>")
+    .prop("selected", true));
+  $("#usertype-modal").modal("hide");
+  $(".flash").html("<%= j render "layouts/flash" %>");
+<% end %>
