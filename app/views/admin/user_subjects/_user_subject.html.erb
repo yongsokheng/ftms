@@ -1,25 +1,79 @@
-<tr>
+<tr id="user-subject-<%= user_subject.id %>">
   <td><%= link_to user_subject.user.name, [:admin, user_subject.user] %></td>
-  <td><%= user_subject.start_date %></td>
-  <td><%= user_subject.end_date %></td>
-  <td><%= user_subject.status %></td>
+  <td>
+    <div class="date-content">
+      <%= user_subject.start_date %>
+      <% if user_subject.start_date.present? %>
+        <%= link_to "javascript:void(0)" do %>
+          <i class="fa fa-edit"></i>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="form-edit row" hidden>
+      <%= form_for [:admin, @course_subject, user_subject], remote: true do |f| %>
+        <div class="col-md-8">
+          <%= f.text_field :start_date, class: "form-control datepicker" %>
+        </div>
+        <div class="col-md-4">
+          <%= f.button :submit, class: "button-save" do %>
+            <i class="fa fa-save"></i>
+          <% end %>
+          <%= link_to "javascript:void(0)" do %>
+            <i class="fa fa-remove"
+              type="button"></i>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </td>
+  <td>
+    <div class="date-content">
+      <%= user_subject.end_date %>
+      <% if user_subject.end_date.present? %>
+        <%= link_to "javascript:void(0)" do %>
+          <i class="fa fa-edit"></i>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="form-edit row" hidden>
+      <%= form_for [:admin, @course_subject, user_subject], remote: true do |f| %>
+        <div class="col-md-8">
+          <%= f.text_field :end_date, class: "form-control datepicker" %>
+        </div>
+        <div class="col-md-4">
+          <%= f.button :submit, class: "button-save" do %>
+            <i class="fa fa-save"></i>
+          <% end %>
+          <%= link_to "javascript:void(0)" do %>
+            <i class="fa fa-remove"
+              type="button"></i>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </td>
+  <td>
+    <span class="label-status <%= set_background_color_status user_subject.status %>">
+      <%= t "courses.labels.status.#{user_subject.status}" %>
+    </span>
+  </td>
   <td>
     <%= render "shared/progress_bar", percent: user_subject.percent_progress,
         status: user_subject.status %>
   </td>
   <td class="action">
     <% if @course.progress? %>
-        <% if user_subject.init? %>
-          <%= link_to t("admin.actions.show_subject.start"),
-            [:admin, @course_subject, user_subject],
-            method: :patch, remote: true, class: "btn btn-primary btn-status" %>
-        <% elsif user_subject.progress? %>
-          <%= link_to t("admin.actions.show_subject.finish"),
-            [:admin, @course_subject, user_subject],
-            method: :patch, remote: true, class: "btn btn-success btn-status" %>
-        <% end %>
-      </div>
+      <% if user_subject.init? %>
+        <%= link_to t("admin.actions.show_subject.start"),
+          [:admin, @course_subject, user_subject],
+          method: :patch, remote: true, class: "btn btn-primary btn-status" %>
+      <% elsif user_subject.progress? %>
+        <%= link_to t("admin.actions.show_subject.finish"),
+          [:admin, @course_subject, user_subject],
+          method: :patch, remote: true, class: "btn btn-success btn-status" %>
+      <% end %>
     <% end %>
   </td>
 </tr>
-
