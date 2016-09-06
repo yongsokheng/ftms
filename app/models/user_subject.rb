@@ -14,6 +14,8 @@ class UserSubject < ApplicationRecord
 
   after_create :create_user_tasks
 
+  ATTRIBUTES_PARAMS = [:start_date, :end_date]
+
   scope :load_user_subject, ->(user_id, course_id){where "user_id = ? AND course_id = ?", user_id, course_id}
   scope :load_users, ->status {where status: status}
   scope :not_finish, -> user_subjects {where.not(id: user_subjects)}
@@ -30,6 +32,8 @@ class UserSubject < ApplicationRecord
   delegate :name, to: :user, prefix: true, allow_nil: true
   delegate :name, :description, to: :subject, prefix: true, allow_nil: true
   delegate :name, to: :course, prefix: true, allow_nil: true
+
+  validate :check_end_date
 
   def load_trainers
     course.users.trainers
@@ -58,7 +62,8 @@ class UserSubject < ApplicationRecord
 
   def update_status current_user
     if init?
-      update_attributes(status: :progress, start_date: Time.now)
+      update_attributes(status: :progress, start_date: Time.now,
+        end_date: Time.now + during_time.days)
       key = "user_subject.start_subject"
       notification_key = Notification.keys[:start]
     else
@@ -111,5 +116,10 @@ class UserSubject < ApplicationRecord
       UserTask.find_or_create_by(user_subject_id: id,
         user_id: user_course.user_id, task_id: task.id)
     end
+  end
+
+  def check_end_date
+    errors.add :end_date, I18n.t("error.wrong_end_date") if
+      start_date.present? && start_date > Date.today || start_date > end_date
   end
 end

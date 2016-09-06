@@ -53,6 +53,7 @@
 //= require pagination
 //= require admin/location
 //= require admin/dashboard_chart
+//= require admin/user_subject
 
 $(document).on("turbolinks:load ajaxComplete", function() {
   $(".alert").delay(3000).fadeOut();
