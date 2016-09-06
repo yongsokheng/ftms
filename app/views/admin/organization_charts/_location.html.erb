@@ -1,0 +1,17 @@
+<div class="location-structure">
+  <div class="location-name">
+    <%= link_to location.name, admin_location_path(location), title: location.name %>
+  </div>
+
+  <div class="manager-structure">
+    <%= link_to [:admin, location.manager], title: location.manager_name do %>
+      <%= avatar_user_tag location.manager, "img-circle", Settings.image_size_30 %>
+      <%= location.manager_name %>
+    <% end %>
+  </div>
+
+  <div class="structure-content">
+    <%= render partial: "trainer",
+      collection: User.trainers.by_location(location.id), as: :trainer %>
+  </div>
+</div>

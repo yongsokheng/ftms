@@ -137,6 +137,7 @@ en:
     user_profiles: "User profiles"
     users: "Users"
     locations: "Locations"
+    organization_chart: "Orgazination Chart"
     footer:
       street: "13F Keangnam Landmark 72 Tower, Plot E6, Pham Hung Road, Nam Tu Liem, Ha Noi, Viet Nam"
       phone: "84-4-3795-5417"
@@ -230,6 +231,8 @@ en:
       all: "All Feed Back"
     dashboard:
       all: "Dashboard"
+    organization_charts:
+      all: "Organization Chart"
   datatables:
     search_name: "Search name"
     search_name_email: "Search name or email"

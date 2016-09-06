@@ -1,0 +1,61 @@
+#organization-chart {
+  min-width: 800px;
+  border: 1px solid #ccc;
+
+  #user-structure {
+    width: 100%;
+    display: inline-flex;
+    overflow: auto;
+    background-color: white;
+    max-height: 550px;
+
+    .manager-structure, .trainer-structure {
+      border-bottom: 1px solid #F6F8F8;
+      border-right: 1px solid #F6F8F8;
+      text-align: center;
+      min-width: 200px;
+      padding: 5px 0px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .location-structure {
+      border-right: 1px solid #F6F8F8;
+      text-align: center;
+      min-width: 200px;
+      padding: 5px 0px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      .location-name {
+        font-size: 20px;
+        font-weight: bold;
+        border-bottom: 1px solid #F6F8F8;
+      }
+    }
+
+    .subject-structure, .structure-content {
+      display: inline-flex;
+      margin: auto;
+    }
+
+    .subject-structure {
+      .subject {
+        border-right: 1px solid #F6F8F8;
+        min-width: 200px;
+      }
+
+      .subject-name, .trainee-structure {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        text-align: left;
+        width: 200px;
+        padding: 8px;
+        border-bottom: 1px solid #F6F8F8;
+      }
+    }
+  }
+}
