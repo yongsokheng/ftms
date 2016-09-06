@@ -8,6 +8,11 @@
     overflow: auto;
     background-color: white;
     max-height: 550px;
+    color: white;
+
+    a {
+      color: white;
+    }
 
     .manager-structure, .trainer-structure {
       border-bottom: 1px solid #F6F8F8;
@@ -20,6 +25,14 @@
       white-space: nowrap;
     }
 
+    .manager-structure {
+      background: #428bca;
+    }
+
+    .trainer-structure {
+      background: #f39c12;
+    }
+
     .location-structure {
       border-right: 1px solid #F6F8F8;
       text-align: center;
@@ -30,9 +43,10 @@
       white-space: nowrap;
 
       .location-name {
-        font-size: 20px;
+        font-size: 22px;
         font-weight: bold;
         border-bottom: 1px solid #F6F8F8;
+        background: #81629d;
       }
     }
 
@@ -55,6 +69,23 @@
         width: 200px;
         padding: 8px;
         border-bottom: 1px solid #F6F8F8;
+      }
+
+      .subject-name {
+        background: #dd4b39;
+      }
+
+      .trainee-structure {
+        background: #00c0ef;
+      }
+    }
+
+    .profile-structure {
+      display: inline-flex;
+      text-align: left;
+
+      .avatar {
+        margin-right: 10px;
       }
     }
   }

@@ -5,8 +5,15 @@
 
   <div class="manager-structure">
     <%= link_to [:admin, location.manager], title: location.manager_name do %>
-      <%= avatar_user_tag location.manager, "img-circle", Settings.image_size_30 %>
-      <%= location.manager_name %>
+      <div class="profile-structure">
+        <div class="avatar">
+          <%= avatar_user_tag location.manager, "img-circle",
+            Settings.image_size_40 %></div>
+        <div>
+          <strong><%= t "organization_charts.manager" %></strong><br>
+          <%= location.manager_name %>
+        </div>
+      </div>
     <% end %>
   </div>
 

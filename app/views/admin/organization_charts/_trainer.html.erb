@@ -1,16 +1,24 @@
 <div>
   <div class="trainer-structure">
     <%= link_to [:admin, trainer], title: trainer.name do %>
-      <%= avatar_user_tag trainer, "img-circle", Settings.image_size_30 %>
-      <%= trainer.name %>
+      <div class="profile-structure">
+        <div class="avatar">
+          <%= avatar_user_tag trainer, "img-circle",
+            Settings.image_size_40 %></div>
+        <div>
+          <strong><%= t "organization_charts.trainer" %></strong><br>
+          <%= trainer.name %>
+        </div>
+      </div>
     <% end %>
   </div>
 
   <div class="subject-structure">
-    <% CourseSubject.load_course_subjects_for_trainer(trainer)
+    <% CourseSubject.load_course_subjects_for_trainer(trainer.id)
       .each do |subject, course_subject| %>
       <%= render "course_subject", subject: Subject.find(subject),
-        course_subject_ids: course_subject.pluck(:id) %>
+        course_subject_ids: course_subject.pluck(:id), trainer_id: trainer.id %>
     <% end %>
+    <%= render "free_trainees", trainer: trainer %>
   </div>
 </div>
