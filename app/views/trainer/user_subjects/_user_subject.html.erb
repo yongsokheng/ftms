@@ -3,7 +3,7 @@
   <td>
     <div class="date-content">
       <%= user_subject.start_date %>
-      <% if user_subject.start_date.present? %>
+      <% if user_subject.progress? %>
         <%= link_to "javascript:void(0)" do %>
           <i class="fa fa-edit"></i>
         <% end %>
@@ -29,7 +29,7 @@
   <td>
     <div class="date-content">
       <%= user_subject.end_date %>
-      <% if user_subject.end_date.present? %>
+      <% if user_subject.progress? %>
         <%= link_to "javascript:void(0)" do %>
           <i class="fa fa-edit"></i>
         <% end %>
