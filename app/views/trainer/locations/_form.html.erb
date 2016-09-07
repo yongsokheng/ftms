@@ -8,8 +8,8 @@
         placeholder: t("locations.form.input_location_name") %>
 
       <%= f.label :user_id %>
-      <%= f.select :user_id, @managers.collect{|u| [u.name, u.id]},
-        {include_blank: true}, {selected: f.object.user_id, class: "form-control"} %>
+      <%= f.select :user_id, @managers.collect{|u| [u.name, u.id]}, {},
+        {selected: f.object.user_id, class: "form-control"} %>
 
       <br />
       <div class="pull-right">
