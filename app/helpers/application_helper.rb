@@ -156,4 +156,16 @@ module ApplicationHelper
     name == "static_pages" || name == "sessions" ?
       "body_home" : "container body-wrapper-content"
   end
+
+  def progressbar_color percent
+    if percent == 100
+      "progress-bar-info"
+    elsif percent < 30
+      "progress-bar-success"
+    elsif percent < 70
+      "progress-bar-warning"
+    else
+      "progress-bar-danger"
+    end
+  end
 end
