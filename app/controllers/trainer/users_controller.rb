@@ -20,7 +20,12 @@ class Trainer::UsersController < ApplicationController
   def create
     if @user.save
       flash[:success] = flash_message "created"
-      redirect_to trainer_users_path
+
+      if params[:commit].present?
+        redirect_to trainer_users_path
+      else
+        redirect_to new_trainer_user_path
+      end
     else
       render :new
     end

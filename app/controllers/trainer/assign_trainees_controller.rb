@@ -3,7 +3,8 @@ class Trainer::AssignTraineesController < ApplicationController
   authorize_resource class: false
 
   def edit
-    @trainees = User.trainees.available_of_course @course.id
+    @trainees = User.trainees.available_of_course @course.id,
+      @course.programming_language_id
 
     add_breadcrumb_path "courses"
     add_breadcrumb @course.name, trainer_course_path(@course)
