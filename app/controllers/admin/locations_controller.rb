@@ -1,6 +1,8 @@
 class Admin::LocationsController < ApplicationController
   load_and_authorize_resource
   before_action :load_managers, except: :destroy
+  before_action :set_breadcrumb_new, only: [:new, :create]
+  before_action :set_breadcrumb_edit, only: [:edit, :update]
 
   def index
     respond_to do |format|
@@ -20,8 +22,6 @@ class Admin::LocationsController < ApplicationController
   end
 
   def new
-    add_breadcrumb_path "locations"
-    add_breadcrumb_new "locations"
   end
 
   def create
@@ -38,9 +38,6 @@ class Admin::LocationsController < ApplicationController
   end
 
   def edit
-    add_breadcrumb_path "locations"
-    add_breadcrumb @location.name
-    add_breadcrumb_edit "locations"
   end
 
   def update
@@ -69,5 +66,16 @@ class Admin::LocationsController < ApplicationController
 
   def load_managers
     @managers = User.not_trainees
+  end
+
+  def set_breadcrumb_new
+    add_breadcrumb_path "locations"
+    add_breadcrumb_new "locations"
+  end
+
+  def set_breadcrumb_edit
+    add_breadcrumb_path "locations"
+    add_breadcrumb @location.name
+    add_breadcrumb_edit "locations"
   end
 end
