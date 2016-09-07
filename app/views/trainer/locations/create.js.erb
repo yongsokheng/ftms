@@ -1,0 +1,10 @@
+<% if @location.errors.any? %>
+  $(".errors").html("<%= j render "shared/error_messages", object: @location %>");
+<% else %>
+  $("#user_profile_attributes_location_id").append($("<option></option>")
+    .attr("value", <%= @location.id %>)
+    .text("<%= @location.name %>")
+    .prop("selected", true));
+  $("#location-modal").modal("hide");
+  $(".flash").html("<%= j render "layouts/flash" %>");
+<% end %>
