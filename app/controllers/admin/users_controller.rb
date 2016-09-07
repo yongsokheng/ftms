@@ -21,8 +21,12 @@ class Admin::UsersController < ApplicationController
   def create
     if @user.save
       flash[:success] = flash_message "created"
-      params[:commit].present? ? (redirect_to admin_users_path) :
-        (redirect_to new_admin_user_path)
+
+      if params[:commit].present?
+        redirect_to admin_users_path
+      else
+        redirect_to new_admin_user_path
+      end
     else
       render :new
     end

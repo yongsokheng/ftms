@@ -1,8 +1,8 @@
 <%= form_for @role, url: admin_role_allocate_permissions_path, method: :patch do |f| %>
   <%= render "shared/error_messages", object: @role %>
   <div class="row">
-    <div class="col-md-1 title"><%= @role.name %></div>
-    <div class="col-md-1 col-md-offset-8"><%= f.submit :submit,
+    <div class="col-md-1 title"><%= @role.name.capitalize %></div>
+    <div class="col-md-1 col-md-offset-8"><%= f.submit t("button.save"),
       class: "btn btn-primary"%></div>
   </div>
 
@@ -10,7 +10,7 @@
     <tr>
       <th></th>
       <% Settings.roles.actions.each do |action| %>
-        <th><%= action %></th>
+        <th><%= action.capitalize %></th>
       <% end %>
       <th>
         <%= check_box_tag "select-permission-all", "select-all", false %>
