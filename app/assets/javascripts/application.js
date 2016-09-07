@@ -90,8 +90,8 @@ $(document).on("turbolinks:load", function() {
     $("#evaluations-header").addClass("active");
   }
 
-  if ($(".profile-active").length > 0) {
-    $("#user-profiles-header").addClass("active");
+  if ($(".systems-active").length > 0) {
+    $("#systems-header").addClass("active");
   }
 
   $("#slimScrollDiv").slimScroll();

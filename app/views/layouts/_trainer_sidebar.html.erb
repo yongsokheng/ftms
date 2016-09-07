@@ -113,7 +113,7 @@
         <% end %>
         <% if can?(:read, Role) || can?(:read, Location) ||
           can?(:read, University) || can?(:read, Status) || can?(:read, UserType) %>
-          <li id="user-profiles-header" class="treeview">
+          <li id="systems-header" class="treeview">
             <a href="javascript:void(0)">
               <i class="fa fa-book"></i><span><%= t "layouts.system" %></span>
               <i class="fa fa-angle-left pull-right"></i>
