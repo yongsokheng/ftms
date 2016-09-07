@@ -1,6 +1,6 @@
 <div class="timeline-item">
   <div class="timeline-title row">
-    <div class="col-md-6">
+    <div class="col-md-5">
       <div class="timeline-header">
         <%= link_to user_subject.subject.name,
           [@inprogress_course, user_subject.subject] %>
@@ -10,8 +10,13 @@
       <%= render "shared/progress_bar", percent: user_subject.percent_progress,
         status: user_subject.status %>
     </div>
+    <div class="col-md-1">
+      <a role="button" data-toggle="collapse" href="#<%= user_subject.id %>">
+        <i class="glyphicon glyphicon-chevron-down"></i>
+      </a>
+    </div>
   </div>
-  <div class="timeline-body">
+  <div id="<%= user_subject.id %>" class="timeline-body panel-collapse collapse">
     <div class="user-task">
       <table class="table">
         <%= render partial: "trainer/users/user_task", collection: user_subject.user_tasks,

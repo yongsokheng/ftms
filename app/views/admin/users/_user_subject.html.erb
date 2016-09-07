@@ -11,14 +11,12 @@
         status: user_subject.status %>
     </div>
     <div class="col-md-1">
-      <a role="button" data-toggle="collapse" data-parent="#accordion"
-        href="#<%= user_subject.id %>" aria-expanded="true" aria-controls="collapseOne">
+      <a role="button" data-toggle="collapse" href="#<%= user_subject.id %>">
         <i class="glyphicon glyphicon-chevron-down"></i>
       </a>
     </div>
   </div>
-  <div id="<%= user_subject.id %>" class="timeline-body panel-collapse collapse"
-    role="tabpanel" aria-labelledby="headingOne">
+  <div id="<%= user_subject.id %>" class="timeline-body panel-collapse collapse">
     <div class="user-task">
       <table class="table">
         <%= render partial: "admin/users/user_task", collection: user_subject.user_tasks,
