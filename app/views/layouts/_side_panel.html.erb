@@ -1,12 +1,12 @@
-<% object.each do |item| %>
-  <% if can? :read, item %>
-    <ul class="treeview-menu">
+<ul class="treeview-menu">
+  <% object.each do |item| %>
+    <% if can? :read, item %>
       <li>
         <%= link_to "/#{@namespace}/#{item.table_name}" do %>
           <i class="fa fa-circle-o"></i>
           <%= t "layouts.#{item.table_name}" %>
         <% end %>
       </li>
-    </ul>
+    <% end %>
   <% end %>
-<% end %>
+</ul>

@@ -48,7 +48,7 @@ Rails.application.routes.draw do
   end
 
   namespace :trainer do
-    root "courses#index"
+    root "dashboard#index"
     resources :course_masters
     resources :courses do
       resources :subjects, only: :show
