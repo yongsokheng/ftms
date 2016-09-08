@@ -3,6 +3,27 @@ namespace :db do
   task rake_data: :environment do
     Rake::Task["db:migrate:reset"].invoke
 
+    puts "Create Universities"
+    ["Vietnam National University, Hanoi", "Hanoi University of Science and Technology",
+      "Foreign Trade University", "Hanoi University of Industry"].each do |name|
+      Fabricate :university, name: name
+    end
+
+    puts "Create Programming Languages"
+    ["Ruby", "PHP", "Android", "Java", "C"].each do |name|
+      Fabricate :programming_language, name: name
+    end
+
+    puts "Create User Types"
+    ["Intern", "VPG", "JPG", "New dev", "Tester"].each do |name|
+      Fabricate :user_type, name: name
+    end
+
+    puts "Create Status"
+    ["Inprogress", "Finish", "Prepare project", "Jointed project"].each do |name|
+      Fabricate :status, name: name
+    end
+
     puts "Creating Role"
     Fabricate :role, name: "admin", role_type: 0
     Fabricate :role, name: "trainer", role_type: 1
@@ -17,6 +38,9 @@ namespace :db do
       {name: "Mai Tuan Viet", avatar: File.open(File.join(Rails.root,
         "app/assets/images/user/Mai Tuan Viet.jpg")),
         email: "supervisor@tms.com", password: "12345678",
+        password_confirmation: "12345678"},
+      {name: "Nguyen Tien Trung", avatar: nil,
+        email: "nguyen.tien.trung@framgia.com", password: "12345678",
         password_confirmation: "12345678"},
       {name: "Truong Loc Binh", avatar: File.open(File.join(Rails.root,
         "app/assets/images/user/Truong Loc Binh.jpg")),
@@ -120,13 +144,31 @@ namespace :db do
         password_confirmation: "12345678"}
     ])
 
-    puts "Create User Roles"
-    User.first.role_ids = [1, 2, 3]
-
+    puts "Creating Roles Manager && Trainer"
+    User.first.user_roles.create! role_id: 1
     User.second.user_roles.create! role_id: 2
+    User.third.user_roles.create! role_id: 2
 
-    User.offset(2).each do |user|
+
+    puts "Creating Location Manager && Trainer"
+    Location.create! name: "Keangnam", user_id: 1
+    Location.create! name: "Laboratory", user_id: 2
+    Location.create! name: "Da Nang", user_id: 3
+
+    puts "Creating User Roles, Profile && Location"
+    User.offset(3).each do |user|
       user.user_roles.create! role_id: 3
+      trainer = User.trainers.sample
+      user.update_attributes trainer: trainer
+      user.create_profile(
+        start_training_date: Time.zone.today - 30,
+        finish_training_date: Time.zone.today + 30,
+        contract_date: Time.zone.today - 40,
+        university_id: University.all.sample.id,
+        programming_language_id: ProgrammingLanguage.all.sample.id,
+        user_type_id: UserType.all.sample.id,
+        status_id: Status.all.sample.id,
+        location_id: trainer.profile_location_id)
     end
 
     puts "Creating Evaluation Template"
@@ -139,27 +181,6 @@ namespace :db do
     puts "Create Rank"
     5.times do
       Fabricate :rank
-    end
-
-    puts "Create Universities"
-    ["Vietnam National University, Hanoi", "Hanoi University of Science and Technology",
-      "Foreign Trade University", "Hanoi University of Industry"].each do |name|
-      Fabricate :university, name: name
-    end
-
-    puts "Create Programming Languages"
-    ["Ruby", "PHP", "Android", "Java", "C"].each do |name|
-      Fabricate :programming_language, name: name
-    end
-
-    puts "Create User Types"
-    ["Intern", "VPG", "JPG", "New dev", "Tester"].each do |name|
-      Fabricate :user_type, name: name
-    end
-
-    puts "Create Status"
-    ["Inprogress", "Finish", "Prepare project", "Jointed project"].each do |name|
-      Fabricate :status, name: name
     end
 
     puts "Create Course"
@@ -461,8 +482,5 @@ namespace :db do
         Fabricate :permission, model_class: permission[0], action: action, role_id: 3
       end
     end
-
-    puts "create Location"
-    Location.create! name: "Keangnam", user_id: 1
   end
 end

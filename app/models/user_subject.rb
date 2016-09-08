@@ -46,18 +46,18 @@ class UserSubject < ApplicationRecord
 
   class << self
     def update_all_status status, current_user, course_subject
+      load_users(statuses[:init]).update_all status: statuses[:progress],
+        start_date: Time.now,
+        end_date: Time.now + course_subject.subject_during_time.days
       if status == "start"
-        load_users(statuses[:init]).update_all(status: statuses[:progress],
-          start_date: Time.now)
         key = "user_subject.start_all_subject"
       else
-        load_users(statuses[:init]).update_all status: statuses[:progress],
-          start_date: Time.now
         load_users(statuses[:progress]).update_all status: statuses[:finish],
-          end_date: Time.now
+          user_end_date: Time.now
         key = "user_subject.finish_all_subject"
       end
-      course_subject.create_activity key: key, owner: current_user, recipient: course_subject.course
+      course_subject.create_activity key: key,
+        owner: current_user, recipient: course_subject.course
     end
   end
 
@@ -74,9 +74,11 @@ class UserSubject < ApplicationRecord
     end
     create_activity key: key, owner: current_user, recipient: user
     if is_of_user? current_user
-      CourseNotificationBroadCastJob.perform_now course, notification_key, current_user.id, self
+      CourseNotificationBroadCastJob.perform_now course,
+        notification_key, current_user.id, self
     else
-      UserSubjectNotificationBroadCastJob.perform_now self, notification_key, current_user.id
+      UserSubjectNotificationBroadCastJob.perform_now self,
+        notification_key, current_user.id
     end
   end
 
@@ -107,9 +109,13 @@ class UserSubject < ApplicationRecord
   def percent_progress
     if start_date.present?
       current_date = user_end_date
-      current_date ||= Time.zone.today 
+      current_date ||= Time.zone.today
+      
+      real_duration_time = end_date - start_date 
+      return 100 if real_duration_time <= 0
+      
       user_current_time = (current_date - start_date).to_f
-      percent = user_current_time * 100 / (end_date - start_date).to_f
+      percent = user_current_time * 100 / real_duration_time.to_f
       [percent, 100].min
     end
   end
