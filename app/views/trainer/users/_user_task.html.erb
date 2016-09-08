@@ -1,4 +1,5 @@
 <tr>
   <td><%= user_task.task_name %></td>
-  <td><%= t "user_tasks.statuses.#{user_task.status}" %></td>
+  <td class=<%= task_color user_task.status %>>
+    <%= t "user_tasks.statuses.#{user_task.status}" %></td>
 </tr>
