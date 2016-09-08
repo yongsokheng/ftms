@@ -168,4 +168,12 @@ module ApplicationHelper
       "progress-bar-danger"
     end
   end
+
+  def task_color status
+    if status == "in_progress"
+      "text-blue"
+    elsif status == "finish"
+      "text-muted"
+    end
+  end
 end
