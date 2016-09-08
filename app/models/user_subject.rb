@@ -68,7 +68,7 @@ class UserSubject < ApplicationRecord
       key = "user_subject.start_subject"
       notification_key = Notification.keys[:start]
     else
-      update_attributes(status: :finish, end_date: Time.now)
+      update_attributes status: :finish, user_end_date: Time.now
       key = "user_subject.finish_subject"
       notification_key = Notification.keys[:finish]
     end
@@ -106,8 +106,11 @@ class UserSubject < ApplicationRecord
 
   def percent_progress
     if start_date.present?
-      user_current_time = (Time.zone.today - start_date).to_f
-      user_current_time * 100 / during_time
+      current_date = user_end_date
+      current_date ||= Time.zone.today 
+      user_current_time = (current_date - start_date).to_f
+      percent = user_current_time * 100 / (end_date - start_date).to_f
+      [percent, 100].min
     end
   end
 

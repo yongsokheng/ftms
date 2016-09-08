@@ -158,11 +158,11 @@ module ApplicationHelper
   end
 
   def progressbar_color percent
-    if percent == 100
+    if percent < 40
       "progress-bar-info"
-    elsif percent < 30
+    elsif percent < 60
       "progress-bar-success"
-    elsif percent < 70
+    elsif percent < 80
       "progress-bar-warning"
     else
       "progress-bar-danger"
