@@ -410,16 +410,18 @@ namespace :db do
 
     puts "Document"
     Document.create!([
-      {name: "Ruby Books", content: "Rails.AntiPatterns.pdf",
+      {name: "Ruby Books", content: File.open(File.join(Rails.root,
+        "app/assets/images/Ruby.jpg")),
         documentable_id: 1, documentable_type: "Subject"},
-      {name: "Rails advance", content: "Rails.AntiPatterns.pdf",
+      {name: "Rails advance", content: File.open(File.join(Rails.root,
+        "app/assets/images/Ruby.jpg")),
         documentable_id: 2, documentable_type: "Subject"},
-      {name: "Ruby + Git ", content: "Doan_task.odt",
+      {name: "Ruby + Git ", content: File.open(File.join(Rails.root,
+        "app/assets/images/course/git.png")),
         documentable_id: 1, documentable_type: "Course"},
-      {name: "Git book", content: "Pro_git", documentable_id: 3,
-        documentable_type: "Subject"},
-      {name: "Git book ", content: "Pro_git", documentable_id: 2,
-        documentable_type: "Course"}
+      {name: "Git book", content: File.open(File.join(Rails.root,
+        "app/assets/images/course/git.png")), documentable_id: 3,
+        documentable_type: "Subject"}
     ])
 
     puts "Creating Permissions"

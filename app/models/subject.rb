@@ -17,8 +17,7 @@ class Subject < ApplicationRecord
   accepts_nested_attributes_for :task_masters, allow_destroy: true,
     reject_if: proc {|attributes| attributes[:name].blank?}
 
-  accepts_nested_attributes_for :documents, allow_destroy: true,
-    reject_if: proc {|attributes| attributes[:content].blank?}
+  accepts_nested_attributes_for :documents, allow_destroy: true
 
   SUBJECT_ATTRIBUTES_PARAMS = [:name, :description, :content, :image, :during_time,
     documents_attributes: [:id, :name, :content, :_destroy],
