@@ -69,6 +69,10 @@ defaults: &defaults
     trainee: "trainee"
     trainer: "trainer"
   number_day_of_user_chart: 7
+  role_types:
+    admin: 0
+    trainer: 1
+    trainee: 2
   evaluations:
     min: 1
 development:
