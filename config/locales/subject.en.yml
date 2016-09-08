@@ -52,6 +52,7 @@ en:
     note_during_time: "This subject should take approximately %{during_time} days."
     document: "Add Document"
     document_name: "Name"
+    document_url: "Document Url"
     document_remove: "Remove"
     modal:
       member_details: "Member details"

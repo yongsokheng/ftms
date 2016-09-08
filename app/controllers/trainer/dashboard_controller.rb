@@ -50,7 +50,7 @@ class Trainer::DashboardController < ApplicationController
   end
 
   def check_access
-    if current_user.is_trainee?
+    unless current_user.is_trainer?
       flash[:alert] = t "error.not_authorize"
       redirect_to root_path
     end

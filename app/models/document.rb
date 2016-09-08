@@ -3,6 +3,8 @@ class Document < ApplicationRecord
 
   belongs_to :documentable, polymorphic: true
 
+  validates :content, presence: true
+
   def name
     if new_record?
       super
