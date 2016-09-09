@@ -38,8 +38,8 @@ en:
       name: "New program"
       content1: "Looking for a great software engineering job?"
       content2: "Get funding and mentorship for your team?"
-      link1: "CoderSchool SELECT"
-      link2: "CoderSchool PUSH"
+      link1: "SELECT"
+      link2: "PUSH"
     principles:
       title: "Our Training Principles"
       content: "We want to work with the most dedicated startup engineers and designers.We want to help you become the best you can be, alongside talented peers."

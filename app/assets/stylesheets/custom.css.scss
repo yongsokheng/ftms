@@ -335,9 +335,11 @@ html {
 }
 
 .home-index {
-  background-image: asset_url("home.png");
+  background-image: asset_url("home.jpg");
   background-repeat: no-repeat;
-  background-size: 100vw;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: scroll;
 }
 
 select {
