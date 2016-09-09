@@ -21,12 +21,12 @@ class UsersDatatable
 
   private
   def data
-    users.each_with_index.map do |user, index|
+    users.includes(:roles).map.each.with_index 1 do |user, index|
       [
-        index + 1,
+        index,
         link_to(user.name, eval("@view.#{@namespace}_user_path(user)")),
         user.email,
-        user.roles.pluck(:name).join(", "),
+        user.roles.map(&:name).join(", "),
         link_to(@view.t("button.edit"), eval("@view.edit_#{@namespace}_user_path(user)"), class: "pull-right"),
         link_to(@view.t("button.delete"), eval("@view.#{@namespace}_user_path(user)"),
           method: :delete, data: {confirm: @view.t("messages.delete.confirm")},
@@ -63,7 +63,7 @@ class UsersDatatable
   end
 
   def sort_column
-    columns = %w[id name email roles.name]
+    columns = %w[id name email]
     columns[params[:iSortCol_0].to_i]
   end
 

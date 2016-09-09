@@ -1,9 +1,10 @@
 <tr>
   <td id="evaluation-template-name" class="name">
-    <%= f.text_field :name, readonly: true, class: "" %>
+    <%= f.object.name %>
   </td>
   <td class="point">
-    <%= f.number_field :point, class: "evaluation-detail-point form-control" %>
+    <%= f.number_field :point, min: Settings.evaluations.min,
+      class: "evaluation-detail-point form-control", required: true %>
   </td>
   <%= f.hidden_field :evaluation_template_id %>
 </tr>

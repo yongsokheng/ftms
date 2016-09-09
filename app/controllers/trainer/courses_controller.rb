@@ -44,7 +44,7 @@ class Trainer::CoursesController < ApplicationController
   end
 
   def show
-    @course_subjects = @course.course_subjects.order_position
+    @course_subjects = @course.course_subjects.includes(:subject).order_position
     @users = @course.users
     @trainers = @course.users.trainers
     @trainees = @course.users.trainees
