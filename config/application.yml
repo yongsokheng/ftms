@@ -25,6 +25,7 @@ defaults: &defaults
     start: "progress"
   form:
     field_size: 50
+    min_size: 30
   position:
     check_position: 0
     index: 1

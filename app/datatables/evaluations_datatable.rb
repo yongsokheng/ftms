@@ -21,10 +21,10 @@ class EvaluationsDatatable
 
   private
   def data
-    users.each_with_index.map do |user, index|
+    users.includes(:evaluation).map.each.with_index 1 do |user, index|
       [
-        index + 1,
-        link_to(user.name, @view.user_path(user)),
+        index,
+        link_to(user.name, eval("@view.#{@namespace}_user_path(user)")),
         user.evaluation_total_point,
         user.evaluation_current_rank,
         if user.evaluation.nil?
