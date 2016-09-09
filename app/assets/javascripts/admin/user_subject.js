@@ -12,8 +12,4 @@ $(document).on('turbolinks:load ajaxComplete', function() {
       date.find('.date-content').show();
     });
   };
-
-  $('.timeline-title .glyphicon').unbind('click').on('click', function() {
-    $(this).toggleClass('glyphicon-chevron-down glyphicon-chevron-up');
-  });
 });

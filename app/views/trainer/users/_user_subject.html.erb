@@ -11,12 +11,13 @@
         status: user_subject.status %>
     </div>
     <div class="col-md-1">
-      <a role="button" data-toggle="collapse" href="#<%= user_subject.id %>">
+      <a role="button" data-toggle="collapse" href="#user-subject-<%= user_subject.id %>">
         <i class="glyphicon glyphicon-chevron-down"></i>
       </a>
     </div>
   </div>
-  <div id="<%= user_subject.id %>" class="timeline-body panel-collapse collapse">
+  <div id="user-subject-<%= user_subject.id %>"
+    class="user-subject-collapse timeline-body panel-collapse collapse">
     <div class="user-task">
       <table class="table">
         <%= render partial: "trainer/users/user_task", collection: user_subject.user_tasks,
