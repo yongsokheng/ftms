@@ -37,7 +37,7 @@
     </div>
 
     <div class="form-edit row" hidden>
-      <%= form_for [:admin, @course_subject, user_subject], remote: true do |f| %>
+      <%= form_for [:trainer, @course_subject, user_subject], remote: true do |f| %>
         <div class="col-md-8">
           <%= f.text_field :end_date, class: "form-control datepicker" %>
         </div>

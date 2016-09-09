@@ -27,7 +27,7 @@ class LocationsDatatable
         if location.manager.present?
           link_to(@view.avatar_user_tag(manager, "profile-user",
             Settings.image_size_20), eval("@view.#{@namespace}_user_path(manager)"),
-            title: location.name)
+            title: manager.name)
         end,
         link_to(@view.t("button.edit"),
           eval("@view.edit_#{@namespace}_location_path(location)"),

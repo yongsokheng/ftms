@@ -59,6 +59,12 @@ en:
       trainees: "Trainees"
       trainers: "Trainers"
     new_task: New Task
+    init_subjects: "New subjects:"
+    progress_subjects: "Inprogress subjects:"
+    finish_subjects: "Finished subjects:"
+    tasks:
+      in_progress_tasks: "Inprogress tasks:"
+      finished_tasks: "Finished tasks:"
   subject:
     fields:
       content: "Content"

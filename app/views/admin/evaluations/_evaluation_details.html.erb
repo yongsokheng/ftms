@@ -1,6 +1,6 @@
 <tr>
   <td id="evaluation-template-name" class="name">
-    <%= f.object.name %>
+    <%= f.text_field :name, readonly: true, size: Settings.form.min_size %>
   </td>
   <td class="point">
     <%= f.number_field :point, min: Settings.evaluations.min,
