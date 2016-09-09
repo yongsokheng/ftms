@@ -1,7 +1,7 @@
 $(document).on("turbolinks:load", function() {
   var tbl_user = $("#tbl-user");
   if(tbl_user.length > 0) {
-    set_datatable(tbl_user, [0, 4, 5]);
+    set_datatable(tbl_user, [0, 3, 4, 5]);
   }
   if ($('#check_role_trainee, #user_role_id').is(':checked')) {
     $('.profile-form').show();
