@@ -38,7 +38,7 @@ $(document).on('turbolinks:load', function() {
           format: '{point.y:.1f}',
           y: 5,
           style: {
-            fontSize: '16px',
+            fontSize: '12px',
             fontFamily: 'Verdana, sans-serif'
           }
         }
@@ -82,14 +82,14 @@ $(document).on('turbolinks:load', function() {
           format: '{point.y:.1f}',
           y: 5,
           style: {
-            fontSize: '16px',
+            fontSize: '12px',
             fontFamily: 'Verdana, sans-serif'
           }
         }
       }]
     });
   };
-  if ($('#user-sign-up-chart').data('chart') != undefined && 
+  if ($('#user-sign-up-chart').data('chart') != undefined &&
     $('#user-sign-up-chart').data('chart').length > 0) {
     var data_user_sign_up_chart = $('#user-sign-up-chart').data('chart');
     $('#user-sign-up-chart').highcharts({
@@ -128,7 +128,7 @@ $(document).on('turbolinks:load', function() {
           format: '{point.y:.1f}',
           y: 5,
           style: {
-            fontSize: '16px',
+            fontSize: '12px',
             fontFamily: 'Verdana, sans-serif'
           }
         }
