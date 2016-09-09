@@ -4,6 +4,12 @@
       class: "form-control" %>
   </div>
   <div class="col-md-5">
+    <% unless f.object.new_record? %>
+      <i>
+        <%= f.label t("subjects.document_url") %>
+        <%= link_to f.object.name, f.object.content.url, target: "_blank" %>
+      </i>
+    <% end %>
     <%= f.file_field :content %><br>
   </div>
   <div class="col-md-1">

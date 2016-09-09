@@ -31,7 +31,7 @@
                     data-method="patch",
                     data-confirm="<%= t "courses.confirms.confirm_start" %>">
                     <i class="fa fa-check" aria-hidden="true"></i>
-                    <%= t "courses.buttons.admin.start" %>
+                    <%= t "courses.start" %>
                   </a>
                 <% elsif @course.progress? %>
                   <a href="<%= trainer_course_change_status_courses_path @course %>",
