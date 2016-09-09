@@ -20,8 +20,8 @@
     class="user-subject-collapse timeline-body panel-collapse collapse">
     <div class="user-task">
       <table class="table">
-        <%= render partial: "admin/users/user_task", collection: user_subject.user_tasks,
-          as: :user_task %>
+        <%= render partial: "admin/users/user_task",
+          collection: user_subject.user_tasks.includes(:task), as: :user_task %>
       </table>
     </div>
   </div>

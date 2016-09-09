@@ -3,9 +3,9 @@ class Ability
 
   def initialize user, namespace
     @user = user
-    if namespace == Settings.namespace_roles.admin && @user.is_admin?
+    if (namespace == Settings.namespace_roles.admin || namespace == "object") && @user.is_admin?
       can :manage, :all
-    elsif namespace == Settings.namespace_roles.trainer && @user.is_trainer?
+    elsif (namespace == Settings.namespace_roles.trainer || namespace == "object") && @user.is_trainer?
       user_role_permissions @user, Settings.role_types.trainer
     elsif user.is_trainee?
       user_role_permissions @user, Settings.role_types.trainee
