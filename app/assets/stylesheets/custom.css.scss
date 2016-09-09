@@ -336,6 +336,8 @@ html {
 
 .home-index {
   background-image: asset_url("home.png");
+  background-repeat: no-repeat;
+  background-size: 100vw;
 }
 
 select {
