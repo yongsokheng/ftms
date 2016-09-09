@@ -1,1 +1,7 @@
-$(".user-lists").html("<%= j render 'trainer/subjects/user_lists' %>");
+<% if params[:user_subject].present? && @user_subject.errors.blank? %>
+  $("#user-subject-<%= @user_subject.id %>").
+    replaceWith("<%= j render @user_subject %>");
+<% else %>
+  $(".user-lists").html("<%= j render 'trainer/subjects/user_lists' %>");
+<% end %>
+$(".flash").html("<%= j render 'shared/flash_banner' %>");

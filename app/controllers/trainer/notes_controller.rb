@@ -4,6 +4,7 @@ class Trainer::NotesController < ApplicationController
   before_action :load_notes, only: [:create, :update, :destroy]
 
   def create
+    @note.author_id = current_user.id
     if @note.save
       flash.now[:success] = flash_message "created"
     end
