@@ -19,7 +19,7 @@ class CoursesDatatable
 
   private
   def data
-    courses.each_with_index.map do |course, index|
+    courses.map.each do |course|
       [
         course.id,
         link_to(course.name, eval("@view.#{@namespace}_course_path(course)")),
@@ -39,8 +39,8 @@ class CoursesDatatable
 
   def fetch_courses
     current_user = @view.current_user
-    current_courses = @namespace == Settings.namespace_roles.admin ? Course : current_user.courses
-    courses = current_courses.order("#{sort_column} #{sort_direction}")
+    @courses = @namespace == Settings.namespace_roles.admin ? Course.all : current_user.courses
+    courses = @courses.order("#{sort_column} #{sort_direction}")
       .where("name like :search", search: "%#{params[:sSearch]}%")
       .per_page_kaminari(page).per per_page
 
@@ -55,7 +55,7 @@ class CoursesDatatable
   end
 
   def per_page
-    params[:iDisplayLength].to_i > 0 ? params[:iDisplayLength].to_i : 10
+    params[:iDisplayLength].to_i > 0 ? params[:iDisplayLength].to_i : @courses.size
   end
 
   def sort_column

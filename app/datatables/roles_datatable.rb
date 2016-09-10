@@ -19,9 +19,9 @@ class RolesDatatable
 
   private
   def data
-    roles.each_with_index.map do |role, index|
+    roles.map.each.with_index 1 do |role, index|
       [
-        index + 1,
+        index,
         link_to(role.name, eval("@view.edit_admin_role_allocate_permissions_path(role)")),
         link_to(@view.t("button.edit"), eval("@view.edit_#{@namespace}_role_path(role)"),
           class: "text-primary pull-right"),
@@ -37,8 +37,8 @@ class RolesDatatable
   end
 
   def fetch_roles
-    roles = Role.not_admin.order "#{sort_column} #{sort_direction}"
-    roles = roles.per_page_kaminari(page).per per_page
+    @roles = Role.not_admin.order "#{sort_column} #{sort_direction}"
+    roles = @roles.per_page_kaminari(page).per per_page
     if params[:sSearch].present?
       roles = roles.where "name like :search", search: "%#{params[:sSearch]}%"
     end
@@ -50,7 +50,7 @@ class RolesDatatable
   end
 
   def per_page
-    params[:iDisplayLength].to_i > 0 ? params[:iDisplayLength].to_i : 10
+    params[:iDisplayLength].to_i > 0 ? params[:iDisplayLength].to_i : @roles.size
   end
 
   def sort_column

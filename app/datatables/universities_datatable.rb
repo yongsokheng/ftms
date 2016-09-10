@@ -19,9 +19,9 @@ class UniversitiesDatatable
 
   private
   def data
-    universities.each_with_index.map do |university, index|
+    universities.map.each.with_index 1 do |university, index|
       [
-        index + 1,
+        index,
         university.name,
         link_to(@view.t("button.edit"), eval("@view.edit_#{@namespace}_university_path(university)"),
           class: "text-primary pull-right"),
@@ -37,8 +37,8 @@ class UniversitiesDatatable
   end
 
   def fetch_universities
-    universities = University.order "#{sort_column} #{sort_direction}"
-    universities = universities.per_page_kaminari(page).per per_page
+    @universities = University.order "#{sort_column} #{sort_direction}"
+    universities = @universities.per_page_kaminari(page).per per_page
     if params[:sSearch].present?
       universities = universities.where "name like :search", search: "%#{params[:sSearch]}%"
     end
@@ -50,7 +50,7 @@ class UniversitiesDatatable
   end
 
   def per_page
-    params[:iDisplayLength].to_i > 0 ? params[:iDisplayLength].to_i : 10
+    params[:iDisplayLength].to_i > 0 ? params[:iDisplayLength].to_i : @universities.size
   end
 
   def sort_column

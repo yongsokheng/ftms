@@ -45,13 +45,13 @@ class EvaluationsDatatable
   end
 
   def fetch_users
-    if @current_user.is_admin?
-      users = @trainees
+    if @current_user.is_admin? && @namespace == Settings.namespace_roles.admin
+      @users = @trainees
     else
       courses = @current_user.user_courses.pluck :course_id
-      users = @trainees.find_course courses
+      @users = @trainees.find_course courses
     end
-    users = users.order("#{sort_column} #{sort_direction}")
+    users = @users.order("#{sort_column} #{sort_direction}")
       .per_page_kaminari(page).per per_page
     if params[:sSearch].present?
       users = users.where "users.name like :search", search: "%#{params[:sSearch]}%"
@@ -64,7 +64,7 @@ class EvaluationsDatatable
   end
 
   def per_page
-    params[:iDisplayLength].to_i > 0 ? params[:iDisplayLength].to_i : 10
+    params[:iDisplayLength].to_i > 0 ? params[:iDisplayLength].to_i : @users.size
   end
 
   def sort_column
