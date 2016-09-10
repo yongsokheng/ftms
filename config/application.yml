@@ -76,6 +76,14 @@ defaults: &defaults
     trainee: 2
   evaluations:
     min: 1
+  during_time:
+    course: 60
+    project_1: 10
+    project_2: 7
+    git_tutorial: 2
+    mysql: 2
+    tutorial_book: 10
+    javascript: 4
 development:
   <<: *defaults
   neat_setting: 800
