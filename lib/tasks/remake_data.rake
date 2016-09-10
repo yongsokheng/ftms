@@ -207,7 +207,7 @@ namespace :db do
         description: "Start Project 2 for PHP today.\r\n",
         content: "<p>Get an introduction to redmine, requirement, design database</p>\r\n", during_time: Settings.during_time.project_2},
       {name: "MySQL", image: File.open(File.join(Rails.root,
-        "app/assets/images/subject/mysql.png")), description: "Start MySQL today.\r\n", content: "MySQL", during_time: Settings.during_time.mysql},
+        "app/assets/images/subject/mysql.jpg")), description: "Start MySQL today.\r\n", content: "MySQL", during_time: Settings.during_time.mysql},
       {name: "JavaScript", image: File.open(File.join(Rails.root,
         "app/assets/images/subject/javascript.jpg")), description: "JavaScript is the programming language of HTML and the Web.
         Programming makes computers do what you want them to do. JavaScript is easy to learn. This tutorial will teach you JavaScript from basic to advanced.",
