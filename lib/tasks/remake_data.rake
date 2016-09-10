@@ -1,21 +1,23 @@
 namespace :db do
   desc "remake database data"
-  task rake_data: :environment do
+  task remake_data: :environment do
     Rake::Task["db:migrate:reset"].invoke
 
     puts "Create Universities"
     ["Vietnam National University, Hanoi", "Hanoi University of Science and Technology",
-      "Foreign Trade University", "Hanoi University of Industry"].each do |name|
+      "Foreign Trade University",
+      "Posts and Telecommunications Institute of Technology",
+      "Hanoi University of Industry"].each do |name|
       Fabricate :university, name: name
     end
 
     puts "Create Programming Languages"
-    ["Ruby", "PHP", "Android", "Java", "C"].each do |name|
+    ["Ruby", "PHP", "Android", "Java", "iOS"].each do |name|
       Fabricate :programming_language, name: name
     end
 
     puts "Create User Types"
-    ["Intern", "VPG", "JPG", "New dev", "Tester"].each do |name|
+    ["Intern", "VPG", "JPG", "New dev", "QA"].each do |name|
       Fabricate :user_type, name: name
     end
 
@@ -31,144 +33,104 @@ namespace :db do
 
     puts "Creating User"
     User.create!([
-      {name: "Nguyen Binh Dieu", avatar: File.open(File.join(Rails.root,
-        "app/assets/images/user/Nguyen_Binh_Dieu.jpg")),
-        email: "admin@tms.com", password: "12345678",
+      {name: "Chu Anh Tuấn", avatar: File.open(File.join(Rails.root,
+        "app/assets/images/user/chu_anh_tuan.jpg")),
+        email: "chu.anh.tuan@framgia.com", password: "12345678",
         password_confirmation: "12345678"},
-      {name: "Mai Tuan Viet", avatar: File.open(File.join(Rails.root,
-        "app/assets/images/user/Mai Tuan Viet.jpg")),
-        email: "supervisor@tms.com", password: "12345678",
+      {name: "Nguyễn Bình Diệu", avatar: File.open(File.join(Rails.root,
+        "app/assets/images/user/nguyen_binh_dieu.jpg")),
+        email: "nguyen.binh.dieu@framgia.com", password: "12345678",
         password_confirmation: "12345678"},
-      {name: "Nguyen Tien Trung", avatar: nil,
+      {name: "Mai Tuấn Việt", avatar: File.open(File.join(Rails.root,
+        "app/assets/images/user/mai_tuan_viet.jpg")),
+        email: "mai.tuan.viet@framgia.com", password: "12345678",
+        password_confirmation: "12345678"},
+      {name: "Hoàng Nhạc Trung", avatar: File.open(File.join(Rails.root,
+        "app/assets/images/user/hoang_nhac_trung.jpg")),
+        email: "hoang.nhac.trung@framgia.com", password: "12345678",
+        password_confirmation: "12345678"},
+      {name: "Nguyễn Tiến Trung", avatar: File.open(File.join(Rails.root,
+        "app/assets/images/user/nguyen_tien_trung.jpg")),
         email: "nguyen.tien.trung@framgia.com", password: "12345678",
         password_confirmation: "12345678"},
-      {name: "Truong Loc Binh", avatar: File.open(File.join(Rails.root,
-        "app/assets/images/user/Truong Loc Binh.jpg")),
-        email: "truonglocbinh@gmail.com", password: "12345678",
+      {name: "Hoàng Thị Nhung", avatar: File.open(File.join(Rails.root,
+        "app/assets/images/user/hoang_thi_nhung.jpg")),
+        email: "hoang.thi.nhung@framgia.com", password: "12345678",
         password_confirmation: "12345678"},
-      {name: "Vu Duc Luan", avatar: File.open(File.join(Rails.root,
-        "app/assets/images/user/Vu Duc Luan.jpg")),
-        email: "vuducluan@gmail.com", password: "12345678",
+      {name: "Nguyễn Văn Trần Anh", avatar: File.open(File.join(Rails.root,
+        "app/assets/images/user/nguyen_van_tran_anh.jpg")),
+        email: "nguyen.van.tran.anh@framgia.com", password: "12345678",
         password_confirmation: "12345678"},
-      {name: "Ngo Van Thien ", avatar: File.open(File.join(Rails.root,
-        "app/assets/images/user/Ngo Van Thien.jpg")),
-        email: "ngovanthie@gmail.com", password: "12345678",
+      {name: "Trần Xuân Thắng", avatar: File.open(File.join(Rails.root,
+        "app/assets/images/user/tran_xuan_thang.jpg")),
+        email: "tran.xuan.thang@framgia.com", password: "12345678",
         password_confirmation: "12345678"},
-      {name: "Ngo Van Duong", avatar: File.open(File.join(Rails.root,
-        "app/assets/images/user/Ngo Van Duong.jpg")),
-        email: "ngovanduong@gmail.com", password: "12345678",
-        password_confirmation: "12345678"},
-      {name: "Nguyen Thai Son", avatar: File.open(File.join(Rails.root,
-        "app/assets/images/user/Nguyen Thai Son.jpg")),
-        email: "nguyenthaison@gmail.com", password: "12345678",
-        password_confirmation: "12345678"},
-      {name: "Mai Dinh Phu ", avatar: File.open(File.join(Rails.root,
-        "app/assets/images/user/Mai Dinh Phu.jpg")),
-        email: "maidinhphu@gmail.com", password: "12345678",
-        password_confirmation: "12345678"},
-      {name: "Nguyen Van Hien", avatar: File.open(File.join(Rails.root,
-        "app/assets/images/user/Nguyen Van Hien.jpg")),
-        email: "nguyenvanhien@gmail.com", password: "12345678",
-        password_confirmation: "12345678"},
-      {name: "Nguyen Thi Trang", avatar: File.open(File.join(Rails.root,
-        "app/assets/images/user/Nguyen Thi Trang.png")),
-        email: "nguyenthitrang@gmail.com", password: "12345678",
-        password_confirmation: "12345678"},
-      {name: "Nguyen Thi Mo", avatar: File.open(File.join(Rails.root,
-        "app/assets/images/user/Nguyen Thi Mo.jpg")),
-        email: "nguyenthimo@gmail.com", password: "12345678",
-        password_confirmation: "12345678"},
-      {name: "Hoang Van Nam", avatar: File.open(File.join(Rails.root,
-        "app/assets/images/user/Hoang Van Nam.jpg")),
-        email: "hoangvannam@gmail.com", password: "12345678",
-        password_confirmation: "12345678"},
-      {name: "Du Thanh Hai", avatar: File.open(File.join(Rails.root,
-        "app/assets/images/user/Bui Quoc Viet.jpg")),
-        email: "duthanhhai@gmail.com", password: "12345678",
-        password_confirmation: "12345678"},
-      {name: "Mai Dinh Phi", avatar: File.open(File.join(Rails.root,
-        "app/assets/images/user/Nguyen Tuan Trong.jpg")),
-        email: "maidinhphi@gmail.com", password: "12345678",
-        password_confirmation: "12345678"},
-      {name: "Hoang Thi Linh", avatar: File.open(File.join(Rails.root,
-        "app/assets/images/user/Hoang Thi Linh.jpg")),
-        email: "hoangthilinh@gmail.com", password: "12345678",
-        password_confirmation: "12345678"},
-      {name: "Dinh Hoang Hai", avatar: nil,
-        email: "dinhhoanghai@gmail.com", password: "12345678",
-        password_confirmation: "12345678"},
-      {name: "Nguyen Sinh", avatar: nil,
-        email: "nguyensinh@gmail.com", password: "12345678",
-        password_confirmation: "12345678"},
-      {name: "Nguyen Tuan Trong", avatar: nil,
-        email: "nguyentuantrong@gmail.com", password: "12345678",
-        password_confirmation: "12345678"},
-      {name: "Hoang Linh", avatar: nil,
-        email: "hoanglinh@gmail.com",  password: "12345678",
-        password_confirmation: "12345678"},
-      {name: "Truong Thi Thao", avatar: nil,
-        email: "truongthithao@gmail.com",  password: "12345678",
-        password_confirmation: "12345678"},
-      {name: "Can Van Nghi", avatar: nil,
-        email: "canvannghi@gmail.com",  password: "12345678",
-        password_confirmation: "12345678"},
-      {name: "Luu Binh", avatar: nil,
-        email: "luubinh@gmail.com",  password: "12345678",
-        password_confirmation: "12345678"},
-      {name: "Duong Phuong", avatar: nil,
-        email: "duongphuong@gmail.com",  password: "12345678",
-        password_confirmation: "12345678"},
-      {name: "Ha Linh", avatar: nil,
-        email: "halinh@gmail.com",  password: "12345678",
-        password_confirmation: "12345678"},
-      {name: "Ly Hoang Nam", avatar: nil,
-        email: "lyhoangnam@gmail.com",  password: "12345678",
-        password_confirmation: "12345678"},
-      {name: "Mai Thao", avatar: nil,
-        email: "maithao@gmail.com", password: "12345678",
-        password_confirmation: "12345678"},
-      {name: "Dinh Phuong Linh", avatar: nil,
-        email: "dinhphuonglinh@gmail.com", password: "12345678",
-        password_confirmation: "12345678"},
-      {name: "Minh Phuong", avatar: nil,
-        email: "minhphuong@gmail.com", password: "12345678",
-        password_confirmation: "12345678"},
-      {name: "So khen", avatar: nil,
-        email: "sokhen@gmail.com",  password: "12345678",
-        password_confirmation: "12345678"},
-      {name: "Chenkim", avatar: nil,
-        email: "chenkim@gmail.com",  password: "12345678",
-        password_confirmation: "12345678"},
-      {name: "Kooru", avatar: nil,
-        email: "kooru@gmail.com",  password: "12345678",
-        password_confirmation: "12345678"}
+      {name: "Bùi Khánh Huyền", avatar: File.open(File.join(Rails.root,
+        "app/assets/images/user/bui_khanh_huyen.jpg")),
+        email: "bui.khanh.huyen@framgia.com", password: "12345678",
+        password_confirmation: "12345678",
+        created_at: "01/07/2016".to_date, updated_at: "01/07/2016".to_date},
+      {name: "Chử Kim Thắng", avatar: File.open(File.join(Rails.root,
+        "app/assets/images/user/chu_kim_thang.jpg")),
+        email: "chu.kim.thang@framgia.com", password: "12345678",
+        password_confirmation: "12345678",
+        created_at: "08/08/2016".to_date, updated_at: "08/08/2016".to_date},
+      {name: "Lê Văn Chiến", avatar: File.open(File.join(Rails.root,
+        "app/assets/images/user/le_van_chien.jpg")),
+        email: "le.van.chien@framgia.com", password: "12345678",
+        password_confirmation: "12345678",
+        created_at: "01/09/2016".to_date, updated_at: "01/09/2016".to_date},
+      {name: "Nguyễn Thùy Dương", avatar: File.open(File.join(Rails.root,
+        "app/assets/images/user/nguyen_thuy_duong.jpg")),
+        email: "nguyen.thuy.duong@framgia.com", password: "12345678",
+        password_confirmation: "12345678",
+        created_at: "01/07/2016".to_date, updated_at: "01/07/2016".to_date},
+      {name: "Ninh Đức Quyền", avatar: File.open(File.join(Rails.root,
+        "app/assets/images/user/ninh_duc_quyen.jpg")),
+        email: "ninh.duc.quyen@framgia.com", password: "12345678",
+        password_confirmation: "12345678",
+        created_at: "01/07/2016".to_date, updated_at: "01/07/2016".to_date},
+      {name: "Vũ Hữu Tuấn ", avatar: File.open(File.join(Rails.root,
+        "app/assets/images/user/vu_huu_tuan.jpg")),
+        email: "vu.huu.tuan@framgia.com", password: "12345678",
+        password_confirmation: "12345678",
+        created_at: "01/09/2016".to_date, updated_at: "01/09/2016".to_date},
     ])
 
     puts "Creating Roles Manager && Trainer"
     User.first.user_roles.create! role_id: 1
-    User.second.user_roles.create! role_id: 2
-    User.third.user_roles.create! role_id: 2
-
+    User.first.user_roles.create! role_id: 2
+    User.first.user_roles.create! role_id: 3
+    User.second.user_roles.create! role_id: 1
+    User.find(3).user_roles.create! role_id: 1
+    User.find(4).user_roles.create! role_id: 1
+    User.find(5).user_roles.create! role_id: 2
+    User.find(6).user_roles.create! role_id: 2
+    User.find(7).user_roles.create! role_id: 2
+    User.find(8).user_roles.create! role_id: 2
 
     puts "Creating Location Manager && Trainer"
-    Location.create! name: "Keangnam", user_id: 1
-    Location.create! name: "Laboratory", user_id: 2
-    Location.create! name: "Da Nang", user_id: 3
+    Location.create! name: "Keangnam", user_id: 2
+    Location.create! name: "Laboratory", user_id: 3
+    Location.create! name: "Da Nang", user_id: 4
+
+    puts "Create admin, trainer location"
+    User.first.create_profile location_id: 1
+    User.second.create_profile location_id: 1
+    User.find(3).create_profile location_id: 2
+    User.find(4).create_profile location_id: 3
+    User.find(5).create_profile location_id: 2
+    User.find(6).create_profile location_id: 1
+    User.find(7).create_profile location_id: 3
+    User.find(8).create_profile location_id: 1
 
     puts "Creating User Roles, Profile && Location"
-    User.offset(3).each do |user|
+    User.offset(8).each do |user|
       user.user_roles.create! role_id: 3
-      trainer = User.trainers.sample
+      trainer = User.find_by_id 5
       user.update_attributes trainer: trainer
       user.create_profile(
-        start_training_date: Time.zone.today - 30,
-        finish_training_date: Time.zone.today + 30,
-        contract_date: Time.zone.today - 40,
-        university_id: University.all.sample.id,
-        programming_language_id: ProgrammingLanguage.all.sample.id,
-        user_type_id: UserType.all.sample.id,
-        status_id: Status.all.sample.id,
-        location_id: trainer.profile_location_id)
+        location_id: 2)
     end
 
     puts "Creating Evaluation Template"
@@ -213,7 +175,7 @@ namespace :db do
         description: "Start Project 1 for Ruby on Rails today.\r\n",
         content: "<p>Get an introduction to redmine, requirement, design database</p>\r\n", during_time: Settings.during_time.project_1},
       {name: "Ruby's Project 2", image: File.open(File.join(Rails.root,
-        "app/assets/images/Ruby.jpg")),
+        "app/assets/images/Ruby.png")),
         description: "Start Project 2 for Ruby on Rails today.\r\n",
         content: "<p>Get an introduction to redmine, requirement, design database</p>\r\n", during_time: Settings.during_time.project_2},
 
@@ -252,7 +214,7 @@ namespace :db do
       {name: "MySQL", image: File.open(File.join(Rails.root,
         "app/assets/images/subject/mysql.png")), description: "Start MySQL today.\r\n", content: "MySQL", during_time: Settings.during_time.mysql},
       {name: "JavaScript", image: File.open(File.join(Rails.root,
-        "app/assets/images/subject/javascript.jpg")), description: "JavaScript is the programming language of HTML and the Web. 
+        "app/assets/images/subject/javascript.jpg")), description: "JavaScript is the programming language of HTML and the Web.
         Programming makes computers do what you want them to do. JavaScript is easy to learn. This tutorial will teach you JavaScript from basic to advanced.",
         during_time: Settings.during_time.javascript}
 
@@ -409,46 +371,6 @@ namespace :db do
       {course_id: 3, subject_id: 8},
       {course_id: 3, subject_id: 9},
       {course_id: 3, subject_id: 10}
-    ])
-
-    puts "Creating UserCourse"
-    UserCourse.create!([
-      {active: true, user_id: 2, course_id: 1},
-      {active: true, user_id: 3, course_id: 1},
-      {active: true, user_id: 4, course_id: 1},
-      {active: true, user_id: 5, course_id: 1},
-      {active: true, user_id: 6, course_id: 1},
-      {active: true, user_id: 7, course_id: 1},
-
-      {active: false, user_id: 2, course_id: 2},
-      {active: false, user_id: 8, course_id: 2},
-      {active: false, user_id: 9, course_id: 2},
-      {active: false, user_id: 10, course_id: 2},
-      {active: false, user_id: 11, course_id: 2},
-      {active: false, user_id: 12, course_id: 2},
-
-      {active: false, user_id: 2, course_id: 3},
-      {active: false, user_id: 13, course_id: 3},
-      {active: false, user_id: 14, course_id: 3},
-      {active: false, user_id: 15, course_id: 3},
-      {active: false, user_id: 16, course_id: 3},
-      {active: false, user_id: 17, course_id: 3}
-    ])
-
-    puts "Document"
-    Document.create!([
-      {name: "Ruby Books", content: File.open(File.join(Rails.root,
-        "app/assets/images/Ruby.jpg")),
-        documentable_id: 1, documentable_type: "Subject"},
-      {name: "Rails advance", content: File.open(File.join(Rails.root,
-        "app/assets/images/Ruby.jpg")),
-        documentable_id: 2, documentable_type: "Subject"},
-      {name: "Ruby + Git ", content: File.open(File.join(Rails.root,
-        "app/assets/images/course/git.png")),
-        documentable_id: 1, documentable_type: "Course"},
-      {name: "Git book", content: File.open(File.join(Rails.root,
-        "app/assets/images/course/git.png")), documentable_id: 3,
-        documentable_type: "Subject"}
     ])
 
     puts "Creating Permissions"
