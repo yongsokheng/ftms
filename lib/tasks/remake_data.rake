@@ -170,7 +170,7 @@ namespace :db do
         description: "Start Project 1 for Ruby on Rails today.\r\n",
         content: "<p>Get an introduction to redmine, requirement, design database</p>\r\n", during_time: Settings.during_time.project_1},
       {name: "Ruby's Project 2", image: File.open(File.join(Rails.root,
-        "app/assets/images/Ruby.png")),
+        "app/assets/images/ruby.png")),
         description: "Start Project 2 for Ruby on Rails today.\r\n",
         content: "<p>Get an introduction to redmine, requirement, design database</p>\r\n", during_time: Settings.during_time.project_2},
 
