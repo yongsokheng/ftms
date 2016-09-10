@@ -188,17 +188,17 @@ namespace :db do
       {name: "Ruby on Rails",
         image: File.open(File.join(Rails.root, "app/assets/images/course/Rails-1.png")),
         description: "Learn more Rails with this sequel to the infamous Rails for Zombies course. Increase your Ruby on Rails knowledge with even more zombie learning.",
-        status: 1, programming_language_id: 1, start_date: Time.now, end_date: Time.now + 30.days},
+        status: 1, programming_language_id: 1, start_date: Time.now, end_date: Time.now + Settings.during_time.course.days},
 
       {name: "Android",
         image: File.open(File.join(Rails.root, "app/assets/images/Android.png")),
         description: "This tutorial will teach you basic Android programming and will also take you through some advance concepts related to Android application development.",
-        status: 0, programming_language_id: 1, start_date: Time.now, end_date: Time.now + 30.days},
+        status: 0, programming_language_id: 1, start_date: Time.now, end_date: Time.now + Settings.during_time.course.days},
 
       {name: "PHP",
         image: File.open(File.join(Rails.root, "app/assets/images/PHP.png")),
         description: "PHP is a server scripting language, and a powerful tool for making dynamic and interactive Web pages",
-        status: 1, programming_language_id: 1, start_date: Time.now, end_date: Time.now + 30.days},
+        status: 1, programming_language_id: 1, start_date: Time.now, end_date: Time.now + Settings.during_time.course.days},
     ])
 
     puts "Create Subject"
@@ -207,48 +207,54 @@ namespace :db do
         "app/assets/images/subject/try-ruby.png")),
         description: "Learn the basic building blocks of Ruby, all in the browser.\r\n",
         content: "<p>Get an introduction to numbers, Strings, properties, and methods,&nbsp;
-          Learn about conversions, arrays, variables, and more methods</p>\r\n", during_time: 12},
-      {name: "Project 1 for Rails", image: File.open(File.join(Rails.root,
+          Learn about conversions, arrays, variables, and more methods</p>\r\n", during_time: Settings.during_time.tutorial_book},
+      {name: "Ruby's Project 1", image: File.open(File.join(Rails.root,
         "app/assets/images/subject/Rails-2.png")),
         description: "Start Project 1 for Ruby on Rails today.\r\n",
-        content: "<p>Get an introduction to redmine, requirement, design database</p>\r\n", during_time: 12},
-      {name: "Project 2 for Rails", image: File.open(File.join(Rails.root,
+        content: "<p>Get an introduction to redmine, requirement, design database</p>\r\n", during_time: Settings.during_time.project_1},
+      {name: "Ruby's Project 2", image: File.open(File.join(Rails.root,
         "app/assets/images/Ruby.jpg")),
-        description: "Start Project 1 for Ruby on Rails today.\r\n",
-        content: "<p>Get an introduction to redmine, requirement, design database</p>\r\n", during_time: 12},
+        description: "Start Project 2 for Ruby on Rails today.\r\n",
+        content: "<p>Get an introduction to redmine, requirement, design database</p>\r\n", during_time: Settings.during_time.project_2},
 
       {name: "Git Tutorial", image: File.open(File.join(Rails.root,
         "app/assets/images/subject/try-git.png")),
         description: "Start Git for your project today.\r\n",
-        content: "<p>Get an introduction to github, code version management</p>\r\n", during_time: 12},
+        content: "<p>Get an introduction to github, code version management</p>\r\n", during_time: Settings.during_time.git_tutorial},
 
       {name: "Android Tutorial Book", image: File.open(File.join(Rails.root,
         "app/assets/images/Android.png")),
         description: "This tutorial will teach you basic Android programming and will also take you through some advance concepts related to Android application development.\r\n",
         content: "<p>Get an introduction to numbers, Strings, properties, and methods,&nbsp;
-          Learn about conversions, arrays, variables, and more methods</p>\r\n", during_time: 12},
-      {name: "Project 1 for Android", image: File.open(File.join(Rails.root,
+          Learn about conversions, arrays, variables, and more methods</p>\r\n", during_time: Settings.during_time.tutorial_book},
+      {name: "Android's Project 1", image: File.open(File.join(Rails.root,
         "app/assets/images/Android.png")),
         description: "Start Project 1 for Android today.\r\n",
-        content: "<p>Get an introduction to redmine, requirement, design database</p>\r\n", during_time: 12},
-      {name: "Project 2 for Android", image: File.open(File.join(Rails.root,
+        content: "<p>Get an introduction to redmine, requirement, design database</p>\r\n", during_time: Settings.during_time.project_1},
+      {name: "Android's Project 2", image: File.open(File.join(Rails.root,
         "app/assets/images/Android.png")),
         description: "Start Project 2 for Android today.\r\n",
-        content: "<p>Get an introduction to redmine, requirement, design database</p>\r\n", during_time: 12},
+        content: "<p>Get an introduction to redmine, requirement, design database</p>\r\n", during_time: Settings.during_time.project_2},
 
       {name: "PHP Tutorial Book", image: File.open(File.join(Rails.root,
         "app/assets/images/PHP.png")),
         description: "PHP is a server scripting language, and a powerful tool for making dynamic and interactive Web pages.\r\n",
         content: "<p>Get an introduction to numbers, Strings, properties, and methods,&nbsp;
-          Learn about conversions, arrays, variables, and more methods</p>\r\n", during_time: 12},
-      {name: "Project 1 for PHP", image: File.open(File.join(Rails.root,
+          Learn about conversions, arrays, variables, and more methods</p>\r\n", during_time: Settings.during_time.tutorial_book},
+      {name: "PHP's Project 1", image: File.open(File.join(Rails.root,
         "app/assets/images/PHP.png")),
         description: "Start Project 1 for PHP today.\r\n",
-        content: "<p>Get an introduction to redmine, requirement, design database</p>\r\n", during_time: 12},
-      {name: "Project 2 for PHP", image: File.open(File.join(Rails.root,
+        content: "<p>Get an introduction to redmine, requirement, design database</p>\r\n", during_time: Settings.during_time.project_1},
+      {name: "PHP's Project 2", image: File.open(File.join(Rails.root,
         "app/assets/images/PHP.png")),
         description: "Start Project 2 for PHP today.\r\n",
-        content: "<p>Get an introduction to redmine, requirement, design database</p>\r\n", during_time: 12},
+        content: "<p>Get an introduction to redmine, requirement, design database</p>\r\n", during_time: Settings.during_time.project_2},
+      {name: "MySQL", image: File.open(File.join(Rails.root,
+        "app/assets/images/subject/mysql.png")), description: "Start MySQL today.\r\n", content: "MySQL", during_time: Settings.during_time.mysql},
+      {name: "JavaScript", image: File.open(File.join(Rails.root,
+        "app/assets/images/subject/javascript.jpg")), description: "JavaScript is the programming language of HTML and the Web. 
+        Programming makes computers do what you want them to do. JavaScript is easy to learn. This tutorial will teach you JavaScript from basic to advanced.",
+        during_time: Settings.during_time.javascript}
 
     ])
 
