@@ -44,7 +44,7 @@
       </div>
     </div>
   </div>
-  <div class="content-subject"><%= @subject.content.html_safe %></div>
+  <div class="content-subject"><%= @subject.content.html_safe if @subject.content %></div>
   <div id="tasks">
     <table class="table table-striped tbl-task">
       <thead>

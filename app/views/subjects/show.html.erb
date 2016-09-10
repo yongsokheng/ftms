@@ -33,7 +33,7 @@
         <div class="description"><%= @user_subject.description %></div>
         <div class="subject-content box-divider">
           <div class="label-title"><%= t "subjects.content" %></div>
-          <%= @user_subject.content.html_safe %>
+          <%= @user_subject.content.html_safe if @user_subject.content %>
         </div>
       </div>
 
