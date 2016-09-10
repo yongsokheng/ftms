@@ -26,6 +26,7 @@
 //= require datepicker
 //= require highcharts
 //= require highcharts/highcharts-more
+//= require admin/dark-unica
 //= require jquery.slimscroll
 //= require notify
 //= require admin/role_permission
