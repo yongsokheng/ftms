@@ -19,9 +19,9 @@ class SubjectsDatatable
 
   private
   def data
-    subjects.each_with_index.map do |subject, index|
+    subjects.map.each.with_index 1 do |subject, index|
       [
-        index + 1,
+        index,
         link_to(subject.name, eval("@view.#{@namespace}_subject_task_masters_path(subject)")),
         subject.description
       ]
@@ -33,8 +33,8 @@ class SubjectsDatatable
   end
 
   def fetch_subjects
-    subjects = Subject.order "#{sort_column} #{sort_direction}"
-    subjects = subjects.per_page_kaminari(page).per per_page
+    @subjects = Subject.order "#{sort_column} #{sort_direction}"
+    subjects = @subjects.per_page_kaminari(page).per per_page
     if params[:sSearch].present?
       subjects = subjects.where "name like :search", search: "%#{params[:sSearch]}%"
     end
@@ -46,7 +46,7 @@ class SubjectsDatatable
   end
 
   def per_page
-    params[:iDisplayLength].to_i > 0 ? params[:iDisplayLength].to_i : 10
+    params[:iDisplayLength].to_i > 0 ? params[:iDisplayLength].to_i : @subjects.size
   end
 
   def sort_column

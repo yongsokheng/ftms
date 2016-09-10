@@ -19,9 +19,9 @@ class RanksDatatable
 
   private
   def data
-    ranks.each_with_index.map do |rank, index|
+    ranks.map.each.with_index 1 do |rank, index|
       [
-        index + 1,
+        index,
         rank.rank_value,
         rank.begin_point,
         rank.end_point,
@@ -39,8 +39,8 @@ class RanksDatatable
   end
 
   def fetch_ranks
-    ranks = Rank.order "#{sort_column} #{sort_direction}"
-    ranks = ranks.per_page_kaminari(page).per per_page
+    @ranks = Rank.order "#{sort_column} #{sort_direction}"
+    ranks = @ranks.per_page_kaminari(page).per per_page
     if params[:sSearch].present?
       ranks = ranks.where "rank_value like :search", search: "%#{params[:sSearch]}%"
     end
@@ -52,7 +52,7 @@ class RanksDatatable
   end
 
   def per_page
-    params[:iDisplayLength].to_i > 0 ? params[:iDisplayLength].to_i : 10
+    params[:iDisplayLength].to_i > 0 ? params[:iDisplayLength].to_i : @ranks.size
   end
 
   def sort_column

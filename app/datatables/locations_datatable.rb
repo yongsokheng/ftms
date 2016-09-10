@@ -19,10 +19,10 @@ class LocationsDatatable
 
   private
   def data
-    locations.each_with_index.map do |location, index|
+    locations.includes(:manager).map.each.with_index 1 do |location, index|
       manager = location.manager
       [
-        index + 1,
+        index,
         link_to(location.name, eval("@view.#{@namespace}_location_path(location)")),
         if location.manager.present?
           link_to(@view.avatar_user_tag(manager, "profile-user",
@@ -45,8 +45,8 @@ class LocationsDatatable
   end
 
   def fetch_locations
-    locations = Location.order "#{sort_column} #{sort_direction}"
-    locations = locations.per_page_kaminari(page).per per_page
+    @locations = Location.order "#{sort_column} #{sort_direction}"
+    locations = @locations.per_page_kaminari(page).per per_page
     if params[:sSearch].present?
       locations = locations.where "name like :search", search: "%#{params[:sSearch]}%"
     end
@@ -58,7 +58,7 @@ class LocationsDatatable
   end
 
   def per_page
-    params[:iDisplayLength].to_i > 0 ? params[:iDisplayLength].to_i : 10
+    params[:iDisplayLength].to_i > 0 ? params[:iDisplayLength].to_i : @locations.size
   end
 
   def sort_column

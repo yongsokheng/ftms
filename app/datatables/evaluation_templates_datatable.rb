@@ -19,9 +19,9 @@ class EvaluationTemplatesDatatable
 
   private
   def data
-    evaluation_templates.each_with_index.map do |evaluation_template, index|
+    evaluation_templates.map.each.with_index 1 do |evaluation_template, index|
       [
-        index + 1,
+        index,
         evaluation_template.name,
         evaluation_template.min_point,
         evaluation_template.max_point,
@@ -41,8 +41,8 @@ class EvaluationTemplatesDatatable
   end
 
   def fetch_evaluation_templates
-    evaluation_templates = EvaluationTemplate.order "#{sort_column} #{sort_direction}"
-    evaluation_templates = evaluation_templates.per_page_kaminari(page).per per_page
+    @evaluation_templates = EvaluationTemplate.order "#{sort_column} #{sort_direction}"
+    evaluation_templates = @evaluation_templates.per_page_kaminari(page).per per_page
     if params[:sSearch].present?
       evaluation_templates = evaluation_templates.where "name like :search", search: "%#{params[:sSearch]}%"
     end
@@ -54,7 +54,7 @@ class EvaluationTemplatesDatatable
   end
 
   def per_page
-    params[:iDisplayLength].to_i > 0 ? params[:iDisplayLength].to_i : 10
+    params[:iDisplayLength].to_i > 0 ? params[:iDisplayLength].to_i : @evaluation_templates.size
   end
 
   def sort_column
