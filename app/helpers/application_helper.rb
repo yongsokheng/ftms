@@ -63,11 +63,11 @@ module ApplicationHelper
   end
 
   def set_image object, size = Settings.image_size_100, class_name = "img-circle"
-    image_tag object.image_url ? object.image_url : "no_image", size: size, class: class_name
+    image_tag object.image_url ? object.image_url : "no_image.gif", size: size, class: class_name
   end
 
   def image_course_tag course, language, size = Settings.image_size_100, class_name = "img-circle"
-    image_tag course.image_url ? course.image_url : language, size: size,
+    image_tag course.image_url ? course.image_url : "#{language}.png", size: size,
       class: class_name
   end
 
