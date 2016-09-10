@@ -8,28 +8,28 @@ namespace :db do
       "Foreign Trade University",
       "Posts and Telecommunications Institute of Technology",
       "Hanoi University of Industry"].each do |name|
-      Fabricate :university, name: name
+      University.create! name: name
     end
 
     puts "Create Programming Languages"
     ["Ruby", "PHP", "Android", "Java", "iOS"].each do |name|
-      Fabricate :programming_language, name: name
+      ProgrammingLanguage.create! name: name
     end
 
     puts "Create User Types"
     ["Intern", "VPG", "JPG", "New dev", "QA"].each do |name|
-      Fabricate :user_type, name: name
+      UserType.create! name: name
     end
 
     puts "Create Status"
     ["Inprogress", "Finish", "Prepare project", "Jointed project"].each do |name|
-      Fabricate :status, name: name
+      Status.create! name: name
     end
 
     puts "Creating Role"
-    Fabricate :role, name: "admin", role_type: 0
-    Fabricate :role, name: "trainer", role_type: 1
-    Fabricate :role, name: "trainee", role_type: 2
+    Role.create! name: "admin", role_type: 0
+    Role.create! name: "trainer", role_type: 1
+    Role.create! name: "trainee", role_type: 2
 
     puts "Creating User"
     User.create!([
@@ -137,12 +137,7 @@ namespace :db do
     ["Working days", "Number of task",
       "Implement with new techniques", "Git", "Rails basic",
       "Rails advance", "Coding convention", "Plus"].each do |name|
-      Fabricate :evaluation_template, name: name
-    end
-
-    puts "Create Rank"
-    5.times do
-      Fabricate :rank
+      EvaluationTemplate.create! name: name, min_point: 1, max_point: 5
     end
 
     puts "Create Course"
@@ -401,13 +396,13 @@ namespace :db do
 
     trainer_permissions.each do |permission|
       permission[1].each do |action|
-        Fabricate :permission, model_class: permission[0], action: action, role_id: 2
+        Permission.create! model_class: permission[0], action: action, role_id: 2
       end
     end
 
     trainee_permissions.each do |permission|
       permission[1].each do |action|
-        Fabricate :permission, model_class: permission[0], action: action, role_id: 3
+        Permission.create! model_class: permission[0], action: action, role_id: 3
       end
     end
   end
