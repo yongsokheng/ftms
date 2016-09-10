@@ -143,7 +143,7 @@ namespace :db do
     puts "Create Course"
     Course.create!([
       {name: "Ruby on Rails",
-        image: File.open(File.join(Rails.root, "app/assets/images/course/Rails-1.png")),
+        image: File.open(File.join(Rails.root, "app/assets/images/course/Rails_1.png")),
         description: "Learn more Rails with this sequel to the infamous Rails for Zombies course. Increase your Ruby on Rails knowledge with even more zombie learning.",
         status: 1, programming_language_id: 1, start_date: Time.now, end_date: Time.now + Settings.during_time.course.days},
 
@@ -161,12 +161,12 @@ namespace :db do
     puts "Create Subject"
     Subject.create!([
       {name: "Ruby on Rails Tutorial Book", image: File.open(File.join(Rails.root,
-        "app/assets/images/subject/try-ruby.png")),
+        "app/assets/images/subject/try_ruby.png")),
         description: "Learn the basic building blocks of Ruby, all in the browser.\r\n",
         content: "<p>Get an introduction to numbers, Strings, properties, and methods,&nbsp;
           Learn about conversions, arrays, variables, and more methods</p>\r\n", during_time: Settings.during_time.tutorial_book},
       {name: "Ruby's Project 1", image: File.open(File.join(Rails.root,
-        "app/assets/images/subject/Rails-2.png")),
+        "app/assets/images/subject/Rails_2.png")),
         description: "Start Project 1 for Ruby on Rails today.\r\n",
         content: "<p>Get an introduction to redmine, requirement, design database</p>\r\n", during_time: Settings.during_time.project_1},
       {name: "Ruby's Project 2", image: File.open(File.join(Rails.root,
@@ -175,7 +175,7 @@ namespace :db do
         content: "<p>Get an introduction to redmine, requirement, design database</p>\r\n", during_time: Settings.during_time.project_2},
 
       {name: "Git Tutorial", image: File.open(File.join(Rails.root,
-        "app/assets/images/subject/try-git.png")),
+        "app/assets/images/subject/try_git.png")),
         description: "Start Git for your project today.\r\n",
         content: "<p>Get an introduction to github, code version management</p>\r\n", during_time: Settings.during_time.git_tutorial},
 
